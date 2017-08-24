@@ -1,0 +1,200 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:PlaceHolderGradient="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="-10dp"
+    android:layoutDirection="ltr"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="0dp">
+
+    <io.rmiri.placeholder.PlaceholderGradientGroup
+        android:id="@+id/placeHolderGradientGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        PlaceHolderGradient:PHG_animationAutoStart="true"
+        PlaceHolderGradient:PHG_animationDirection="LTR"
+        PlaceHolderGradient:PHG_animationDuration="1000"
+        PlaceHolderGradient:PHG_animationFinishType="gradient">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <!--Photo-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="230dp">
+
+                <io.rmiri.placeholder.PlaceholderGradient
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/photoACImgV"
+                        android:layout_width="match_parent"
+                        android:layout_height="230dp"
+                        android:layout_gravity="center"
+                        android:background="@color/transparent"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/photo_chevrolet" />
+
+
+                    <TextView
+                        android:id="@+id/newFlagTv"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/bg_radius_orange"
+                        android:gravity="center"
+                        android:paddingBottom="4dp"
+                        android:paddingEnd="12dp"
+                        android:paddingStart="12dp"
+                        android:paddingTop="4dp"
+                        android:text="New"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:visibility="visible" />
+
+
+                </io.rmiri.placeholder.PlaceholderGradient>
+
+            </RelativeLayout>
+
+
+            <!--Content-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+
+                <io.rmiri.placeholder.PlaceholderGradient
+                    android:id="@+id/titlePHG"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    PlaceHolderGradient:PHG_cornerRadius="10dp">
+
+                    <TextView
+                        android:id="@+id/titleTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:lineSpacingExtra="0dp"
+                        android:maxLines="1"
+                        android:text="Title"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="20sp" />
+
+                </io.rmiri.placeholder.PlaceholderGradient>
+
+
+                <io.rmiri.placeholder.PlaceholderGradient
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/titlePHG"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="4dp"
+                    PlaceHolderGradient:PHG_cornerRadius="10dp">
+
+                    <TextView
+                        android:id="@+id/descriptionTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:maxLines="1"
+                        android:text="Description"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="14sp" />
+
+                </io.rmiri.placeholder.PlaceholderGradient>
+
+            </RelativeLayout>
+
+            <!--divider-->
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/dividerColor" />
+
+            <!--control btns-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp">
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/addToParkingImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/compareImgBtn"
+                    android:background="@android:color/transparent"
+                    android:padding="8dp"
+                    app:srcCompat="@drawable/ic_favorite" />
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/compareImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:padding="8dp"
+                    app:srcCompat="@drawable/ic_compare" />
+
+
+                <io.rmiri.placeholder.PlaceholderGradient
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/addToParkingImgBtn"
+                    PlaceHolderGradient:PHG_cornerRadius="100dp">
+
+                    <TextView
+                        android:id="@+id/priceUnitTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="$"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="20sp" />
+
+
+                    <TextView
+                        android:id="@+id/priceTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/priceUnitTv"
+                        android:gravity="end|center_vertical"
+                        android:maxLines="1"
+                        android:paddingEnd="8dp"
+                        android:text="000"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="20sp" />
+
+
+                </io.rmiri.placeholder.PlaceholderGradient>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </io.rmiri.placeholder.PlaceholderGradientGroup>
+</android.support.v7.widget.CardView>

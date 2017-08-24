@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--material colors-->
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#EAEAEA</color>
+    <color name="colorAccent">#00AFEF</color>
+    <!--===========================================================================-->
+    <!--base colors-->
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="orange">#F1802B</color>
+    <!--===========================================================================-->
+    <!--secondary colors-->
+    <!--===========================================================================-->
+    <!--view colors-->
+    <color name="textColorPrimary">#444444</color>
+    <color name="textColorSecondary">#969494</color>
+    <color name="dividerColor">#EAEAEA</color>
+    <!--===========================================================================-->
+    <!--other colors-->
+
+    <!--===========================================================================-->
+</resources>
