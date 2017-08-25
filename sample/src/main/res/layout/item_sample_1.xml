@@ -1,5 +1,5 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:PlaceHolderGradient="http://schemas.android.com/apk/res-auto"
+    xmlns:Placeholder="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
@@ -12,14 +12,18 @@
     app:cardUseCompatPadding="true"
     app:contentPadding="0dp">
 
-    <io.rmiri.placeholder.PlaceholderGradientGroup
-        android:id="@+id/placeHolderGradientGroup"
+    <io.rmiri.placeholder.PlaceholderGroup
+        android:id="@+id/placeHolderGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        PlaceHolderGradient:PHG_animationAutoStart="true"
-        PlaceHolderGradient:PHG_animationDirection="LTR"
-        PlaceHolderGradient:PHG_animationDuration="1000"
-        PlaceHolderGradient:PHG_animationFinishType="gradient">
+        Placeholder:PH_BackgroundViewsColor="#EEEEEE"
+        Placeholder:PH_animationAutoStart="true"
+        Placeholder:PH_animationDirection="LTR"
+        Placeholder:PH_animationDuration="1000"
+        Placeholder:PH_animationFinishType="gradient"
+        Placeholder:PH_animationNormalType="gradient"
+        Placeholder:PH_backgroundMainColor="@android:color/transparent"
+        Placeholder:PH_highLightColor="#DEDEDE">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,9 +36,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="230dp">
 
-                <io.rmiri.placeholder.PlaceholderGradient
+                <io.rmiri.placeholder.PlaceholderView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    Placeholder:PH_cornerRadius="0dp"
+                    Placeholder:PH_padding="0dp"
+                    Placeholder:PH_shapeType="rect">
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/photoACImgV"
@@ -65,7 +72,7 @@
                         android:visibility="visible" />
 
 
-                </io.rmiri.placeholder.PlaceholderGradient>
+                </io.rmiri.placeholder.PlaceholderView>
 
             </RelativeLayout>
 
@@ -77,47 +84,44 @@
                 android:padding="8dp">
 
 
-                <io.rmiri.placeholder.PlaceholderGradient
+                <io.rmiri.placeholder.PlaceholderView
                     android:id="@+id/titlePHG"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    PlaceHolderGradient:PHG_cornerRadius="10dp">
+                    Placeholder:PH_cornerRadius="10dp">
 
                     <TextView
                         android:id="@+id/titleTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="start|center_vertical"
-                        android:lineSpacingExtra="0dp"
-                        android:maxLines="1"
                         android:text="Title"
                         android:textColor="@color/textColorPrimary"
                         android:textSize="20sp" />
 
-                </io.rmiri.placeholder.PlaceholderGradient>
+                </io.rmiri.placeholder.PlaceholderView>
 
 
-                <io.rmiri.placeholder.PlaceholderGradient
+                <io.rmiri.placeholder.PlaceholderView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/titlePHG"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="4dp"
-                    PlaceHolderGradient:PHG_cornerRadius="10dp">
+                    Placeholder:PH_cornerRadius="10dp">
 
                     <TextView
                         android:id="@+id/descriptionTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="start|center_vertical"
-                        android:maxLines="1"
                         android:text="Description"
                         android:textColor="@color/textColorSecondary"
                         android:textSize="14sp" />
 
-                </io.rmiri.placeholder.PlaceholderGradient>
+                </io.rmiri.placeholder.PlaceholderView>
 
             </RelativeLayout>
 
@@ -156,13 +160,13 @@
                     app:srcCompat="@drawable/ic_compare" />
 
 
-                <io.rmiri.placeholder.PlaceholderGradient
+                <io.rmiri.placeholder.PlaceholderView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/addToParkingImgBtn"
-                    PlaceHolderGradient:PHG_cornerRadius="100dp">
+                    Placeholder:PH_cornerRadius="100dp">
 
                     <TextView
                         android:id="@+id/priceUnitTv"
@@ -171,7 +175,6 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:maxLines="1"
                         android:text="$"
                         android:textColor="@color/textColorPrimary"
                         android:textSize="20sp" />
@@ -185,16 +188,15 @@
                         android:layout_centerVertical="true"
                         android:layout_toStartOf="@+id/priceUnitTv"
                         android:gravity="end|center_vertical"
-                        android:maxLines="1"
                         android:paddingEnd="8dp"
                         android:text="000"
                         android:textColor="@color/textColorPrimary"
                         android:textSize="20sp" />
 
 
-                </io.rmiri.placeholder.PlaceholderGradient>
+                </io.rmiri.placeholder.PlaceholderView>
             </RelativeLayout>
 
         </LinearLayout>
-    </io.rmiri.placeholder.PlaceholderGradientGroup>
+    </io.rmiri.placeholder.PlaceholderGroup>
 </android.support.v7.widget.CardView>

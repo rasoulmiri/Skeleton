@@ -17,12 +17,11 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.StyleRes;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
 
-import io.rmiri.placeholder.Master.CLog;
+import io.rmiri.placeholder.utils.CLog;
 import io.rmiri.placeholder.Master.PlaceholderAttribute;
 import io.rmiri.placeholder.Master.PlaceholderMaster;
 import io.rmiri.placeholder.utils.ColorUtils;
@@ -32,10 +31,10 @@ import io.rmiri.placeholder.utils.ColorUtils;
  * Created by Rasoul Miri on 8/8/17.
  */
 
-public class PlaceholderGradientGroup extends PlaceholderMaster {
+public class PlaceholderGroup extends PlaceholderMaster {
 
     private ArrayList<PlaceholderAttribute> placeholderAttributesChildren;// array for all children extend from PlaceholderGradient
-    private PlaceholderGradientListener placeholderGradientListener; // listener
+    private PlaceholderListener placeholderListener; // listener
 
     /* variable for draw canvas */
     private Paint paintGradient;
@@ -62,20 +61,20 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
     private boolean isLastLoopAnimation = false;
 
 
-    public PlaceholderGradientGroup(@NonNull Context context) {
+    public PlaceholderGroup(@NonNull Context context) {
         super(context);
     }
 
-    public PlaceholderGradientGroup(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public PlaceholderGroup(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public PlaceholderGradientGroup(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
+    public PlaceholderGroup(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public PlaceholderGradientGroup(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
+    public PlaceholderGroup(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -85,7 +84,7 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
         super.init(context, attrs);
 
         //generate color 010 (color one transparent = 0.0 | color two transparent = 1.0 | color three transparent =01.0 )
-        gradientColors = ColorUtils.generateColorTransparent010(placeholderAttribute.getColorCenterGradient(), placeholderAttribute.getColorBackgroundViews());
+        gradientColors = ColorUtils.generateColorTransparent010(placeholderAttribute.getColorHighLight(), placeholderAttribute.getColorBackgroundViews());
 
     }
 
@@ -94,15 +93,15 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
 
-        CLog.i("PlaceholderGradientGroup onLayout " + postion);
+        CLog.i("PlaceholderGroup onLayout " + postion);
         //add all children extend from PlaceholderGradient
         if (placeholderAttributesChildren == null && placeholderAttribute.isShowPlaceHolder()) {
-            CLog.i("PlaceholderGradientGroup onLayout and placeholderAttributesChildren == null ... " + postion);
+            CLog.i("PlaceholderGroup onLayout and placeholderAttributesChildren == null ... " + postion);
             placeholderAttributesChildren = new ArrayList<>();
             for (View child : getAllChildren(getChildAt(0))) {
-                if (child != null && child instanceof PlaceholderGradient) {
+                if (child != null && child instanceof PlaceholderView) {
 
-                    PlaceholderAttribute placeholderAttributeChild = ((PlaceholderGradient) child).getPlaceholderAttribute();
+                    PlaceholderAttribute placeholderAttributeChild = ((PlaceholderView) child).getPlaceholderAttribute();
 
                     //set point X1,Y1,X2,Y2
                     float X1 = child.getLeft();
@@ -110,9 +109,9 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
                     float X2 = 0.0f;
                     float Y2 = 0.0f;
 
-                    //calculator X1,X2 to left and top PlaceholderGradientGroup view
+                    //calculator X1,X2 to left and top PlaceholderGroup view
                     View parent = (View) child.getParent();
-                    while (parent != null && !(parent instanceof PlaceholderGradientGroup)) {
+                    while (parent != null && !(parent instanceof PlaceholderGroup)) {
                         X1 += parent.getLeft();
                         Y1 += parent.getTop();
                         parent = (View) parent.getParent();
@@ -161,7 +160,7 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
 
         if (isCanDraw) {
 
-//            CLog.i("PlaceholderGradientGroup dispatchDraw " + postion);
+//            CLog.i("PlaceholderGroup dispatchDraw " + postion);
 
             // just once run this code
             // calculate bound child for draw
@@ -186,35 +185,89 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
                     PlaceholderAttribute placeHolderGradientChild = placeholderAttributesChildren.get(i);
 
                     if (placeHolderGradientChild.getShapeType() == PlaceholderAttribute.SHAPE_TYPE_RECT) {
-
                         // Rectangle
                         RectF rectangleRect = new RectF(placeHolderGradientChild.getX1(), placeHolderGradientChild.getY1(), placeHolderGradientChild.getX2(), placeHolderGradientChild.getY2());
-
-                        //calculator cornerRadius size
-                        float cornerRadiusTopLeft;
-                        float cornerRadiusTopRight;
-                        float cornerRadiusBottomLRight;
-                        float cornerRadiusBottomLeft;
-
-                        if (placeHolderGradientChild.getCornerRadius() != Integer.MIN_VALUE) {
-                            cornerRadiusTopLeft = cornerRadiusTopRight = cornerRadiusBottomLRight = cornerRadiusBottomLeft = getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadius());
-                        } else {
-                            cornerRadiusTopLeft = placeHolderGradientChild.getCornerRadiusTopLeft() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusTopLeft()) : 0;
-                            cornerRadiusTopRight = placeHolderGradientChild.getCornerRadiusTopRight() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusTopRight()) : 0;
-                            cornerRadiusBottomLRight = placeHolderGradientChild.getCornerRadiusBottomLRight() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusBottomLRight()) : 0;
-                            cornerRadiusBottomLeft = placeHolderGradientChild.getCornerRadiusBottomLeft() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusBottomLeft()) : 0;
-                        }
-
-                        path.addRoundRect(rectangleRect, new float[]{cornerRadiusTopLeft, cornerRadiusTopLeft
-                                        , cornerRadiusTopRight, cornerRadiusTopRight
-                                        , cornerRadiusBottomLRight, cornerRadiusBottomLRight
-                                        , cornerRadiusBottomLeft, cornerRadiusBottomLeft}
-                                , Path.Direction.CW);
-
+                        float[] cornerRadius = generateCornerRadius(rectangleRect, placeHolderGradientChild);
+                        path.addRoundRect(rectangleRect, cornerRadius, Path.Direction.CW);
                     } else if (placeHolderGradientChild.getShapeType() == PlaceholderAttribute.SHAPE_TYPE_OVAL) {
                         //Oval
                         RectF ovalRect = new RectF(placeHolderGradientChild.getX1(), placeHolderGradientChild.getY1(), placeHolderGradientChild.getX2(), placeHolderGradientChild.getY2());
                         path.addOval(ovalRect, Path.Direction.CW);
+                    } else if (placeHolderGradientChild.getShapeType() == PlaceholderAttribute.SHAPE_TYPE_TEXT) {
+                        //Text
+
+
+                        float lineHeight = placeHolderGradientChild.getTextShapeLineHeight();
+                        float lineSpaceVertical = placeHolderGradientChild.getTextShapeLineSpaceVertical();
+
+                        int lineNumber = placeHolderGradientChild.getTextShapeLineNumber();
+                        if (lineNumber == 0) {
+                            lineNumber = (int) ((placeHolderGradientChild.getY2() - placeHolderGradientChild.getY1())
+                                                                / (lineHeight + lineSpaceVertical));
+                        }
+                        CLog.i("line number  " + lineNumber);
+                        for (int j = 0; j < lineNumber; j++) {
+
+                            RectF rectangleRect;
+                            float newY1, newY2;
+                            float newX1 = placeHolderGradientChild.getX1();
+                            float newX2 = placeHolderGradientChild.getX2();
+
+                            //Y1
+                            if (j == 0) {
+                                //first line
+                                newY1 = placeHolderGradientChild.getY1();
+                            } else {
+                                //other line
+                                newY1 = placeHolderGradientChild.getY1()
+                                        + (lineHeight * j) // height children previous
+                                        + (lineSpaceVertical * j);// space vertical children previous
+                            }
+
+                            //Y2
+                            newY2 = placeHolderGradientChild.getY1()
+                                    + (lineHeight * (j + 1)) // height children previous
+                                    + (lineSpaceVertical * j);// space vertical children previous
+
+
+                            //X1,X2 just for last line
+                            if (j == lineNumber - 1) {
+
+                                float quarterWidth = (placeHolderGradientChild.getX2() - placeHolderGradientChild.getX1()) / 4;//quarter width 1 line
+
+                                switch (placeHolderGradientChild.getTextShapeLineLastWidth()) {
+                                    case PlaceholderAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_FULL:
+                                        //no change X1 and X2
+                                        break;
+                                    case PlaceholderAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_THREE_QUARTERS:
+                                        if (placeholderAttribute.getAnimationDirection() == PlaceholderAttribute.ANIMATION_DIRECTION_RTL) {
+                                            newX1 = placeHolderGradientChild.getX1() + quarterWidth;
+                                        } else {
+                                            newX2 = placeHolderGradientChild.getX2() - quarterWidth;
+                                        }
+                                        break;
+                                    case PlaceholderAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_HALF:
+                                        if (placeholderAttribute.getAnimationDirection() == PlaceholderAttribute.ANIMATION_DIRECTION_RTL) {
+                                            newX1 = placeHolderGradientChild.getX1() + (2 * quarterWidth);
+                                        } else {
+                                            newX2 = placeHolderGradientChild.getX2() - (2 * quarterWidth);
+                                        }
+                                        break;
+                                    case PlaceholderAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_QUARTER:
+                                        if (placeholderAttribute.getAnimationDirection() == PlaceholderAttribute.ANIMATION_DIRECTION_RTL) {
+                                            newX1 = placeHolderGradientChild.getX1() + (3 * quarterWidth);
+                                        } else {
+                                            newX2 = placeHolderGradientChild.getX2() - (3 * quarterWidth);
+                                        }
+                                        break;
+                                }
+                            }
+
+                            //draw text line
+                            rectangleRect = new RectF(newX1, newY1, newX2, newY2);
+                            float[] cornerRadius = generateCornerRadius(rectangleRect, placeHolderGradientChild);
+                            path.addRoundRect(rectangleRect, cornerRadius, Path.Direction.CW);
+                        }
                     }
 
 
@@ -231,7 +284,7 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
             if (isCanDrawFinishState) {
                 // finish draw
                 switch (placeholderAttribute.getAnimationFinishType()) {
-                    case PlaceholderAttribute.ANIMATION_FINISH_TYPE_ALPHA:
+                    case PlaceholderAttribute.ANIMATION_TYPE_ALPHA:
 
                         //draw background total view with alpha
                         drawBackgroundTotal(canvas, ColorUtils.convertColorToTransparent(placeholderAttribute.getColorBackgroundMain(), 1.0f - AnimationFraction));
@@ -240,7 +293,7 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
                         canvas.drawBitmap(bitmapBackgroundElement, 0, 0, paintBackgroundViews);
 
                         break;
-                    case PlaceholderAttribute.ANIMATION_FINISH_TYPE_GRADIENT:
+                    case PlaceholderAttribute.ANIMATION_TYPE_GRADIENT:
 
                         //draw background total view with alpha
                         drawBackgroundTotal(canvas, ColorUtils.convertColorToTransparent(placeholderAttribute.getColorBackgroundMain(), 1.0f - AnimationFraction));
@@ -257,20 +310,70 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
 
             } else {
                 // normal draw
-                generatePositionGradientFromDirectionAnimation();
-                paintGradient.setShader(new LinearGradient(xStartGradient, yStartGradient, xEndGradient, yEndGradient
-                        , gradientColors
-                        , new float[]{0f, 0.4f, 0.8f}
-                        , Shader.TileMode.CLAMP));
 
-                drawBackgroundTotal(canvas, placeholderAttribute.getColorBackgroundMain());
-                canvas.drawBitmap(bitmapBackgroundElement, 0, 0, paintBackgroundViews);
-                canvas.drawBitmap(bitmapGradientElement, 0, 0, paintGradient);
+                drawBackgroundTotal(canvas, placeholderAttribute.getColorBackgroundMain());//draw background total
+                canvas.drawBitmap(bitmapBackgroundElement, 0, 0, paintBackgroundViews);//draw background view
+                switch (placeholderAttribute.getAnimationNormalType()) {
+
+                    case PlaceholderAttribute.ANIMATION_TYPE_ALPHA:
+
+                        float alpha = 0.0f;
+//                        if (AnimationFractionMove >= 0) {
+//                            alpha = AnimationFractionMove;
+//                        } else {
+//                            alpha = AnimationFractionMove + 1;
+//                        }
+                        CLog.i(alpha + "");
+                        paintGradient.setColor(ColorUtils.convertColorToTransparent(placeholderAttribute.getColorHighLight(), Math.abs(AnimationFractionMove)));
+
+                        canvas.drawBitmap(bitmapGradientElement, 0, 0, paintGradient);
+
+                        break;
+                    case PlaceholderAttribute.ANIMATION_TYPE_GRADIENT:
+
+                        generatePositionGradientFromDirectionAnimation();
+                        paintGradient.setShader(new LinearGradient(xStartGradient, yStartGradient, xEndGradient, yEndGradient
+                                , gradientColors
+                                , new float[]{0f, 0.4f, 0.8f}
+                                , Shader.TileMode.CLAMP));
+
+                        canvas.drawBitmap(bitmapGradientElement, 0, 0, paintGradient);
+
+                        break;
+                }
+
+
             }
 
 
         }
 
+    }
+
+
+    private float[] generateCornerRadius(RectF rectangleRect, PlaceholderAttribute placeHolderGradientChild) {
+
+        //calculator cornerRadius size
+        float cornerRadiusTopLeft;
+        float cornerRadiusTopRight;
+        float cornerRadiusBottomLRight;
+        float cornerRadiusBottomLeft;
+
+        if (placeHolderGradientChild.getCornerRadius() != Integer.MIN_VALUE) {
+            cornerRadiusTopLeft = cornerRadiusTopRight = cornerRadiusBottomLRight = cornerRadiusBottomLeft = getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadius());
+        } else {
+            cornerRadiusTopLeft = placeHolderGradientChild.getCornerRadiusTopLeft() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusTopLeft()) : 0;
+            cornerRadiusTopRight = placeHolderGradientChild.getCornerRadiusTopRight() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusTopRight()) : 0;
+            cornerRadiusBottomLRight = placeHolderGradientChild.getCornerRadiusBottomLRight() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusBottomLRight()) : 0;
+            cornerRadiusBottomLeft = placeHolderGradientChild.getCornerRadiusBottomLeft() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusBottomLeft()) : 0;
+        }
+
+        return new float[]{cornerRadiusTopLeft, cornerRadiusTopLeft, cornerRadiusTopRight, cornerRadiusTopRight, cornerRadiusBottomLRight, cornerRadiusBottomLRight, cornerRadiusBottomLeft, cornerRadiusBottomLeft};
+
+    }
+
+    private float getCornerRadius(RectF rectangleRect, float initCornerRadius) {
+        return Math.min(Math.min(rectangleRect.width(), rectangleRect.height()) / 2f, initCornerRadius);
     }
 
     private void drawBackgroundTotal(Canvas canvas, int color) {
@@ -316,10 +419,6 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
                 break;
             }
         }
-    }
-
-    private float getCornerRadius(RectF rectangleRect, float initCornerRadius) {
-        return Math.min(Math.min(rectangleRect.width(), rectangleRect.height()) / 2f, initCornerRadius);
     }
 
 
@@ -378,24 +477,24 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
 
             @Override
             public void onAnimationRepeat(Animator animation) {
-                CLog.i("PlaceholderGradientGroup onAnimationRepeat " + postion);
+                CLog.i("PlaceholderGroup onAnimationRepeat " + postion);
 
                 if (isCanDrawFinishState) {
-                    CLog.i("PlaceholderGradientGroup isCanDrawFinishState " + postion);
+                    CLog.i("PlaceholderGroup isCanDrawFinishState " + postion);
                     setupFinishingAnimation();
                 }
 
 
                 if (isLastLoopAnimation) {
                     // last repeat animation and start finish animation
-                    CLog.i("PlaceholderGradientGroup isLastLoopAnimatio " + postion);
-                    if (placeholderAttribute.getAnimationFinishType() == PlaceholderAttribute.ANIMATION_FINISH_TYPE_NON) {
+                    CLog.i("PlaceholderGroup isLastLoopAnimatio " + postion);
+                    if (placeholderAttribute.getAnimationFinishType() == PlaceholderAttribute.ANIMATION_TYPE_NON) {
                         setupFinishingAnimation();
                     } else {
                         isLastLoopAnimation = false;
                         isCanDrawFinishState = true;
                         //change color 011 (color one transparent = 0.0 | color two transparent = 1.0 | color three transparent = 1.0 )
-                        gradientColors = ColorUtils.generateColorTransparent011(placeholderAttribute.getColorCenterGradient(), placeholderAttribute.getColorBackgroundViews());
+                        gradientColors = ColorUtils.generateColorTransparent011(placeholderAttribute.getColorHighLight(), placeholderAttribute.getColorBackgroundViews());
                     }
                 }
 
@@ -415,8 +514,8 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
         valueAnimator.start();
 
         //fire for listener
-        if (placeholderGradientListener != null)
-            placeholderGradientListener.onStartAnimation();
+        if (placeholderListener != null)
+            placeholderListener.onStartAnimation();
 
     }
 
@@ -436,14 +535,14 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
         // disable Hold touchEvents from this and children
         setHoldTouchEventsFromChildren(false);
         for (View child : getAllChildren(getChildAt(0))) {
-            if (child != null && child instanceof PlaceholderGradient) {
-                ((PlaceholderGradient) child).setHoldTouchEventsFromChildren(false);
+            if (child != null && child instanceof PlaceholderView) {
+                ((PlaceholderView) child).setHoldTouchEventsFromChildren(false);
             }
         }
 
         //fire finish state for listener
-        if (placeholderGradientListener != null)
-            placeholderGradientListener.onFinishAnimation();
+        if (placeholderListener != null)
+            placeholderListener.onFinishAnimation();
 
     }
 
@@ -470,14 +569,15 @@ public class PlaceholderGradientGroup extends PlaceholderMaster {
 
     //==============================================================================================
     /*Listener*/
-    public interface PlaceholderGradientListener {
+    public interface PlaceholderListener {
         void onStartAnimation();
 
         void onFinishAnimation();
+
     }
 
-    public void setPlaceholderGradientListener(PlaceholderGradientListener placeholderGradientListener) {
-        this.placeholderGradientListener = placeholderGradientListener;
+    public void setPlaceholderListener(PlaceholderListener placeholderListener) {
+        this.placeholderListener = placeholderListener;
     }
     //==============================================================================================
 }

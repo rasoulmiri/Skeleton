@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Placeholder="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+        app:title="Placeholder Sample 4"
+        app:titleTextColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Different types of shapes"
+        android:textSize="20sp" />
+
+    <io.rmiri.placeholder.PlaceholderGroup
+        android:id="@+id/placeHolderGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        Placeholder:PH_BackgroundViewsColor="#EEEEEE"
+        Placeholder:PH_animationAutoStart="true"
+        Placeholder:PH_animationDirection="LTR"
+        Placeholder:PH_animationDuration="1000"
+        Placeholder:PH_animationFinishType="none"
+        Placeholder:PH_animationNormalType="alpha"
+        Placeholder:PH_backgroundMainColor="@android:color/transparent"
+        Placeholder:PH_highLightColor="#DEDEDE">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--Rect-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="top|start"
+                    android:text="Rect" />
+
+                <io.rmiri.placeholder.PlaceholderView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    Placeholder:PH_shapeType="rect">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="start|center_vertical"
+                        android:text="Title"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="20sp" />
+
+                </io.rmiri.placeholder.PlaceholderView>
+
+            </LinearLayout>
+
+            <!--Oval-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="top|start"
+                    android:text="Oval" />
+
+                <io.rmiri.placeholder.PlaceholderView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    Placeholder:PH_shapeType="oval">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:padding="8dp"
+                        app:srcCompat="@drawable/ic_compare" />
+
+                </io.rmiri.placeholder.PlaceholderView>
+            </LinearLayout>
+
+            <!--Text-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="top|start"
+                    android:text="Text" />
+
+                <io.rmiri.placeholder.PlaceholderView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    Placeholder:PH_shapeType="text"
+                    Placeholder:PH_textLineHeight="16dp"
+                    Placeholder:PH_textLineLastWidth="threeQuarters"
+                    Placeholder:PH_textLineNumber="5"
+                    Placeholder:PH_textLineSpaceVertical="4dp">
+
+                    <TextView
+                        android:id="@+id/textTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="start|center_vertical"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="14sp" />
+
+                </io.rmiri.placeholder.PlaceholderView>
+            </LinearLayout>
+        </LinearLayout>
+    </io.rmiri.placeholder.PlaceholderGroup>
+</LinearLayout>

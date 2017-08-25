@@ -1,51 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="PlaceholderGradient">
+    <declare-styleable name="Placeholder">
 
-        <attr name="PHG_autoStartAnimation" format="boolean" />
-        <attr name="PHG_isShowPlaceHolder" format="boolean" />
-        <attr name="PHG_isHoldTouchEventsFromChildren" format="boolean" />
+        <!--=====================================================================================-->
+        <!--PlaceholderGroup Attributes-->
 
-        <!--shape type-->
-        <attr name="PHG_shapeType" format="integer">
-            <enum name="rect" value="1" />
-            <enum name="oval" value="2" />
-        </attr>
+        <attr name="PH_autoStartAnimation" format="boolean" />
+        <attr name="PH_isShowPlaceHolder" format="boolean" />
+        <attr name="PH_isHoldTouchEventsFromChildren" format="boolean" />
 
         <!--color-->
-        <attr name="PHG_backgroundMainColor" format="color" />
-        <attr name="PHG_BackgroundViewsColor" format="color" />
-        <attr name="PHG_centerGradientColor" format="color" />
+        <attr name="PH_backgroundMainColor" format="color" />
+        <attr name="PH_BackgroundViewsColor" format="color" />
+        <attr name="PH_highLightColor" format="color" />
 
         <!--animation-->
-        <attr name="PHG_animationAutoStart" format="boolean" />
-        <attr name="PHG_animationDuration" format="integer" />
-        <attr name="PHG_animationDirection" format="integer">
-            <enum name="LTR" value="1" />
-            <enum name="RTL" value="2" />
-            <enum name="TTB" value="3" />
-            <enum name="BTT" value="4" />
+        <attr name="PH_animationAutoStart" format="boolean" />
+        <attr name="PH_animationDuration" format="integer" />
+        <attr name="PH_animationDirection" format="integer">
+            <enum name="LTR" value="1" /><!--left to right-->
+            <enum name="RTL" value="2" /><!--right to left-->
+            <enum name="TTB" value="3" /><!--top to bottom-->
+            <enum name="BTT" value="4" /><!--bottom to top-->
         </attr>
-        <attr name="PHG_animationFinishType" format="integer">
+        <attr name="PH_animationNormalType" format="integer">
+            <enum name="none" value="0" />
+            <enum name="alpha" value="1" />
+            <enum name="gradient" value="2" />
+        </attr>
+        <attr name="PH_animationFinishType" format="integer">
             <enum name="none" value="0" />
             <enum name="alpha" value="1" />
             <enum name="gradient" value="2" />
         </attr>
 
+        <!--=====================================================================================-->
+        <!--=====================================================================================-->
+        <!--PlaceholderView Attributes-->
+
         <!--cornerRadius-->
-        <attr name="PHG_cornerRadius" format="dimension" />
-        <attr name="PHG_cornerRadiusTopLeft" format="dimension" />
-        <attr name="PHG_cornerRadiusTopRight" format="dimension" />
-        <attr name="PHG_cornerRadiusBottomLeft" format="dimension" />
-        <attr name="PHG_cornerRadiusBottomLRight" format="dimension" />
+        <attr name="PH_cornerRadius" format="dimension" />
+        <attr name="PH_cornerRadiusTopLeft" format="dimension" />
+        <attr name="PH_cornerRadiusTopRight" format="dimension" />
+        <attr name="PH_cornerRadiusBottomLeft" format="dimension" />
+        <attr name="PH_cornerRadiusBottomLRight" format="dimension" />
 
         <!--padding-->
-        <attr name="PHG_padding" format="dimension" />
-        <attr name="PHG_paddingTop" format="dimension" />
-        <attr name="PHG_paddingRight" format="dimension" />
-        <attr name="PHG_paddingLeft" format="dimension" />
-        <attr name="PHG_paddingBottom" format="dimension" />
+        <attr name="PH_padding" format="dimension" />
+        <attr name="PH_paddingTop" format="dimension" />
+        <attr name="PH_paddingRight" format="dimension" />
+        <attr name="PH_paddingLeft" format="dimension" />
+        <attr name="PH_paddingBottom" format="dimension" />
+
+        <!--shape type-->
+        <attr name="PH_shapeType" format="integer">
+            <enum name="rect" value="1" />
+            <enum name="oval" value="2" />
+            <enum name="text" value="3" />
+        </attr>
+
+        <!--special attrs shape type text-->
+        <attr name="PH_textLineNumber" format="integer"/> <!--value zero means auto line by height view-->
+        <attr name="PH_textLineLastWidth" format="integer">
+            <enum name="full" value="1" />
+            <enum name="threeQuarters" value="2" />
+            <enum name="half" value="3" />
+            <enum name="quarter" value="4" />
+        </attr>
+        <attr name="PH_textLineHeight" format="dimension"/>
+        <attr name="PH_textLineSpaceVertical" format="dimension"/>
+        <!--=====================================================================================-->
 
     </declare-styleable>
 

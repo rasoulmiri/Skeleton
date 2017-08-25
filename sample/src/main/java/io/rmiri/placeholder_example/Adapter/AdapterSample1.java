@@ -1,4 +1,4 @@
-package io.rmiri.placeholder_example;
+package io.rmiri.placeholder_example.Adapter;
 
 
 import android.content.Context;
@@ -16,37 +16,37 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import io.rmiri.placeholder.Master.CLog;
 import io.rmiri.placeholder.Master.PlaceholderDetail;
-import io.rmiri.placeholder.PlaceholderGradientGroup;
+import io.rmiri.placeholder.PlaceholderGroup;
+import io.rmiri.placeholder_example.Data.DataObject;
+import io.rmiri.placeholder_example.R;
 
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class AdapterSample1 extends RecyclerView.Adapter<AdapterSample1.ViewHolder> {
 
     private Context context;
     private ArrayList<DataObject> dataObjects = new ArrayList<>();
     private PlaceholderDetail placeholderDetail = new PlaceholderDetail();
 
-    RecyclerViewAdapter(Context context, ArrayList<DataObject> dataObjects, @Nullable PlaceholderDetail placeholderDetail) {
+    public AdapterSample1(Context context, ArrayList<DataObject> dataObjects, @Nullable PlaceholderDetail placeholderDetail) {
         this.context = context;
         this.dataObjects = dataObjects;
         if (placeholderDetail != null) {
             this.placeholderDetail = placeholderDetail;
         }
-
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_advertise_search_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sample_1, parent, false);
         return new ViewHolder(view);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private CardView cardView;
-        private PlaceholderGradientGroup placeHolderGradientGroup;
+        private PlaceholderGroup placeHolderGroup;
         private AppCompatImageView photoACImgV;
         private TextView newFlagTv;
         private TextView titleTv;
@@ -60,7 +60,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(itemView);
 
             cardView = (CardView) itemView.findViewById(R.id.cardView);
-            placeHolderGradientGroup = (PlaceholderGradientGroup) itemView.findViewById(R.id.placeHolderGradientGroup);
+            placeHolderGroup = (PlaceholderGroup) itemView.findViewById(R.id.placeHolderGroup);
             photoACImgV = (AppCompatImageView) itemView.findViewById(R.id.photoACImgV);
             newFlagTv = (TextView) itemView.findViewById(R.id.newFlagTv);
             titleTv = (TextView) itemView.findViewById(R.id.titleTv);
@@ -75,24 +75,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        CLog.i("RecyclerViewAdapter " + position + " onBindViewHolder");
-
         holder.cardView.setPreventCornerOverlap(false);
 
-        holder.placeHolderGradientGroup.setPostion(position);//just for debug log
+//        holder.placeHolderGradientGroup.setPostion(position);//just for debug log
 
         if (placeholderDetail.isPlaceholderIsOn()) {
             //need show placeholder for 2 cards
-            holder.placeHolderGradientGroup.setAutoPlay(true);
-            CLog.i("RecyclerViewAdapter " + position + " onBindViewHolder  isPlaceholderIsOn = true");
+            holder.placeHolderGroup.setAutoPlay(true);
             return;
         } else {
-            CLog.i("RecyclerViewAdapter " + position + " onBindViewHolder  isPlaceholderIsOn = false");
-            holder.placeHolderGradientGroup.setShowPlaceHolder(false);
-            holder.placeHolderGradientGroup.finishAnimation();
+            holder.placeHolderGroup.setShowPlaceHolder(false);
+            holder.placeHolderGroup.finishAnimation();
         }
-
-        CLog.i("RecyclerViewAdapter onBindViewHolder  bind view");
 
         //set data in view
         final DataObject cardObj = dataObjects.get(position);
@@ -108,7 +102,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
         //set photo by Picasso lib
-        Picasso.with(context).load(cardObj.getPhoto()).placeholder(R.drawable.ic_compare).into(holder.photoACImgV);
+        Picasso.with(context).load(cardObj.getPhoto()).into(holder.photoACImgV);
 
     }
 

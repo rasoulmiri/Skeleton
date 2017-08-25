@@ -1,6 +1,9 @@
-package io.rmiri.placeholder_example;
+package io.rmiri.placeholder_example.Data;
 
 import java.util.ArrayList;
+
+import io.rmiri.placeholder_example.Data.DataObject;
+import io.rmiri.placeholder_example.R;
 
 /**
  * Created by Rasoul Miri on 8/23/17.
@@ -54,7 +57,7 @@ public class GenarateDataFake {
             add("240000");
             add("240000");
             add("240000");
-            add("BM240000W");
+            add("240000");
         }
     };
 

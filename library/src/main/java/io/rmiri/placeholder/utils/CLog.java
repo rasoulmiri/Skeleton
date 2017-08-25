@@ -1,4 +1,4 @@
-package io.rmiri.placeholder.Master;
+package io.rmiri.placeholder.utils;
 
 import android.util.Log;
 

@@ -19,13 +19,13 @@ public class PlaceholderAttribute {
     /*color*/
     private int colorBackgroundMain;
     private int colorBackgroundViews;
-    private int colorCenterGradient;
+    private int colorHighLight;
 
     /*animation*/
     private int animationDuration;
     private int animationDirection;
+    private int animationNormalType;
     private int animationFinishType;
-
 
 
     /*cornerRadius*/
@@ -42,33 +42,50 @@ public class PlaceholderAttribute {
     private float paddingBottom;
     private float paddingLeft;
 
+    /*special attrs shape type text*/
+    private int textShapeLineNumber;
+    private int textShapeLineLastWidth;
+    private float textShapeLineHeight;
+    private float textShapeLineSpaceVertical;
+
     /*enum*/
     public static final int SHAPE_TYPE_RECT = 1;
     public static final int SHAPE_TYPE_OVAL = 2;
+    public static final int SHAPE_TYPE_TEXT = 3;
 
     public static final int ANIMATION_DIRECTION_LTR = 1;
     public static final int ANIMATION_DIRECTION_RTL = 2;
     public static final int ANIMATION_DIRECTION_TTB = 3;
     public static final int ANIMATION_DIRECTION_BTT = 4;
 
-    public static final int ANIMATION_FINISH_TYPE_NON = 0;
-    public static final int ANIMATION_FINISH_TYPE_ALPHA = 1;
-    public static final int ANIMATION_FINISH_TYPE_GRADIENT = 2;
+    public static final int ANIMATION_TYPE_NON = 0;
+    public static final int ANIMATION_TYPE_ALPHA = 1;
+    public static final int ANIMATION_TYPE_GRADIENT = 2;
+
+    public static final int TEXT_SHAPE_LINE_LAST_WIDTH_FULL = 1;
+    public static final int TEXT_SHAPE_LINE_LAST_WIDTH_THREE_QUARTERS = 2;
+    public static final int TEXT_SHAPE_LINE_LAST_WIDTH_HALF = 3;
+    public static final int TEXT_SHAPE_LINE_LAST_WIDTH_QUARTER = 4;
 
 
     /*default value*/
     public static final int DEFAULT_COLOR_BACKGROUND_MAIN = android.R.color.transparent;
-    public static final int DEFAULT_COLOR_BACKGROUND_VIEWS =Color.parseColor("#EEEEEE");
-    public static final int DEFAULT_COLOR_CENTER_GRADIENT = Color.parseColor("#DEDEDE");
+    public static final int DEFAULT_COLOR_BACKGROUND_VIEWS = Color.parseColor("#EEEEEE");
+    public static final int DEFAULT_COLOR_HIGHLIGHT_GRADIENT = Color.parseColor("#DEDEDE");
 
     public static final int DEFAULT_ANIMATION_DURATION = 1000;
     public static final int DEFAULT_ANIMATION_DIRECTION = ANIMATION_DIRECTION_LTR;
-    public static final int DEFAULT_ANIMATION_FINISH_TYPE = ANIMATION_FINISH_TYPE_ALPHA;
+    public static final int DEFAULT_ANIMATION_TYPE = ANIMATION_TYPE_GRADIENT;
 
     public static final int DEFAULT_SHAPE_TYPE = SHAPE_TYPE_RECT;
 
     public static final int DEFAULT_CORNER_RADIUS = Integer.MIN_VALUE;
     public static final int DEFAULT_PADDING = Integer.MIN_VALUE;
+
+    public static final int DEFAULT_TEXT_SHAPE_LINE =0;
+    public static final int DEFAULT_TEXT_SHAPE_LAST_LINE_WIDTH = TEXT_SHAPE_LINE_LAST_WIDTH_THREE_QUARTERS;
+    public static final int DEFAULT_TEXT_SHAPE_LINE_HEIGHT = 24;
+    public static final int DEFAULT_TEXT_SHAPE_LINE_SPACE_VERTICAL = 4;
 
 
     public PlaceholderAttribute() {
@@ -156,12 +173,12 @@ public class PlaceholderAttribute {
         this.colorBackgroundViews = colorBackgroundViews;
     }
 
-    public int getColorCenterGradient() {
-        return colorCenterGradient;
+    public int getColorHighLight() {
+        return colorHighLight;
     }
 
-    public void setColorCenterGradient(int colorCenterGradient) {
-        this.colorCenterGradient = colorCenterGradient;
+    public void setColorHighLight(int colorHighLight) {
+        this.colorHighLight = colorHighLight;
     }
 
     public int getAnimationDuration() {
@@ -178,6 +195,14 @@ public class PlaceholderAttribute {
 
     public void setAnimationDirection(int animationDirection) {
         this.animationDirection = animationDirection;
+    }
+
+    public int getAnimationNormalType() {
+        return animationNormalType;
+    }
+
+    public void setAnimationNormalType(int animationNormalType) {
+        this.animationNormalType = animationNormalType;
     }
 
     public int getAnimationFinishType() {
@@ -268,12 +293,48 @@ public class PlaceholderAttribute {
         this.paddingLeft = paddingLeft;
     }
 
+    public int getTextShapeLineNumber() {
+        return textShapeLineNumber;
+    }
+
+    public void setTextShapeLineNumber(int textShapeLineNumber) {
+        this.textShapeLineNumber = textShapeLineNumber;
+    }
+
+    public int getTextShapeLineLastWidth() {
+        return textShapeLineLastWidth;
+    }
+
+    public void setTextShapeLineLastWidth(int textShapeLineLastWidth) {
+        this.textShapeLineLastWidth = textShapeLineLastWidth;
+    }
+
+    public float getTextShapeLineHeight() {
+        return textShapeLineHeight;
+    }
+
+    public void setTextShapeLineHeight(float textShapeLineHeight) {
+        this.textShapeLineHeight = textShapeLineHeight;
+    }
+
+    public float getTextShapeLineSpaceVertical() {
+        return textShapeLineSpaceVertical;
+    }
+
+    public void setTextShapeLineSpaceVertical(float textShapeLineSpaceVertical) {
+        this.textShapeLineSpaceVertical = textShapeLineSpaceVertical;
+    }
+
     public static int getShapeTypeRect() {
         return SHAPE_TYPE_RECT;
     }
 
     public static int getShapeTypeOval() {
         return SHAPE_TYPE_OVAL;
+    }
+
+    public static int getShapeTypeText() {
+        return SHAPE_TYPE_TEXT;
     }
 
     public static int getAnimationDirectionLtr() {
@@ -292,16 +353,32 @@ public class PlaceholderAttribute {
         return ANIMATION_DIRECTION_BTT;
     }
 
-    public static int getAnimationFinishTypeNon() {
-        return ANIMATION_FINISH_TYPE_NON;
+    public static int getAnimationTypeNon() {
+        return ANIMATION_TYPE_NON;
     }
 
-    public static int getAnimationFinishTypeAlpha() {
-        return ANIMATION_FINISH_TYPE_ALPHA;
+    public static int getAnimationTypeAlpha() {
+        return ANIMATION_TYPE_ALPHA;
     }
 
-    public static int getAnimationFinishTypeGradient() {
-        return ANIMATION_FINISH_TYPE_GRADIENT;
+    public static int getAnimationTypeGradient() {
+        return ANIMATION_TYPE_GRADIENT;
+    }
+
+    public static int getTextShapeLineLastWidthFull() {
+        return TEXT_SHAPE_LINE_LAST_WIDTH_FULL;
+    }
+
+    public static int getTextShapeLineLastWidthThreeQuarters() {
+        return TEXT_SHAPE_LINE_LAST_WIDTH_THREE_QUARTERS;
+    }
+
+    public static int getTextShapeLineLastWidthHalf() {
+        return TEXT_SHAPE_LINE_LAST_WIDTH_HALF;
+    }
+
+    public static int getTextShapeLineLastWidthQuarter() {
+        return TEXT_SHAPE_LINE_LAST_WIDTH_QUARTER;
     }
 
     public static int getDefaultColorBackgroundMain() {
@@ -312,8 +389,8 @@ public class PlaceholderAttribute {
         return DEFAULT_COLOR_BACKGROUND_VIEWS;
     }
 
-    public static int getDefaultColorCenterGradient() {
-        return DEFAULT_COLOR_CENTER_GRADIENT;
+    public static int getDefaultColorHighlightGradient() {
+        return DEFAULT_COLOR_HIGHLIGHT_GRADIENT;
     }
 
     public static int getDefaultAnimationDuration() {
@@ -324,8 +401,8 @@ public class PlaceholderAttribute {
         return DEFAULT_ANIMATION_DIRECTION;
     }
 
-    public static int getDefaultAnimationFinishType() {
-        return DEFAULT_ANIMATION_FINISH_TYPE;
+    public static int getDefaultAnimationType() {
+        return DEFAULT_ANIMATION_TYPE;
     }
 
     public static int getDefaultShapeType() {
@@ -338,5 +415,21 @@ public class PlaceholderAttribute {
 
     public static int getDefaultPadding() {
         return DEFAULT_PADDING;
+    }
+
+    public static int getDefaultTextShapeLine() {
+        return DEFAULT_TEXT_SHAPE_LINE;
+    }
+
+    public static int getDefaultTextShapeLastLineWidth() {
+        return DEFAULT_TEXT_SHAPE_LAST_LINE_WIDTH;
+    }
+
+    public static int getDefaultTextShapeLineHeight() {
+        return DEFAULT_TEXT_SHAPE_LINE_HEIGHT;
+    }
+
+    public static int getDefaultTextShapeLineSpaceVertical() {
+        return DEFAULT_TEXT_SHAPE_LINE_SPACE_VERTICAL;
     }
 }

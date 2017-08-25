@@ -1,4 +1,4 @@
-package io.rmiri.placeholder_example;
+package io.rmiri.placeholder_example.Data;
 
 /**
  * Created by Rasoul Miri on 8/23/17.
