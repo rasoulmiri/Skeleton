@@ -2,7 +2,12 @@
 Simple yet powerful placeholder animation for all view in andoird 
 <br/><br/>
 ![alt tag](https://github.com/rasoulmiri/Placeholder/blob/master/demoFile/1.gif)
+<br/><br/>
+See [sample project](https://github.com/rasoulmiri/Placeholder/tree/master/sample)
 <br/>
+See [sample APK](https://github.com/rasoulmiri/Placeholder/blob/master/demoFile/sample.apk)
+<br/>
+
 ## Usage:
 #### Step 1
 
@@ -108,6 +113,68 @@ Example:
     </io.rmiri.placeholder.PlaceholderGroup>
 </android.support.v7.widget.CardView>
 ```
+Final step
+
+Nothing really! Just build your app, watch the magic happen ;) .
+
+
+# Configure XML
+
+### PlaceholderGroup
+ * PH_animationAutoStart: true or false | defult value true
+ * PH_animationDuration: time animation | default 1000 millisecond
+ * PH_animationDirection: RTL,LTR,BTT,TTB | default value is LTR
+ * PH_animationNormalType: none,alpha,gradient | default value is gradient
+ * PH_animationFinishType: none,alpha,gradient | default value is gradient
+ * PH_backgroundMainColor: background total PlaceholderGroup 
+ * PH_BackgroundViewsColor: background PlaceholderViews in this PlaceholderGroup
+ * PH_highLightColor: highLight color animation
+
+
+### PlaceholderView
+ * PH_shapeType: rect, oval,text | defult value rect
+ * PH_cornerRadius: just use for shape type rect | defult value 0dp
+ * PH_cornerRadiusTopLeft
+ * PH_cornerRadiusTopRight
+ * PH_cornerRadiusBottomLeft
+ * PH_cornerRadiusBottomLRight
+ * PH_padding: padding view if PH_shapeType equals rect | default value is 0dp
+ * PH_paddingTop
+ * PH_paddingRight
+ * PH_paddingLeft
+ * PH_paddingBottom
+ * PH_textLineNumber: just use for shape type text  | default value is 3
+ * PH_textLineLastWidth: full, threeQuarters, half, quarter | default value is threeQuarters
+ * PH_textLineHeight: hieght of line | defualt value is 24dp
+ * PH_textLineSpaceVertical: space vertical between lines | default value is threeQuarters 4dp
+ 
+ # Configure Java
+ 
+ ```java
+ placeHolderGroup.setAutoPlay(true);
+ placeHolderGroup.setShowPlaceHolder(true);
+ placeHolderGroup.startAnimation();
+ placeHolderGroup.finishAnimation();
+```
+
+```java
+ placeholderGroup.setPlaceholderListener(new PlaceholderGroup.PlaceholderListener() {
+            @Override
+            public void onStartAnimation() {
+		...
+            }
+
+            @Override
+            public void onFinishAnimation() {
+		...
+            }
+ });
+```
+
+
+for use in RecyclerView and Adapter See sample 1 activity in [this project](https://github.com/rasoulmiri/Placeholder/tree/master/sample)
+<br/>
+
 ## Contributing
 
 You are welcome to contribute with issues, PRs or suggestions.
