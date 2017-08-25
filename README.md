@@ -29,7 +29,26 @@ xmlns:Placeholder="http://schemas.android.com/apk/res-auto"
 #### Step 3
 use PlaceholderGroup and PlaceholderView in layout 
 ```xml
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<io.rmiri.placeholder.PlaceholderGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+         <io.rmiri.placeholder.PlaceholderView ...>
+            <View ... />
+        </io.rmiri.placeholder.PlaceholderView>
+
+        <io.rmiri.placeholder.PlaceholderView ...>
+            <View ... />
+        </io.rmiri.placeholder.PlaceholderView>
+
+</io.rmiri.placeholder.PlaceholderGroup>
+```
+
+<br/>
+Example:
+<br/>
+```xml
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:Placeholder="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -92,10 +111,6 @@ use PlaceholderGroup and PlaceholderView in layout
     </io.rmiri.placeholder.PlaceholderGroup>
 </android.support.v7.widget.CardView>
 ```
-
-
-
-
 
 
 
