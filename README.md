@@ -43,12 +43,9 @@ use PlaceholderGroup and PlaceholderView in layout
 
 </io.rmiri.placeholder.PlaceholderGroup>
 ```
-
-<br/>
 Example:
-<br/>
 ```xml
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:Placeholder="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -111,9 +108,6 @@ Example:
     </io.rmiri.placeholder.PlaceholderGroup>
 </android.support.v7.widget.CardView>
 ```
-
-
-
 ## Contributing
 
 You are welcome to contribute with issues, PRs or suggestions.
