@@ -82,7 +82,7 @@ public class PlaceholderAttribute {
     public static final int DEFAULT_CORNER_RADIUS = Integer.MIN_VALUE;
     public static final int DEFAULT_PADDING = Integer.MIN_VALUE;
 
-    public static final int DEFAULT_TEXT_SHAPE_LINE =0;
+    public static final int DEFAULT_TEXT_SHAPE_LINE =3;
     public static final int DEFAULT_TEXT_SHAPE_LAST_LINE_WIDTH = TEXT_SHAPE_LINE_LAST_WIDTH_THREE_QUARTERS;
     public static final int DEFAULT_TEXT_SHAPE_LINE_HEIGHT = 24;
     public static final int DEFAULT_TEXT_SHAPE_LINE_SPACE_VERTICAL = 4;
