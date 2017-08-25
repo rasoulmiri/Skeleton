@@ -113,7 +113,7 @@ Example:
     </io.rmiri.placeholder.PlaceholderGroup>
 </android.support.v7.widget.CardView>
 ```
-Final step
+#### Final step
 
 Nothing really! Just build your app, watch the magic happen ;) .
 
@@ -121,32 +121,32 @@ Nothing really! Just build your app, watch the magic happen ;) .
 # Configure XML
 
 ### PlaceholderGroup
- * PH_animationAutoStart: true or false | defult value true
- * PH_animationDuration: time animation | default 1000 millisecond
- * PH_animationDirection: RTL,LTR,BTT,TTB | default value is LTR
- * PH_animationNormalType: none,alpha,gradient | default value is gradient
- * PH_animationFinishType: none,alpha,gradient | default value is gradient
- * PH_backgroundMainColor: background total PlaceholderGroup 
- * PH_BackgroundViewsColor: background PlaceholderViews in this PlaceholderGroup
- * PH_highLightColor: highLight color animation
+ * **PH_animationAutoStart:** true or false | defult value true
+ * **PH_animationDuration:** time animation | default 1000 millisecond
+ * **PH_animationDirection:** RTL,LTR,BTT,TTB | default value is LTR
+ * **PH_animationNormalType:** none,alpha,gradient | default value is gradient
+ * **PH_animationFinishType:** none,alpha,gradient | default value is gradient
+ * **PH_backgroundMainColor:** background total PlaceholderGroup 
+ * **PH_BackgroundViewsColor:** background PlaceholderViews in this PlaceholderGroup
+ * **PH_highLightColor:** highLight color animation
 
 
 ### PlaceholderView
- * PH_shapeType: rect, oval,text | defult value rect
- * PH_cornerRadius: just use for shape type rect | defult value 0dp
- * PH_cornerRadiusTopLeft
- * PH_cornerRadiusTopRight
- * PH_cornerRadiusBottomLeft
- * PH_cornerRadiusBottomLRight
- * PH_padding: padding view if PH_shapeType equals rect | default value is 0dp
- * PH_paddingTop
- * PH_paddingRight
- * PH_paddingLeft
- * PH_paddingBottom
- * PH_textLineNumber: just use for shape type text  | default value is 3
- * PH_textLineLastWidth: full, threeQuarters, half, quarter | default value is threeQuarters
- * PH_textLineHeight: hieght of line | defualt value is 24dp
- * PH_textLineSpaceVertical: space vertical between lines | default value is threeQuarters 4dp
+ * **PH_shapeType:** rect, oval,text | defult value rect
+ * **PH_cornerRadius:** just use for shape type rect | defult value 0dp
+ * **PH_cornerRadiusTopLeft**
+ * **PH_cornerRadiusTopRight**
+ * **PH_cornerRadiusBottomLeft**
+ * **PH_cornerRadiusBottomLRight**
+ * **PH_padding:** padding view if PH_shapeType equals rect | default value is 0dp
+ * **PH_paddingTop**
+ * **PH_paddingRight**
+ * **PH_paddingLeft**
+ * **PH_paddingBottom**
+ * **PH_textLineNumber:** just use for shape type text  | default value is 3
+ * **PH_textLineLastWidth:** full, threeQuarters, half, quarter | default value is threeQuarters
+ * **PH_textLineHeight:** hieght of line | defualt value is 24dp
+ * **PH_textLineSpaceVertical:** space vertical between lines | default value is threeQuarters 4dp
  
  # Configure Java
  
@@ -159,15 +159,15 @@ Nothing really! Just build your app, watch the magic happen ;) .
 
 ```java
  placeholderGroup.setPlaceholderListener(new PlaceholderGroup.PlaceholderListener() {
-            @Override
-            public void onStartAnimation() {
-		...
-            }
+      @Override
+      public void onStartAnimation() {
+	...
+      }
 
-            @Override
-            public void onFinishAnimation() {
-		...
-            }
+      @Override
+      public void onFinishAnimation() {
+	...
+      }
  });
 ```
 
