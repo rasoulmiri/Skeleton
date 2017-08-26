@@ -64,38 +64,38 @@ public class SkeletonMaster extends RelativeLayout {
 
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Skeleton);
 
-            skeletonAttribute.setShowSkeleton(typedArray.getBoolean(R.styleable.Skeleton_PH_isShowSkeleton, true));
-            skeletonAttribute.setAutoStartAnimation(typedArray.getBoolean(R.styleable.Skeleton_PH_autoStartAnimation, true));
-            skeletonAttribute.setHoldTouchEventsFromChildren(typedArray.getBoolean(R.styleable.Skeleton_PH_isHoldTouchEventsFromChildren, true));
-            skeletonAttribute.setColorBackgroundMain(typedArray.getColor(R.styleable.Skeleton_PH_backgroundMainColor, SkeletonAttribute.DEFAULT_COLOR_BACKGROUND_MAIN));
-            skeletonAttribute.setColorHighLight(typedArray.getColor(R.styleable.Skeleton_PH_highLightColor, SkeletonAttribute.DEFAULT_COLOR_HIGHLIGHT_GRADIENT));
-            skeletonAttribute.setColorBackgroundViews(typedArray.getColor(R.styleable.Skeleton_PH_BackgroundViewsColor, SkeletonAttribute.DEFAULT_COLOR_BACKGROUND_VIEWS));
-            skeletonAttribute.setAnimationDuration(typedArray.getInt(R.styleable.Skeleton_PH_animationDuration, SkeletonAttribute.DEFAULT_ANIMATION_DURATION));
-            skeletonAttribute.setAnimationDirection(typedArray.getInt(R.styleable.Skeleton_PH_animationDirection, SkeletonAttribute.DEFAULT_ANIMATION_DIRECTION));
-            skeletonAttribute.setAnimationNormalType(typedArray.getInt(R.styleable.Skeleton_PH_animationNormalType, SkeletonAttribute.DEFAULT_ANIMATION_TYPE));
-            skeletonAttribute.setAnimationFinishType(typedArray.getInt(R.styleable.Skeleton_PH_animationFinishType, SkeletonAttribute.DEFAULT_ANIMATION_TYPE));
-            skeletonAttribute.setShapeType(typedArray.getInt(R.styleable.Skeleton_PH_shapeType, SkeletonAttribute.DEFAULT_SHAPE_TYPE));
+            skeletonAttribute.setShowSkeleton(typedArray.getBoolean(R.styleable.Skeleton_SK_isShowSkeleton, true));
+            skeletonAttribute.setAutoStartAnimation(typedArray.getBoolean(R.styleable.Skeleton_SK_autoStartAnimation, true));
+            skeletonAttribute.setHoldTouchEventsFromChildren(typedArray.getBoolean(R.styleable.Skeleton_SK_isHoldTouchEventsFromChildren, true));
+            skeletonAttribute.setColorBackgroundMain(typedArray.getColor(R.styleable.Skeleton_SK_backgroundMainColor, SkeletonAttribute.DEFAULT_COLOR_BACKGROUND_MAIN));
+            skeletonAttribute.setColorHighLight(typedArray.getColor(R.styleable.Skeleton_SK_highLightColor, SkeletonAttribute.DEFAULT_COLOR_HIGHLIGHT_GRADIENT));
+            skeletonAttribute.setColorBackgroundViews(typedArray.getColor(R.styleable.Skeleton_SK_BackgroundViewsColor, SkeletonAttribute.DEFAULT_COLOR_BACKGROUND_VIEWS));
+            skeletonAttribute.setAnimationDuration(typedArray.getInt(R.styleable.Skeleton_SK_animationDuration, SkeletonAttribute.DEFAULT_ANIMATION_DURATION));
+            skeletonAttribute.setAnimationDirection(typedArray.getInt(R.styleable.Skeleton_SK_animationDirection, SkeletonAttribute.DEFAULT_ANIMATION_DIRECTION));
+            skeletonAttribute.setAnimationNormalType(typedArray.getInt(R.styleable.Skeleton_SK_animationNormalType, SkeletonAttribute.DEFAULT_ANIMATION_TYPE));
+            skeletonAttribute.setAnimationFinishType(typedArray.getInt(R.styleable.Skeleton_SK_animationFinishType, SkeletonAttribute.DEFAULT_ANIMATION_TYPE));
+            skeletonAttribute.setShapeType(typedArray.getInt(R.styleable.Skeleton_SK_shapeType, SkeletonAttribute.DEFAULT_SHAPE_TYPE));
 
             //corner Radius
-            skeletonAttribute.setCornerRadius(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_cornerRadius, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
-            skeletonAttribute.setCornerRadiusTopLeft(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_cornerRadiusTopLeft, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
-            skeletonAttribute.setCornerRadiusTopRight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_cornerRadiusTopRight, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
-            skeletonAttribute.setCornerRadiusBottomLeft(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_cornerRadiusBottomLeft, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
-            skeletonAttribute.setCornerRadiusBottomLRight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_cornerRadiusBottomLRight, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
+            skeletonAttribute.setCornerRadius(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_cornerRadius, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
+            skeletonAttribute.setCornerRadiusTopLeft(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_cornerRadiusTopLeft, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
+            skeletonAttribute.setCornerRadiusTopRight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_cornerRadiusTopRight, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
+            skeletonAttribute.setCornerRadiusBottomLeft(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_cornerRadiusBottomLeft, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
+            skeletonAttribute.setCornerRadiusBottomLRight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_cornerRadiusBottomLRight, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
 
             //padding
-            skeletonAttribute.setPadding(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_padding, SkeletonAttribute.DEFAULT_PADDING));
-            skeletonAttribute.setPaddingTop(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_paddingTop, SkeletonAttribute.DEFAULT_PADDING));
-            skeletonAttribute.setPaddingLeft(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_paddingLeft, SkeletonAttribute.DEFAULT_PADDING));
-            skeletonAttribute.setPaddingBottom(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_paddingBottom, SkeletonAttribute.DEFAULT_PADDING));
-            skeletonAttribute.setPaddingRight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_paddingRight, SkeletonAttribute.DEFAULT_PADDING));
+            skeletonAttribute.setPadding(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_padding, SkeletonAttribute.DEFAULT_PADDING));
+            skeletonAttribute.setPaddingTop(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_paddingTop, SkeletonAttribute.DEFAULT_PADDING));
+            skeletonAttribute.setPaddingLeft(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_paddingLeft, SkeletonAttribute.DEFAULT_PADDING));
+            skeletonAttribute.setPaddingBottom(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_paddingBottom, SkeletonAttribute.DEFAULT_PADDING));
+            skeletonAttribute.setPaddingRight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_paddingRight, SkeletonAttribute.DEFAULT_PADDING));
 
             //special attrs shape type text
             if (skeletonAttribute.getShapeType() == SkeletonAttribute.SHAPE_TYPE_TEXT) {
-                skeletonAttribute.setTextShapeLineNumber(typedArray.getInt(R.styleable.Skeleton_PH_textLineNumber, SkeletonAttribute.DEFAULT_TEXT_SHAPE_LINE));
-                skeletonAttribute.setTextShapeLineLastWidth(typedArray.getInt(R.styleable.Skeleton_PH_textLineLastWidth, SkeletonAttribute.DEFAULT_TEXT_SHAPE_LAST_LINE_WIDTH));
-                skeletonAttribute.setTextShapeLineHeight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_textLineHeight, (int) ConverterUnitUtil.dpToPx(getContext(), SkeletonAttribute.DEFAULT_TEXT_SHAPE_LINE_HEIGHT)));
-                skeletonAttribute.setTextShapeLineSpaceVertical(typedArray.getDimensionPixelSize(R.styleable.Skeleton_PH_textLineSpaceVertical, (int) ConverterUnitUtil.dpToPx(getContext(), SkeletonAttribute.DEFAULT_TEXT_SHAPE_LINE_SPACE_VERTICAL)));
+                skeletonAttribute.setTextShapeLineNumber(typedArray.getInt(R.styleable.Skeleton_SK_textLineNumber, SkeletonAttribute.DEFAULT_TEXT_SHAPE_LINE));
+                skeletonAttribute.setTextShapeLineLastWidth(typedArray.getInt(R.styleable.Skeleton_SK_textLineLastWidth, SkeletonAttribute.DEFAULT_TEXT_SHAPE_LAST_LINE_WIDTH));
+                skeletonAttribute.setTextShapeLineHeight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_textLineHeight, (int) ConverterUnitUtil.dpToPx(getContext(), SkeletonAttribute.DEFAULT_TEXT_SHAPE_LINE_HEIGHT)));
+                skeletonAttribute.setTextShapeLineSpaceVertical(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_textLineSpaceVertical, (int) ConverterUnitUtil.dpToPx(getContext(), SkeletonAttribute.DEFAULT_TEXT_SHAPE_LINE_SPACE_VERTICAL)));
             }
 
             typedArray.recycle();

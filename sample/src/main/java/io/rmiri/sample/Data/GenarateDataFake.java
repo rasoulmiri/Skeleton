@@ -2,8 +2,7 @@ package io.rmiri.sample.Data;
 
 import java.util.ArrayList;
 
-import io.rmiri.sample.Data.DataObject;
-import io.rmiri.sample.R;
+import io.rmiri.skeleton.sample.R;
 
 /**
  * Created by Rasoul Miri on 8/23/17.

@@ -6,30 +6,30 @@
         <!--=====================================================================================-->
         <!--SkeletonGroup Attributes-->
 
-        <attr name="PH_autoStartAnimation" format="boolean" />
-        <attr name="PH_isShowSkeleton" format="boolean" />
-        <attr name="PH_isHoldTouchEventsFromChildren" format="boolean" />
+        <attr name="SK_autoStartAnimation" format="boolean" />
+        <attr name="SK_isShowSkeleton" format="boolean" />
+        <attr name="SK_isHoldTouchEventsFromChildren" format="boolean" />
 
         <!--color-->
-        <attr name="PH_backgroundMainColor" format="color" />
-        <attr name="PH_BackgroundViewsColor" format="color" />
-        <attr name="PH_highLightColor" format="color" />
+        <attr name="SK_backgroundMainColor" format="color" />
+        <attr name="SK_BackgroundViewsColor" format="color" />
+        <attr name="SK_highLightColor" format="color" />
 
         <!--animation-->
-        <attr name="PH_animationAutoStart" format="boolean" />
-        <attr name="PH_animationDuration" format="integer" />
-        <attr name="PH_animationDirection" format="integer">
+        <attr name="SK_animationAutoStart" format="boolean" />
+        <attr name="SK_animationDuration" format="integer" />
+        <attr name="SK_animationDirection" format="integer">
             <enum name="LTR" value="1" /><!--left to right-->
             <enum name="RTL" value="2" /><!--right to left-->
             <enum name="TTB" value="3" /><!--top to bottom-->
             <enum name="BTT" value="4" /><!--bottom to top-->
         </attr>
-        <attr name="PH_animationNormalType" format="integer">
+        <attr name="SK_animationNormalType" format="integer">
             <enum name="none" value="0" />
             <enum name="alpha" value="1" />
             <enum name="gradient" value="2" />
         </attr>
-        <attr name="PH_animationFinishType" format="integer">
+        <attr name="SK_animationFinishType" format="integer">
             <enum name="none" value="0" />
             <enum name="alpha" value="1" />
             <enum name="gradient" value="2" />
@@ -40,36 +40,36 @@
         <!--SkeletonView Attributes-->
 
         <!--cornerRadius-->
-        <attr name="PH_cornerRadius" format="dimension" />
-        <attr name="PH_cornerRadiusTopLeft" format="dimension" />
-        <attr name="PH_cornerRadiusTopRight" format="dimension" />
-        <attr name="PH_cornerRadiusBottomLeft" format="dimension" />
-        <attr name="PH_cornerRadiusBottomLRight" format="dimension" />
+        <attr name="SK_cornerRadius" format="dimension" />
+        <attr name="SK_cornerRadiusTopLeft" format="dimension" />
+        <attr name="SK_cornerRadiusTopRight" format="dimension" />
+        <attr name="SK_cornerRadiusBottomLeft" format="dimension" />
+        <attr name="SK_cornerRadiusBottomLRight" format="dimension" />
 
         <!--padding-->
-        <attr name="PH_padding" format="dimension" />
-        <attr name="PH_paddingTop" format="dimension" />
-        <attr name="PH_paddingRight" format="dimension" />
-        <attr name="PH_paddingLeft" format="dimension" />
-        <attr name="PH_paddingBottom" format="dimension" />
+        <attr name="SK_padding" format="dimension" />
+        <attr name="SK_paddingTop" format="dimension" />
+        <attr name="SK_paddingRight" format="dimension" />
+        <attr name="SK_paddingLeft" format="dimension" />
+        <attr name="SK_paddingBottom" format="dimension" />
 
         <!--shape type-->
-        <attr name="PH_shapeType" format="integer">
+        <attr name="SK_shapeType" format="integer">
             <enum name="rect" value="1" />
             <enum name="oval" value="2" />
             <enum name="text" value="3" />
         </attr>
 
         <!--special attrs shape type text-->
-        <attr name="PH_textLineNumber" format="integer"/> <!--value zero means auto line by height view-->
-        <attr name="PH_textLineLastWidth" format="integer">
+        <attr name="SK_textLineNumber" format="integer"/> <!--value zero means auto line by height view-->
+        <attr name="SK_textLineLastWidth" format="integer">
             <enum name="full" value="1" />
             <enum name="threeQuarters" value="2" />
             <enum name="half" value="3" />
             <enum name="quarter" value="4" />
         </attr>
-        <attr name="PH_textLineHeight" format="dimension"/>
-        <attr name="PH_textLineSpaceVertical" format="dimension"/>
+        <attr name="SK_textLineHeight" format="dimension"/>
+        <attr name="SK_textLineSpaceVertical" format="dimension"/>
         <!--=====================================================================================-->
 
     </declare-styleable>

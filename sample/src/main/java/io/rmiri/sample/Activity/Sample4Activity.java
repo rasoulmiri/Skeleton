@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import io.rmiri.skeleton.SkeletonGroup;
-import io.rmiri.sample.R;
+import io.rmiri.skeleton.sample.R;
 
 
 public class Sample4Activity extends AppCompatActivity {
@@ -29,7 +29,7 @@ public class Sample4Activity extends AppCompatActivity {
             }
         });
 
-        skeletonGroup = (SkeletonGroup) findViewById(R.id.placeHolderGroup);
+        skeletonGroup = (SkeletonGroup) findViewById(R.id.skeletonGroup);
         textTv = (TextView) findViewById(R.id.textTv);
         skeletonGroup.setSkeletonListener(new SkeletonGroup.SkeletonListener() {
             @Override

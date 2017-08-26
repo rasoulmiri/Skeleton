@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 
-import io.rmiri.sample.R;
+import io.rmiri.skeleton.sample.R;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

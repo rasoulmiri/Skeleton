@@ -16,14 +16,14 @@
         android:id="@+id/skeletonGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        Skeleton:PH_BackgroundViewsColor="#EEEEEE"
-        Skeleton:PH_animationAutoStart="true"
-        Skeleton:PH_animationDirection="LTR"
-        Skeleton:PH_animationDuration="1000"
-        Skeleton:PH_animationFinishType="gradient"
-        Skeleton:PH_animationNormalType="gradient"
-        Skeleton:PH_backgroundMainColor="@android:color/transparent"
-        Skeleton:PH_highLightColor="#DEDEDE">
+        Skeleton:SK_BackgroundViewsColor="#EEEEEE"
+        Skeleton:SK_animationAutoStart="true"
+        Skeleton:SK_animationDirection="LTR"
+        Skeleton:SK_animationDuration="1000"
+        Skeleton:SK_animationFinishType="gradient"
+        Skeleton:SK_animationNormalType="gradient"
+        Skeleton:SK_backgroundMainColor="@android:color/transparent"
+        Skeleton:SK_highLightColor="#DEDEDE">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,9 +39,9 @@
                 <io.rmiri.skeleton.SkeletonView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    Skeleton:PH_cornerRadius="0dp"
-                    Skeleton:PH_padding="0dp"
-                    Skeleton:PH_shapeType="rect">
+                    Skeleton:SK_cornerRadius="0dp"
+                    Skeleton:SK_padding="0dp"
+                    Skeleton:SK_shapeType="rect">
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/photoACImgV"
@@ -89,7 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    Skeleton:PH_cornerRadius="10dp">
+                    Skeleton:SK_cornerRadius="10dp">
 
                     <TextView
                         android:id="@+id/titleTv"
@@ -110,7 +110,7 @@
                     android:layout_below="@+id/titlePHG"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="4dp"
-                    Skeleton:PH_cornerRadius="10dp">
+                    Skeleton:SK_cornerRadius="10dp">
 
                     <TextView
                         android:id="@+id/descriptionTv"
@@ -166,7 +166,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/addToParkingImgBtn"
-                    Skeleton:PH_cornerRadius="100dp">
+                    Skeleton:SK_cornerRadius="100dp">
 
                     <TextView
                         android:id="@+id/priceUnitTv"

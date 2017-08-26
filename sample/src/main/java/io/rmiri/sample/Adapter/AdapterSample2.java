@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import io.rmiri.skeleton.Master.SkeletonDetail;
 import io.rmiri.skeleton.SkeletonGroup;
 import io.rmiri.sample.Data.DataObject;
-import io.rmiri.sample.R;
+import io.rmiri.skeleton.sample.R;
 
 
 public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHolder> {
@@ -46,7 +46,7 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private CardView cardView;
-        private SkeletonGroup placeHolderGroup;
+        private SkeletonGroup skeletonGroup;
         private AppCompatImageView photoACImgV;
         private TextView newFlagTv;
         private TextView titleTv;
@@ -60,7 +60,7 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
             super(itemView);
 
             cardView = (CardView) itemView.findViewById(R.id.cardView);
-            placeHolderGroup = (SkeletonGroup) itemView.findViewById(R.id.placeHolderGroup);
+            skeletonGroup = (SkeletonGroup) itemView.findViewById(R.id.skeletonGroup);
             photoACImgV = (AppCompatImageView) itemView.findViewById(R.id.photoACImgV);
             newFlagTv = (TextView) itemView.findViewById(R.id.newFlagTv);
             titleTv = (TextView) itemView.findViewById(R.id.titleTv);
@@ -77,15 +77,15 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
 
         holder.cardView.setPreventCornerOverlap(false);
 
-//        holder.placeHolderGradientGroup.setPosition(position);//just for debug log
+//        holder.skeletonGroup.setPosition(position);//just for debug log
 
         if (skeletonDetail.isSkeletonIsOn()) {
             //need show s for 2 cards
-            holder.placeHolderGroup.setAutoPlay(true);
+            holder.skeletonGroup.setAutoPlay(true);
             return;
         } else {
-            holder.placeHolderGroup.setShowPlaceHolder(false);
-            holder.placeHolderGroup.finishAnimation();
+            holder.skeletonGroup.setShowSkeleton(false);
+            holder.skeletonGroup.finishAnimation();
         }
 
         //set data in view

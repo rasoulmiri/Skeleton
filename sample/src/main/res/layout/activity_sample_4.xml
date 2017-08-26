@@ -29,14 +29,14 @@
         android:id="@+id/skeletonGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        Skeleton:PH_BackgroundViewsColor="#EEEEEE"
-        Skeleton:PH_animationAutoStart="true"
-        Skeleton:PH_animationDirection="LTR"
-        Skeleton:PH_animationDuration="1000"
-        Skeleton:PH_animationFinishType="none"
-        Skeleton:PH_animationNormalType="alpha"
-        Skeleton:PH_backgroundMainColor="@android:color/transparent"
-        Skeleton:PH_highLightColor="#DEDEDE">
+        Skeleton:SK_BackgroundViewsColor="#EEEEEE"
+        Skeleton:SK_animationAutoStart="true"
+        Skeleton:SK_animationDirection="LTR"
+        Skeleton:SK_animationDuration="1000"
+        Skeleton:SK_animationFinishType="none"
+        Skeleton:SK_animationNormalType="alpha"
+        Skeleton:SK_backgroundMainColor="@android:color/transparent"
+        Skeleton:SK_highLightColor="#DEDEDE">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                 <io.rmiri.skeleton.SkeletonView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    Skeleton:PH_shapeType="rect">
+                    Skeleton:SK_shapeType="rect">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -92,7 +92,7 @@
                 <io.rmiri.skeleton.SkeletonView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    Skeleton:PH_shapeType="oval">
+                    Skeleton:SK_shapeType="oval">
 
                     <android.support.v7.widget.AppCompatImageButton
                         android:layout_width="wrap_content"
@@ -120,11 +120,11 @@
                 <io.rmiri.skeleton.SkeletonView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    Skeleton:PH_shapeType="text"
-                    Skeleton:PH_textLineHeight="16dp"
-                    Skeleton:PH_textLineLastWidth="threeQuarters"
-                    Skeleton:PH_textLineNumber="5"
-                    Skeleton:PH_textLineSpaceVertical="4dp">
+                    Skeleton:SK_shapeType="text"
+                    Skeleton:SK_textLineHeight="16dp"
+                    Skeleton:SK_textLineLastWidth="threeQuarters"
+                    Skeleton:SK_textLineNumber="5"
+                    Skeleton:SK_textLineSpaceVertical="4dp">
 
                     <TextView
                         android:id="@+id/textTv"

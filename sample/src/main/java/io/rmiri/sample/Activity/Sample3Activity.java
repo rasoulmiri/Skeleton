@@ -14,7 +14,7 @@ import io.rmiri.skeleton.Master.SkeletonDetail;
 import io.rmiri.sample.Adapter.AdapterSample3;
 import io.rmiri.sample.Data.DataObject;
 import io.rmiri.sample.Data.GenarateDataFake;
-import io.rmiri.sample.R;
+import io.rmiri.skeleton.sample.R;
 
 
 public class Sample3Activity extends AppCompatActivity {

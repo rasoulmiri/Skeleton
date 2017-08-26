@@ -10,11 +10,11 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import io.rmiri.skeleton.Master.SkeletonDetail;
 import io.rmiri.sample.Adapter.AdapterSample2;
 import io.rmiri.sample.Data.DataObject;
 import io.rmiri.sample.Data.GenarateDataFake;
-import io.rmiri.sample.R;
+import io.rmiri.skeleton.Master.SkeletonDetail;
+import io.rmiri.skeleton.sample.R;
 
 
 public class Sample2Activity extends AppCompatActivity {
