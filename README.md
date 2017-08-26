@@ -3,13 +3,13 @@ Simple yet powerful placeholder animation for all view in andoird
 <br/><br/>
 ![alt tag](https://github.com/rasoulmiri/Placeholder/blob/master/demoFile/1.gif)
 <br/><br/>
-See [sample project](https://github.com/rasoulmiri/Placeholder/tree/master/sample)
+See [demo project](https://github.com/rasoulmiri/Placeholder/tree/master/sample)
 <br/>
-See [sample APK](https://github.com/rasoulmiri/Placeholder/blob/master/demoFile/sample.apk)
+See [demo APK](https://github.com/rasoulmiri/Placeholder/blob/master/demoFile/sample.apk)
 <br/>
 
 ## Usage:
-#### Step 1
+#### Step 1:
 
 Add JitPack repository in your root build.gradle at the end of repositories.
 
@@ -26,12 +26,12 @@ Add dependency in your app level build.gradle.
 	        compile 'com.github.rasoulmiri:Placeholder:v1.0.1'
 	}
 
-#### Step 2
+#### Step 2:
 add name space on top layout
 ```xml
 xmlns:Placeholder="http://schemas.android.com/apk/res-auto" 
 ```
-#### Step 3
+#### Step 3:
 use PlaceholderGroup and PlaceholderView in layout 
 ```xml
 <io.rmiri.placeholder.PlaceholderGroup
