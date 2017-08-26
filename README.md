@@ -23,7 +23,7 @@ Add JitPack repository in your root build.gradle at the end of repositories.
 Add dependency in your app level build.gradle.
 
     dependencies {
-	        compile 'com.github.rasoulmiri:Placeholder:v1.0.0'
+	        compile 'com.github.rasoulmiri:Placeholder:v1.0.1'
 	}
 
 #### Step 2
