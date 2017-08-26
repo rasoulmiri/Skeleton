@@ -1,4 +1,4 @@
-package io.rmiri.placeholder;
+package io.rmiri.skeleton;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -21,20 +21,20 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import io.rmiri.placeholder.utils.CLog;
-import io.rmiri.placeholder.Master.PlaceholderAttribute;
-import io.rmiri.placeholder.Master.PlaceholderMaster;
-import io.rmiri.placeholder.utils.ColorUtils;
+import io.rmiri.skeleton.Master.SkeletonAttribute;
+import io.rmiri.skeleton.Master.SkeletonMaster;
+import io.rmiri.skeleton.utils.CLog;
+import io.rmiri.skeleton.utils.ColorUtils;
 
 
 /**
  * Created by Rasoul Miri on 8/8/17.
  */
 
-public class PlaceholderGroup extends PlaceholderMaster {
+public class SkeletonGroup extends SkeletonMaster {
 
-    private ArrayList<PlaceholderAttribute> placeholderAttributesChildren;// array for all children extend from PlaceholderGradient
-    private PlaceholderListener placeholderListener; // listener
+    private ArrayList<SkeletonAttribute> skeletonAttributesChildren;// array for all children extend from SkeletonView
+    private SkeletonListener skeletonListener; // listener
 
     /* variable for draw canvas */
     private Paint paintGradient;
@@ -61,20 +61,20 @@ public class PlaceholderGroup extends PlaceholderMaster {
     private boolean isLastLoopAnimation = false;
 
 
-    public PlaceholderGroup(@NonNull Context context) {
+    public SkeletonGroup(@NonNull Context context) {
         super(context);
     }
 
-    public PlaceholderGroup(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public SkeletonGroup(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public PlaceholderGroup(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
+    public SkeletonGroup(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public PlaceholderGroup(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
+    public SkeletonGroup(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -84,7 +84,7 @@ public class PlaceholderGroup extends PlaceholderMaster {
         super.init(context, attrs);
 
         //generate color 010 (color one transparent = 0.0 | color two transparent = 1.0 | color three transparent =01.0 )
-        gradientColors = ColorUtils.generateColorTransparent010(placeholderAttribute.getColorHighLight(), placeholderAttribute.getColorBackgroundViews());
+        gradientColors = ColorUtils.generateColorTransparent010(skeletonAttribute.getColorHighLight(), skeletonAttribute.getColorBackgroundViews());
 
     }
 
@@ -93,15 +93,15 @@ public class PlaceholderGroup extends PlaceholderMaster {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
 
-        CLog.i("PlaceholderGroup onLayout " + postion);
-        //add all children extend from PlaceholderGradient
-        if (placeholderAttributesChildren == null && placeholderAttribute.isShowPlaceHolder()) {
-            CLog.i("PlaceholderGroup onLayout and placeholderAttributesChildren == null ... " + postion);
-            placeholderAttributesChildren = new ArrayList<>();
+        CLog.i("SkeletonGroup onLayout " + position);
+        //add all children extend from SkeletonGradient
+        if (skeletonAttributesChildren == null && skeletonAttribute.isShowSkeleton()) {
+            CLog.i("SkeletonGroup onLayout and skeletonAttributesChildren == null ... " + position);
+            skeletonAttributesChildren = new ArrayList<>();
             for (View child : getAllChildren(getChildAt(0))) {
-                if (child != null && child instanceof PlaceholderView) {
+                if (child != null && child instanceof SkeletonView) {
 
-                    PlaceholderAttribute placeholderAttributeChild = ((PlaceholderView) child).getPlaceholderAttribute();
+                    SkeletonAttribute skeletonAttributeChild = ((SkeletonView) child).getSkeletonAttribute();
 
                     //set point X1,Y1,X2,Y2
                     float X1 = child.getLeft();
@@ -109,9 +109,9 @@ public class PlaceholderGroup extends PlaceholderMaster {
                     float X2 = 0.0f;
                     float Y2 = 0.0f;
 
-                    //calculator X1,X2 to left and top PlaceholderGroup view
+                    //calculator X1,X2 to left and top SkeletonGroup view
                     View parent = (View) child.getParent();
-                    while (parent != null && !(parent instanceof PlaceholderGroup)) {
+                    while (parent != null && !(parent instanceof SkeletonGroup)) {
                         X1 += parent.getLeft();
                         Y1 += parent.getTop();
                         parent = (View) parent.getParent();
@@ -123,13 +123,13 @@ public class PlaceholderGroup extends PlaceholderMaster {
                     float pRight;
                     float pBottom;
 
-                    if (placeholderAttributeChild.getPadding() != Integer.MIN_VALUE) {
-                        pTop = pLeft = pRight = pBottom = placeholderAttributeChild.getPadding();
+                    if (skeletonAttributeChild.getPadding() != Integer.MIN_VALUE) {
+                        pTop = pLeft = pRight = pBottom = skeletonAttributeChild.getPadding();
                     } else {
-                        pTop = placeholderAttributeChild.getPaddingTop() != Integer.MIN_VALUE ? placeholderAttributeChild.getPaddingTop() : 0;
-                        pLeft = placeholderAttributeChild.getPaddingLeft() != Integer.MIN_VALUE ? placeholderAttributeChild.getPaddingLeft() : 0;
-                        pRight = placeholderAttributeChild.getPaddingRight() != Integer.MIN_VALUE ? placeholderAttributeChild.getPaddingRight() : 0;
-                        pBottom = placeholderAttributeChild.getPaddingBottom() != Integer.MIN_VALUE ? placeholderAttributeChild.getPaddingBottom() : 0;
+                        pTop = skeletonAttributeChild.getPaddingTop() != Integer.MIN_VALUE ? skeletonAttributeChild.getPaddingTop() : 0;
+                        pLeft = skeletonAttributeChild.getPaddingLeft() != Integer.MIN_VALUE ? skeletonAttributeChild.getPaddingLeft() : 0;
+                        pRight = skeletonAttributeChild.getPaddingRight() != Integer.MIN_VALUE ? skeletonAttributeChild.getPaddingRight() : 0;
+                        pBottom = skeletonAttributeChild.getPaddingBottom() != Integer.MIN_VALUE ? skeletonAttributeChild.getPaddingBottom() : 0;
                     }
 
                     X2 = X1 + child.getMeasuredWidth() - pRight;
@@ -137,16 +137,16 @@ public class PlaceholderGroup extends PlaceholderMaster {
                     X1 = X1 + pLeft;
                     Y1 = Y1 + pTop;
 
-                    placeholderAttributeChild.setX1(X1);
-                    placeholderAttributeChild.setY1(Y1);
-                    placeholderAttributeChild.setX2(X2);
-                    placeholderAttributeChild.setY2(Y2);
+                    skeletonAttributeChild.setX1(X1);
+                    skeletonAttributeChild.setY1(Y1);
+                    skeletonAttributeChild.setX2(X2);
+                    skeletonAttributeChild.setY2(Y2);
 
 
-                    placeholderAttributesChildren.add(placeholderAttributeChild);
+                    skeletonAttributesChildren.add(skeletonAttributeChild);
                 }
             }
-            if (placeholderAttribute.isAutoStartAnimation()) {
+            if (skeletonAttribute.isAutoStartAnimation()) {
                 setupInitialAnimation();
             }
         }
@@ -160,7 +160,7 @@ public class PlaceholderGroup extends PlaceholderMaster {
 
         if (isCanDraw) {
 
-//            CLog.i("PlaceholderGroup dispatchDraw " + postion);
+//            CLog.i("SkeletonGroup dispatchDraw " + position);
 
             // just once run this code
             // calculate bound child for draw
@@ -169,7 +169,7 @@ public class PlaceholderGroup extends PlaceholderMaster {
                 //paint
                 paintBackgroundViews = new Paint(Paint.ANTI_ALIAS_FLAG);
                 paintBackgroundViews.setStyle(Paint.Style.FILL);
-                paintBackgroundViews.setColor(placeholderAttribute.getColorBackgroundViews());
+                paintBackgroundViews.setColor(skeletonAttribute.getColorBackgroundViews());
                 paintGradient = new Paint(Paint.ANTI_ALIAS_FLAG);
                 paintGradient.setStyle(Paint.Style.FILL);
 
@@ -180,29 +180,29 @@ public class PlaceholderGroup extends PlaceholderMaster {
                 bitmapGradientElement = Bitmap.createBitmap(getWidth(), getHeight(), bitmapConfig);
                 canvasGradientElement = new Canvas(bitmapGradientElement);
 
-                for (int i = 0; i < placeholderAttributesChildren.size(); i++) {
+                for (int i = 0; i < skeletonAttributesChildren.size(); i++) {
 
-                    PlaceholderAttribute placeHolderGradientChild = placeholderAttributesChildren.get(i);
+                    SkeletonAttribute skeletonAttributeChild = skeletonAttributesChildren.get(i);
 
-                    if (placeHolderGradientChild.getShapeType() == PlaceholderAttribute.SHAPE_TYPE_RECT) {
+                    if (skeletonAttributeChild.getShapeType() == SkeletonAttribute.SHAPE_TYPE_RECT) {
                         // Rectangle
-                        RectF rectangleRect = new RectF(placeHolderGradientChild.getX1(), placeHolderGradientChild.getY1(), placeHolderGradientChild.getX2(), placeHolderGradientChild.getY2());
-                        float[] cornerRadius = generateCornerRadius(rectangleRect, placeHolderGradientChild);
+                        RectF rectangleRect = new RectF(skeletonAttributeChild.getX1(), skeletonAttributeChild.getY1(), skeletonAttributeChild.getX2(), skeletonAttributeChild.getY2());
+                        float[] cornerRadius = generateCornerRadius(rectangleRect, skeletonAttributeChild);
                         path.addRoundRect(rectangleRect, cornerRadius, Path.Direction.CW);
-                    } else if (placeHolderGradientChild.getShapeType() == PlaceholderAttribute.SHAPE_TYPE_OVAL) {
+                    } else if (skeletonAttributeChild.getShapeType() == SkeletonAttribute.SHAPE_TYPE_OVAL) {
                         //Oval
-                        RectF ovalRect = new RectF(placeHolderGradientChild.getX1(), placeHolderGradientChild.getY1(), placeHolderGradientChild.getX2(), placeHolderGradientChild.getY2());
+                        RectF ovalRect = new RectF(skeletonAttributeChild.getX1(), skeletonAttributeChild.getY1(), skeletonAttributeChild.getX2(), skeletonAttributeChild.getY2());
                         path.addOval(ovalRect, Path.Direction.CW);
-                    } else if (placeHolderGradientChild.getShapeType() == PlaceholderAttribute.SHAPE_TYPE_TEXT) {
+                    } else if (skeletonAttributeChild.getShapeType() == SkeletonAttribute.SHAPE_TYPE_TEXT) {
                         //Text
 
 
-                        float lineHeight = placeHolderGradientChild.getTextShapeLineHeight();
-                        float lineSpaceVertical = placeHolderGradientChild.getTextShapeLineSpaceVertical();
+                        float lineHeight = skeletonAttributeChild.getTextShapeLineHeight();
+                        float lineSpaceVertical = skeletonAttributeChild.getTextShapeLineSpaceVertical();
 
-                        int lineNumber = placeHolderGradientChild.getTextShapeLineNumber();
+                        int lineNumber = skeletonAttributeChild.getTextShapeLineNumber();
                         if (lineNumber == 0) {
-                            lineNumber = (int) ((placeHolderGradientChild.getY2() - placeHolderGradientChild.getY1())
+                            lineNumber = (int) ((skeletonAttributeChild.getY2() - skeletonAttributeChild.getY1())
                                                                 / (lineHeight + lineSpaceVertical));
                         }
                         CLog.i("line number  " + lineNumber);
@@ -210,22 +210,22 @@ public class PlaceholderGroup extends PlaceholderMaster {
 
                             RectF rectangleRect;
                             float newY1, newY2;
-                            float newX1 = placeHolderGradientChild.getX1();
-                            float newX2 = placeHolderGradientChild.getX2();
+                            float newX1 = skeletonAttributeChild.getX1();
+                            float newX2 = skeletonAttributeChild.getX2();
 
                             //Y1
                             if (j == 0) {
                                 //first line
-                                newY1 = placeHolderGradientChild.getY1();
+                                newY1 = skeletonAttributeChild.getY1();
                             } else {
                                 //other line
-                                newY1 = placeHolderGradientChild.getY1()
+                                newY1 = skeletonAttributeChild.getY1()
                                         + (lineHeight * j) // height children previous
                                         + (lineSpaceVertical * j);// space vertical children previous
                             }
 
                             //Y2
-                            newY2 = placeHolderGradientChild.getY1()
+                            newY2 = skeletonAttributeChild.getY1()
                                     + (lineHeight * (j + 1)) // height children previous
                                     + (lineSpaceVertical * j);// space vertical children previous
 
@@ -233,31 +233,31 @@ public class PlaceholderGroup extends PlaceholderMaster {
                             //X1,X2 just for last line
                             if (j == lineNumber - 1) {
 
-                                float quarterWidth = (placeHolderGradientChild.getX2() - placeHolderGradientChild.getX1()) / 4;//quarter width 1 line
+                                float quarterWidth = (skeletonAttributeChild.getX2() - skeletonAttributeChild.getX1()) / 4;//quarter width 1 line
 
-                                switch (placeHolderGradientChild.getTextShapeLineLastWidth()) {
-                                    case PlaceholderAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_FULL:
+                                switch (skeletonAttributeChild.getTextShapeLineLastWidth()) {
+                                    case SkeletonAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_FULL:
                                         //no change X1 and X2
                                         break;
-                                    case PlaceholderAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_THREE_QUARTERS:
-                                        if (placeholderAttribute.getAnimationDirection() == PlaceholderAttribute.ANIMATION_DIRECTION_RTL) {
-                                            newX1 = placeHolderGradientChild.getX1() + quarterWidth;
+                                    case SkeletonAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_THREE_QUARTERS:
+                                        if (skeletonAttribute.getAnimationDirection() == SkeletonAttribute.ANIMATION_DIRECTION_RTL) {
+                                            newX1 = skeletonAttributeChild.getX1() + quarterWidth;
                                         } else {
-                                            newX2 = placeHolderGradientChild.getX2() - quarterWidth;
+                                            newX2 = skeletonAttributeChild.getX2() - quarterWidth;
                                         }
                                         break;
-                                    case PlaceholderAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_HALF:
-                                        if (placeholderAttribute.getAnimationDirection() == PlaceholderAttribute.ANIMATION_DIRECTION_RTL) {
-                                            newX1 = placeHolderGradientChild.getX1() + (2 * quarterWidth);
+                                    case SkeletonAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_HALF:
+                                        if (skeletonAttribute.getAnimationDirection() == SkeletonAttribute.ANIMATION_DIRECTION_RTL) {
+                                            newX1 = skeletonAttributeChild.getX1() + (2 * quarterWidth);
                                         } else {
-                                            newX2 = placeHolderGradientChild.getX2() - (2 * quarterWidth);
+                                            newX2 = skeletonAttributeChild.getX2() - (2 * quarterWidth);
                                         }
                                         break;
-                                    case PlaceholderAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_QUARTER:
-                                        if (placeholderAttribute.getAnimationDirection() == PlaceholderAttribute.ANIMATION_DIRECTION_RTL) {
-                                            newX1 = placeHolderGradientChild.getX1() + (3 * quarterWidth);
+                                    case SkeletonAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_QUARTER:
+                                        if (skeletonAttribute.getAnimationDirection() == SkeletonAttribute.ANIMATION_DIRECTION_RTL) {
+                                            newX1 = skeletonAttributeChild.getX1() + (3 * quarterWidth);
                                         } else {
-                                            newX2 = placeHolderGradientChild.getX2() - (3 * quarterWidth);
+                                            newX2 = skeletonAttributeChild.getX2() - (3 * quarterWidth);
                                         }
                                         break;
                                 }
@@ -265,7 +265,7 @@ public class PlaceholderGroup extends PlaceholderMaster {
 
                             //draw text line
                             rectangleRect = new RectF(newX1, newY1, newX2, newY2);
-                            float[] cornerRadius = generateCornerRadius(rectangleRect, placeHolderGradientChild);
+                            float[] cornerRadius = generateCornerRadius(rectangleRect, skeletonAttributeChild);
                             path.addRoundRect(rectangleRect, cornerRadius, Path.Direction.CW);
                         }
                     }
@@ -283,20 +283,20 @@ public class PlaceholderGroup extends PlaceholderMaster {
             //main draw
             if (isCanDrawFinishState) {
                 // finish draw
-                switch (placeholderAttribute.getAnimationFinishType()) {
-                    case PlaceholderAttribute.ANIMATION_TYPE_ALPHA:
+                switch (skeletonAttribute.getAnimationFinishType()) {
+                    case SkeletonAttribute.ANIMATION_TYPE_ALPHA:
 
                         //draw background total view with alpha
-                        drawBackgroundTotal(canvas, ColorUtils.convertColorToTransparent(placeholderAttribute.getColorBackgroundMain(), 1.0f - AnimationFraction));
+                        drawBackgroundTotal(canvas, ColorUtils.convertColorToTransparent(skeletonAttribute.getColorBackgroundMain(), 1.0f - AnimationFraction));
 
                         paintBackgroundViews.setAlpha((int) (255 * (1.0f - AnimationFraction)));
                         canvas.drawBitmap(bitmapBackgroundElement, 0, 0, paintBackgroundViews);
 
                         break;
-                    case PlaceholderAttribute.ANIMATION_TYPE_GRADIENT:
+                    case SkeletonAttribute.ANIMATION_TYPE_GRADIENT:
 
                         //draw background total view with alpha
-                        drawBackgroundTotal(canvas, ColorUtils.convertColorToTransparent(placeholderAttribute.getColorBackgroundMain(), 1.0f - AnimationFraction));
+                        drawBackgroundTotal(canvas, ColorUtils.convertColorToTransparent(skeletonAttribute.getColorBackgroundMain(), 1.0f - AnimationFraction));
 
                         generatePositionGradientFromDirectionAnimation();
                         paintGradient.setShader(new LinearGradient(xStartGradient, yStartGradient, xEndGradient, yEndGradient
@@ -311,11 +311,11 @@ public class PlaceholderGroup extends PlaceholderMaster {
             } else {
                 // normal draw
 
-                drawBackgroundTotal(canvas, placeholderAttribute.getColorBackgroundMain());//draw background total
+                drawBackgroundTotal(canvas, skeletonAttribute.getColorBackgroundMain());//draw background total
                 canvas.drawBitmap(bitmapBackgroundElement, 0, 0, paintBackgroundViews);//draw background view
-                switch (placeholderAttribute.getAnimationNormalType()) {
+                switch (skeletonAttribute.getAnimationNormalType()) {
 
-                    case PlaceholderAttribute.ANIMATION_TYPE_ALPHA:
+                    case SkeletonAttribute.ANIMATION_TYPE_ALPHA:
 
                         float alpha = 0.0f;
 //                        if (AnimationFractionMove >= 0) {
@@ -324,12 +324,12 @@ public class PlaceholderGroup extends PlaceholderMaster {
 //                            alpha = AnimationFractionMove + 1;
 //                        }
                         CLog.i(alpha + "");
-                        paintGradient.setColor(ColorUtils.convertColorToTransparent(placeholderAttribute.getColorHighLight(), Math.abs(AnimationFractionMove)));
+                        paintGradient.setColor(ColorUtils.convertColorToTransparent(skeletonAttribute.getColorHighLight(), Math.abs(AnimationFractionMove)));
 
                         canvas.drawBitmap(bitmapGradientElement, 0, 0, paintGradient);
 
                         break;
-                    case PlaceholderAttribute.ANIMATION_TYPE_GRADIENT:
+                    case SkeletonAttribute.ANIMATION_TYPE_GRADIENT:
 
                         generatePositionGradientFromDirectionAnimation();
                         paintGradient.setShader(new LinearGradient(xStartGradient, yStartGradient, xEndGradient, yEndGradient
@@ -351,7 +351,7 @@ public class PlaceholderGroup extends PlaceholderMaster {
     }
 
 
-    private float[] generateCornerRadius(RectF rectangleRect, PlaceholderAttribute placeHolderGradientChild) {
+    private float[] generateCornerRadius(RectF rectangleRect, SkeletonAttribute skeletonAttributeChild) {
 
         //calculator cornerRadius size
         float cornerRadiusTopLeft;
@@ -359,13 +359,13 @@ public class PlaceholderGroup extends PlaceholderMaster {
         float cornerRadiusBottomLRight;
         float cornerRadiusBottomLeft;
 
-        if (placeHolderGradientChild.getCornerRadius() != Integer.MIN_VALUE) {
-            cornerRadiusTopLeft = cornerRadiusTopRight = cornerRadiusBottomLRight = cornerRadiusBottomLeft = getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadius());
+        if (skeletonAttributeChild.getCornerRadius() != Integer.MIN_VALUE) {
+            cornerRadiusTopLeft = cornerRadiusTopRight = cornerRadiusBottomLRight = cornerRadiusBottomLeft = getCornerRadius(rectangleRect, skeletonAttributeChild.getCornerRadius());
         } else {
-            cornerRadiusTopLeft = placeHolderGradientChild.getCornerRadiusTopLeft() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusTopLeft()) : 0;
-            cornerRadiusTopRight = placeHolderGradientChild.getCornerRadiusTopRight() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusTopRight()) : 0;
-            cornerRadiusBottomLRight = placeHolderGradientChild.getCornerRadiusBottomLRight() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusBottomLRight()) : 0;
-            cornerRadiusBottomLeft = placeHolderGradientChild.getCornerRadiusBottomLeft() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, placeHolderGradientChild.getCornerRadiusBottomLeft()) : 0;
+            cornerRadiusTopLeft = skeletonAttributeChild.getCornerRadiusTopLeft() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, skeletonAttributeChild.getCornerRadiusTopLeft()) : 0;
+            cornerRadiusTopRight = skeletonAttributeChild.getCornerRadiusTopRight() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, skeletonAttributeChild.getCornerRadiusTopRight()) : 0;
+            cornerRadiusBottomLRight = skeletonAttributeChild.getCornerRadiusBottomLRight() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, skeletonAttributeChild.getCornerRadiusBottomLRight()) : 0;
+            cornerRadiusBottomLeft = skeletonAttributeChild.getCornerRadiusBottomLeft() != Integer.MIN_VALUE ? getCornerRadius(rectangleRect, skeletonAttributeChild.getCornerRadiusBottomLeft()) : 0;
         }
 
         return new float[]{cornerRadiusTopLeft, cornerRadiusTopLeft, cornerRadiusTopRight, cornerRadiusTopRight, cornerRadiusBottomLRight, cornerRadiusBottomLRight, cornerRadiusBottomLeft, cornerRadiusBottomLeft};
@@ -385,8 +385,8 @@ public class PlaceholderGroup extends PlaceholderMaster {
 
     private void generatePositionGradientFromDirectionAnimation() {
         //check direction and set x,y start and end for gradient
-        switch (placeholderAttribute.getAnimationDirection()) {
-            case PlaceholderAttribute.ANIMATION_DIRECTION_LTR: {
+        switch (skeletonAttribute.getAnimationDirection()) {
+            case SkeletonAttribute.ANIMATION_DIRECTION_LTR: {
                 float offset = getWidth() * AnimationFractionMove;
                 xStartGradient = offset;
                 yStartGradient = 0;
@@ -394,7 +394,7 @@ public class PlaceholderGroup extends PlaceholderMaster {
                 yEndGradient = 0;
                 break;
             }
-            case PlaceholderAttribute.ANIMATION_DIRECTION_RTL: {
+            case SkeletonAttribute.ANIMATION_DIRECTION_RTL: {
                 float offset = getWidth() * AnimationFractionMove;
                 xStartGradient = offset;
                 yStartGradient = 0;
@@ -402,7 +402,7 @@ public class PlaceholderGroup extends PlaceholderMaster {
                 yEndGradient = 0;
                 break;
             }
-            case PlaceholderAttribute.ANIMATION_DIRECTION_TTB: {
+            case SkeletonAttribute.ANIMATION_DIRECTION_TTB: {
                 float offset = getHeight() * AnimationFractionMove;
                 xStartGradient = 0;
                 yStartGradient = offset;
@@ -410,7 +410,7 @@ public class PlaceholderGroup extends PlaceholderMaster {
                 yEndGradient = offset + getHeight();
                 break;
             }
-            case PlaceholderAttribute.ANIMATION_DIRECTION_BTT: {
+            case SkeletonAttribute.ANIMATION_DIRECTION_BTT: {
                 float offset = getHeight() * AnimationFractionMove;
                 xStartGradient = 0;
                 yStartGradient = offset;
@@ -424,31 +424,31 @@ public class PlaceholderGroup extends PlaceholderMaster {
 
     private void setupInitialAnimation() {
 
-        if (placeholderAttributesChildren != null && placeholderAttributesChildren.size() > 0) {
+        if (skeletonAttributesChildren != null && skeletonAttributesChildren.size() > 0) {
             isCanDraw = true;
             isAnimationPlay = true;
         } else {
-            // placeholderGradientGroup no child extend from placeholderGradient
+            // skeletonGroup no child extend from skeletonGradient
             return;
         }
 
         //checking direction animation for generate value star and end move animation fraction
         float valueAnimationMoveFractionStart = 0;
         float valueAnimationMoveFractionEnd = 0;
-        switch (placeholderAttribute.getAnimationDirection()) {
-            case PlaceholderAttribute.ANIMATION_DIRECTION_LTR:
+        switch (skeletonAttribute.getAnimationDirection()) {
+            case SkeletonAttribute.ANIMATION_DIRECTION_LTR:
                 valueAnimationMoveFractionStart = -1;
                 valueAnimationMoveFractionEnd = 1;
                 break;
-            case PlaceholderAttribute.ANIMATION_DIRECTION_RTL:
+            case SkeletonAttribute.ANIMATION_DIRECTION_RTL:
                 valueAnimationMoveFractionStart = 1;
                 valueAnimationMoveFractionEnd = -1;
                 break;
-            case PlaceholderAttribute.ANIMATION_DIRECTION_TTB:
+            case SkeletonAttribute.ANIMATION_DIRECTION_TTB:
                 valueAnimationMoveFractionStart = -1;
                 valueAnimationMoveFractionEnd = 1;
                 break;
-            case PlaceholderAttribute.ANIMATION_DIRECTION_BTT:
+            case SkeletonAttribute.ANIMATION_DIRECTION_BTT:
                 valueAnimationMoveFractionStart = 1;
                 valueAnimationMoveFractionEnd = -1;
                 break;
@@ -456,7 +456,7 @@ public class PlaceholderGroup extends PlaceholderMaster {
 
         //initial animation
         valueAnimator = ValueAnimator.ofFloat(valueAnimationMoveFractionStart, valueAnimationMoveFractionEnd);
-        valueAnimator.setDuration(placeholderAttribute.getAnimationDuration());
+        valueAnimator.setDuration(skeletonAttribute.getAnimationDuration());
         valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
         valueAnimator.setRepeatMode(ValueAnimator.RESTART);
 
@@ -477,24 +477,24 @@ public class PlaceholderGroup extends PlaceholderMaster {
 
             @Override
             public void onAnimationRepeat(Animator animation) {
-                CLog.i("PlaceholderGroup onAnimationRepeat " + postion);
+                CLog.i("SkeletonGroup onAnimationRepeat " + position);
 
                 if (isCanDrawFinishState) {
-                    CLog.i("PlaceholderGroup isCanDrawFinishState " + postion);
+                    CLog.i("SkeletonGroup isCanDrawFinishState " + position);
                     setupFinishingAnimation();
                 }
 
 
                 if (isLastLoopAnimation) {
                     // last repeat animation and start finish animation
-                    CLog.i("PlaceholderGroup isLastLoopAnimatio " + postion);
-                    if (placeholderAttribute.getAnimationFinishType() == PlaceholderAttribute.ANIMATION_TYPE_NON) {
+                    CLog.i("SkeletonGroup isLastLoopAnimatio " + position);
+                    if (skeletonAttribute.getAnimationFinishType() == SkeletonAttribute.ANIMATION_TYPE_NON) {
                         setupFinishingAnimation();
                     } else {
                         isLastLoopAnimation = false;
                         isCanDrawFinishState = true;
                         //change color 011 (color one transparent = 0.0 | color two transparent = 1.0 | color three transparent = 1.0 )
-                        gradientColors = ColorUtils.generateColorTransparent011(placeholderAttribute.getColorHighLight(), placeholderAttribute.getColorBackgroundViews());
+                        gradientColors = ColorUtils.generateColorTransparent011(skeletonAttribute.getColorHighLight(), skeletonAttribute.getColorBackgroundViews());
                     }
                 }
 
@@ -514,8 +514,8 @@ public class PlaceholderGroup extends PlaceholderMaster {
         valueAnimator.start();
 
         //fire for listener
-        if (placeholderListener != null)
-            placeholderListener.onStartAnimation();
+        if (skeletonListener != null)
+            skeletonListener.onStartAnimation();
 
     }
 
@@ -535,14 +535,14 @@ public class PlaceholderGroup extends PlaceholderMaster {
         // disable Hold touchEvents from this and children
         setHoldTouchEventsFromChildren(false);
         for (View child : getAllChildren(getChildAt(0))) {
-            if (child != null && child instanceof PlaceholderView) {
-                ((PlaceholderView) child).setHoldTouchEventsFromChildren(false);
+            if (child != null && child instanceof SkeletonView) {
+                ((SkeletonView) child).setHoldTouchEventsFromChildren(false);
             }
         }
 
         //fire finish state for listener
-        if (placeholderListener != null)
-            placeholderListener.onFinishAnimation();
+        if (skeletonListener != null)
+            skeletonListener.onFinishAnimation();
 
     }
 
@@ -560,24 +560,24 @@ public class PlaceholderGroup extends PlaceholderMaster {
     }
 
     public void setAutoPlay(boolean isAnimationAutoStart) {
-        placeholderAttribute.setAutoStartAnimation(isAnimationAutoStart);
+        skeletonAttribute.setAutoStartAnimation(isAnimationAutoStart);
     }
 
-    public void setShowPlaceHolder(boolean isShowPlaceHolder) {
-        placeholderAttribute.setShowPlaceHolder(isShowPlaceHolder);
+    public void setShowSkeleton(boolean isShowSkeleton) {
+        skeletonAttribute.setShowSkeleton(isShowSkeleton);
     }
 
     //==============================================================================================
     /*Listener*/
-    public interface PlaceholderListener {
+    public interface SkeletonListener {
         void onStartAnimation();
 
         void onFinishAnimation();
 
     }
 
-    public void setPlaceholderListener(PlaceholderListener placeholderListener) {
-        this.placeholderListener = placeholderListener;
+    public void setSkeletonListener(SkeletonListener skeletonListener) {
+        this.skeletonListener = skeletonListener;
     }
     //==============================================================================================
 }

@@ -1,4 +1,4 @@
-package io.rmiri.placeholder;
+package io.rmiri.skeleton;
 
 import android.content.Context;
 import android.os.Build;
@@ -9,29 +9,29 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.StyleRes;
 import android.util.AttributeSet;
 
-import io.rmiri.placeholder.Master.PlaceholderMaster;
+import io.rmiri.skeleton.Master.SkeletonMaster;
 
 
 /**
  * Created by Rasoul Miri on 8/8/17.
  */
 
-public class PlaceholderView extends PlaceholderMaster {
+public class SkeletonView extends SkeletonMaster {
 
-    public PlaceholderView(@NonNull Context context) {
+    public SkeletonView(@NonNull Context context) {
         super(context);
     }
 
-    public PlaceholderView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public SkeletonView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public PlaceholderView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
+    public SkeletonView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public PlaceholderView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
+    public SkeletonView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 

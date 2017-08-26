@@ -1,20 +1,19 @@
-package io.rmiri.placeholder_example.Data;
+package io.rmiri.skeleton.sample.Data;
 
 import java.util.ArrayList;
 
-import io.rmiri.placeholder_example.Data.DataObject;
-import io.rmiri.placeholder_example.R;
+import io.rmiri.skeleton.sample.R;
 
 /**
  * Created by Rasoul Miri on 8/23/17.
  */
 
-public class GenarateDataFake {
+public class GeneratesDataFake {
 
     private ArrayList<DataObject> dataObjects = new ArrayList<>();
 
 
-    public GenarateDataFake() {
+    public GeneratesDataFake() {
     }
 
     private ArrayList<String> titles = new ArrayList<String>() {

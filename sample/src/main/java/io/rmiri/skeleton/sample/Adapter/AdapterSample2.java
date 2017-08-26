@@ -1,4 +1,4 @@
-package io.rmiri.placeholder_example.Adapter;
+package io.rmiri.skeleton.sample.Adapter;
 
 
 import android.content.Context;
@@ -16,37 +16,37 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import io.rmiri.placeholder.Master.PlaceholderDetail;
-import io.rmiri.placeholder.PlaceholderGroup;
-import io.rmiri.placeholder_example.Data.DataObject;
-import io.rmiri.placeholder_example.R;
+import io.rmiri.skeleton.Master.SkeletonDetail;
+import io.rmiri.skeleton.SkeletonGroup;
+import io.rmiri.skeleton.sample.Data.DataObject;
+import io.rmiri.skeleton.sample.R;
 
 
-public class AdapterSample1 extends RecyclerView.Adapter<AdapterSample1.ViewHolder> {
+public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHolder> {
 
     private Context context;
     private ArrayList<DataObject> dataObjects = new ArrayList<>();
-    private PlaceholderDetail placeholderDetail = new PlaceholderDetail();
+    private SkeletonDetail skeletonDetail = new SkeletonDetail();
 
-    public AdapterSample1(Context context, ArrayList<DataObject> dataObjects, @Nullable PlaceholderDetail placeholderDetail) {
+    public AdapterSample2(Context context, ArrayList<DataObject> dataObjects, @Nullable SkeletonDetail skeletonDetail) {
         this.context = context;
         this.dataObjects = dataObjects;
-        if (placeholderDetail != null) {
-            this.placeholderDetail = placeholderDetail;
+        if (skeletonDetail != null) {
+            this.skeletonDetail = skeletonDetail;
         }
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sample_1, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sample_2, parent, false);
         return new ViewHolder(view);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private CardView cardView;
-        private PlaceholderGroup placeHolderGroup;
+        private SkeletonGroup skeletonGroup;
         private AppCompatImageView photoACImgV;
         private TextView newFlagTv;
         private TextView titleTv;
@@ -60,7 +60,7 @@ public class AdapterSample1 extends RecyclerView.Adapter<AdapterSample1.ViewHold
             super(itemView);
 
             cardView = (CardView) itemView.findViewById(R.id.cardView);
-            placeHolderGroup = (PlaceholderGroup) itemView.findViewById(R.id.placeHolderGroup);
+            skeletonGroup = (SkeletonGroup) itemView.findViewById(R.id.skeletonGroup);
             photoACImgV = (AppCompatImageView) itemView.findViewById(R.id.photoACImgV);
             newFlagTv = (TextView) itemView.findViewById(R.id.newFlagTv);
             titleTv = (TextView) itemView.findViewById(R.id.titleTv);
@@ -77,15 +77,15 @@ public class AdapterSample1 extends RecyclerView.Adapter<AdapterSample1.ViewHold
 
         holder.cardView.setPreventCornerOverlap(false);
 
-//        holder.placeHolderGradientGroup.setPostion(position);//just for debug log
+//        holder.skeletonGroup.setPosition(position);//just for debug log
 
-        if (placeholderDetail.isPlaceholderIsOn()) {
-            //need show placeholder for 2 cards
-            holder.placeHolderGroup.setAutoPlay(true);
+        if (skeletonDetail.isSkeletonIsOn()) {
+            //need show s for 2 cards
+            holder.skeletonGroup.setAutoPlay(true);
             return;
         } else {
-            holder.placeHolderGroup.setShowPlaceHolder(false);
-            holder.placeHolderGroup.finishAnimation();
+            holder.skeletonGroup.setShowSkeleton(false);
+            holder.skeletonGroup.finishAnimation();
         }
 
         //set data in view
@@ -108,7 +108,7 @@ public class AdapterSample1 extends RecyclerView.Adapter<AdapterSample1.ViewHold
 
     @Override
     public int getItemCount() {
-        if (placeholderDetail.isPlaceholderIsOn()) {
+        if (skeletonDetail.isSkeletonIsOn()) {
             // show just 2 card item in recyclerView
             return 2;
         } else {
@@ -118,14 +118,14 @@ public class AdapterSample1 extends RecyclerView.Adapter<AdapterSample1.ViewHold
     }
 
 
-    public void addMoreDataAndPlaceholderFinish(ArrayList<DataObject> dataObjects) {
+    public void addMoreDataAndSkeletonFinish(ArrayList<DataObject> dataObjects) {
 
         //add new data to dataObjects
         this.dataObjects = new ArrayList<>();
         this.dataObjects.addAll(dataObjects);
 
-        //set false show placeholder
-        placeholderDetail.setPlaceholderIsOn(false);
+        //set false show s
+        skeletonDetail.setSkeletonIsOn(false);
 
         //update items cardView
         notifyDataSetChanged();

@@ -1,5 +1,5 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:Placeholder="http://schemas.android.com/apk/res-auto"
+    xmlns:Skeleton="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
@@ -12,18 +12,18 @@
     app:cardUseCompatPadding="true"
     app:contentPadding="0dp">
 
-    <io.rmiri.placeholder.PlaceholderGroup
-        android:id="@+id/placeHolderGroup"
+    <io.rmiri.skeleton.SkeletonGroup
+        android:id="@+id/skeletonGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        Placeholder:PH_BackgroundViewsColor="#EEEEEE"
-        Placeholder:PH_animationAutoStart="true"
-        Placeholder:PH_animationDirection="LTR"
-        Placeholder:PH_animationDuration="1000"
-        Placeholder:PH_animationFinishType="alpha"
-        Placeholder:PH_animationNormalType="alpha"
-        Placeholder:PH_backgroundMainColor="@android:color/white"
-        Placeholder:PH_highLightColor="#DEDEDE">
+        Skeleton:PH_BackgroundViewsColor="#EEEEEE"
+        Skeleton:PH_animationAutoStart="true"
+        Skeleton:PH_animationDirection="LTR"
+        Skeleton:PH_animationDuration="1000"
+        Skeleton:PH_animationFinishType="alpha"
+        Skeleton:PH_animationNormalType="alpha"
+        Skeleton:PH_backgroundMainColor="@android:color/white"
+        Skeleton:PH_highLightColor="#DEDEDE">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,12 +36,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="230dp">
 
-                <io.rmiri.placeholder.PlaceholderView
+                <io.rmiri.skeleton.SkeletonView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    Placeholder:PH_cornerRadius="0dp"
-                    Placeholder:PH_padding="0dp"
-                    Placeholder:PH_shapeType="rect">
+                    Skeleton:PH_cornerRadius="0dp"
+                    Skeleton:PH_padding="0dp"
+                    Skeleton:PH_shapeType="rect">
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/photoACImgV"
@@ -72,7 +72,7 @@
                         android:visibility="visible" />
 
 
-                </io.rmiri.placeholder.PlaceholderView>
+                </io.rmiri.skeleton.SkeletonView>
 
             </RelativeLayout>
 
@@ -84,12 +84,12 @@
                 android:padding="8dp">
 
 
-                <io.rmiri.placeholder.PlaceholderView
+                <io.rmiri.skeleton.SkeletonView
                     android:id="@+id/titlePHG"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    Placeholder:PH_cornerRadius="10dp">
+                    Skeleton:PH_cornerRadius="10dp">
 
                     <TextView
                         android:id="@+id/titleTv"
@@ -100,17 +100,17 @@
                         android:textColor="@color/textColorPrimary"
                         android:textSize="20sp" />
 
-                </io.rmiri.placeholder.PlaceholderView>
+                </io.rmiri.skeleton.SkeletonView>
 
 
-                <io.rmiri.placeholder.PlaceholderView
+                <io.rmiri.skeleton.SkeletonView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/titlePHG"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="4dp"
-                    Placeholder:PH_cornerRadius="10dp">
+                    Skeleton:PH_cornerRadius="10dp">
 
                     <TextView
                         android:id="@+id/descriptionTv"
@@ -121,7 +121,7 @@
                         android:textColor="@color/textColorSecondary"
                         android:textSize="14sp" />
 
-                </io.rmiri.placeholder.PlaceholderView>
+                </io.rmiri.skeleton.SkeletonView>
 
             </RelativeLayout>
 
@@ -142,13 +142,13 @@
                 android:paddingStart="8dp"
                 android:paddingTop="4dp">
 
-                <io.rmiri.placeholder.PlaceholderView
+                <io.rmiri.skeleton.SkeletonView
                     android:id="@+id/addToParkingPH"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/compareImgPh"
-                    Placeholder:PH_padding="8dp"
-                    Placeholder:PH_shapeType="oval">
+                    Skeleton:PH_padding="8dp"
+                    Skeleton:PH_shapeType="oval">
 
                     <android.support.v7.widget.AppCompatImageButton
                         android:id="@+id/addToParkingImgBtn"
@@ -157,15 +157,15 @@
                         android:background="@android:color/transparent"
                         android:padding="8dp"
                         app:srcCompat="@drawable/ic_favorite" />
-                </io.rmiri.placeholder.PlaceholderView>
+                </io.rmiri.skeleton.SkeletonView>
 
-                <io.rmiri.placeholder.PlaceholderView
+                <io.rmiri.skeleton.SkeletonView
                     android:id="@+id/compareImgPh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    Placeholder:PH_padding="8dp"
-                    Placeholder:PH_shapeType="oval">
+                    Skeleton:PH_padding="8dp"
+                    Skeleton:PH_shapeType="oval">
 
                     <android.support.v7.widget.AppCompatImageButton
                         android:id="@+id/compareImgBtn"
@@ -174,16 +174,16 @@
                         android:background="@android:color/transparent"
                         android:padding="8dp"
                         app:srcCompat="@drawable/ic_compare" />
-                </io.rmiri.placeholder.PlaceholderView>
+                </io.rmiri.skeleton.SkeletonView>
 
 
-                <io.rmiri.placeholder.PlaceholderView
+                <io.rmiri.skeleton.SkeletonView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/addToParkingPH"
-                    Placeholder:PH_cornerRadius="100dp">
+                    Skeleton:PH_cornerRadius="100dp">
 
                     <TextView
                         android:id="@+id/priceUnitTv"
@@ -211,8 +211,8 @@
                         android:textSize="20sp" />
 
 
-                </io.rmiri.placeholder.PlaceholderView>
+                </io.rmiri.skeleton.SkeletonView>
             </RelativeLayout>
         </LinearLayout>
-    </io.rmiri.placeholder.PlaceholderGroup>
+    </io.rmiri.skeleton.SkeletonGroup>
 </android.support.v7.widget.CardView>

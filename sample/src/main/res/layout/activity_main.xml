@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:title="Placeholder Sample"
+        app:title="Skeleton Sample"
         app:titleTextColor="@android:color/white" />
 
     <android.support.v7.widget.AppCompatButton

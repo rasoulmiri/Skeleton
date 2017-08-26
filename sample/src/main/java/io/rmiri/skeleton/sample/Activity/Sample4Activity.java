@@ -1,20 +1,19 @@
-package io.rmiri.placeholder_example.Activity;
+package io.rmiri.skeleton.sample.Activity;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import io.rmiri.placeholder.PlaceholderGroup;
-import io.rmiri.placeholder_example.R;
+import io.rmiri.skeleton.SkeletonGroup;
+import io.rmiri.skeleton.sample.R;
 
 
 public class Sample4Activity extends AppCompatActivity {
 
-    PlaceholderGroup placeholderGroup;
+    SkeletonGroup skeletonGroup;
     TextView textTv;
 
     @Override
@@ -30,9 +29,9 @@ public class Sample4Activity extends AppCompatActivity {
             }
         });
 
-        placeholderGroup = (PlaceholderGroup) findViewById(R.id.placeHolderGroup);
+        skeletonGroup = (SkeletonGroup) findViewById(R.id.skeletonGroup);
         textTv = (TextView) findViewById(R.id.textTv);
-        placeholderGroup.setPlaceholderListener(new PlaceholderGroup.PlaceholderListener() {
+        skeletonGroup.setSkeletonListener(new SkeletonGroup.SkeletonListener() {
             @Override
             public void onStartAnimation() {
 
@@ -45,11 +44,11 @@ public class Sample4Activity extends AppCompatActivity {
         });
 
 
-        //after 5 second finish animation placeholder
+        //after 5 second finish animation s
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                placeholderGroup.finishAnimation();
+                skeletonGroup.finishAnimation();
             }
         }, 5000);
     }

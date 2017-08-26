@@ -1,4 +1,4 @@
-package miri.io.placeholder;
+package io.rmiri.skeleton;
 
 import org.junit.Test;
 

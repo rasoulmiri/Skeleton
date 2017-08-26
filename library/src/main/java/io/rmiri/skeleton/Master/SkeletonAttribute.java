@@ -1,4 +1,4 @@
-package io.rmiri.placeholder.Master;
+package io.rmiri.skeleton.Master;
 
 import android.graphics.Color;
 
@@ -6,11 +6,11 @@ import android.graphics.Color;
  * Created by Rasoul Miri on 8/20/17.
  */
 
-public class PlaceholderAttribute {
+public class SkeletonAttribute {
 
     private float X1, Y1, X2, Y2;
 
-    private boolean isShowPlaceHolder = true;
+    private boolean isShowSkeleton = true;
     private boolean isAutoStartAnimation = true;
     private boolean isHoldTouchEventsFromChildren = true;
 
@@ -88,7 +88,7 @@ public class PlaceholderAttribute {
     public static final int DEFAULT_TEXT_SHAPE_LINE_SPACE_VERTICAL = 4;
 
 
-    public PlaceholderAttribute() {
+    public SkeletonAttribute() {
     }
     //==============================================================================================
     /* getter and setter */
@@ -125,12 +125,12 @@ public class PlaceholderAttribute {
         Y2 = y2;
     }
 
-    public boolean isShowPlaceHolder() {
-        return isShowPlaceHolder;
+    public boolean isShowSkeleton() {
+        return isShowSkeleton;
     }
 
-    public void setShowPlaceHolder(boolean showPlaceHolder) {
-        isShowPlaceHolder = showPlaceHolder;
+    public void setShowSkeleton(boolean showSkeleton) {
+        isShowSkeleton = showSkeleton;
     }
 
     public boolean isAutoStartAnimation() {

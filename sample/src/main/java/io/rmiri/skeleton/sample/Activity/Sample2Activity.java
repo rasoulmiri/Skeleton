@@ -1,4 +1,4 @@
-package io.rmiri.placeholder_example.Activity;
+package io.rmiri.skeleton.sample.Activity;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,23 +10,23 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import io.rmiri.placeholder.Master.PlaceholderDetail;
-import io.rmiri.placeholder_example.Adapter.AdapterSample3;
-import io.rmiri.placeholder_example.Data.DataObject;
-import io.rmiri.placeholder_example.Data.GenarateDataFake;
-import io.rmiri.placeholder_example.R;
+import io.rmiri.skeleton.Master.SkeletonDetail;
+import io.rmiri.skeleton.sample.Adapter.AdapterSample2;
+import io.rmiri.skeleton.sample.Data.DataObject;
+import io.rmiri.skeleton.sample.Data.GeneratesDataFake;
+import io.rmiri.skeleton.sample.R;
 
 
-public class Sample3Activity extends AppCompatActivity {
+public class Sample2Activity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private AdapterSample3 adapterSample3;
+    private AdapterSample2 adapterSample2;
     private ArrayList<DataObject> dataObjects = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sample_3);
+        setContentView(R.layout.activity_sample_2);
 
 
         //toolbar
@@ -43,21 +43,21 @@ public class Sample3Activity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
 
-        // initial PlaceholderDetail and set in adapter
-        PlaceholderDetail placeholderDetail = new PlaceholderDetail();
-        placeholderDetail.setPlaceholderIsOn(true);
-        adapterSample3 = new AdapterSample3(getApplicationContext(), dataObjects, placeholderDetail);
+        // initial SkeletonDetail and set in adapter
+        SkeletonDetail skeletonDetail = new SkeletonDetail();
+        skeletonDetail.setSkeletonIsOn(true);
+        adapterSample2 = new AdapterSample2(getApplicationContext(), dataObjects, skeletonDetail);
 
         //set adapter in recyclerView
-        recyclerView.setAdapter(adapterSample3);
+        recyclerView.setAdapter(adapterSample2);
 
 
         //after 5 second get data fake
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                dataObjects = new GenarateDataFake().genarateDataFake();
-                adapterSample3.addMoreDataAndPlaceholderFinish(dataObjects);
+                dataObjects = new GeneratesDataFake().genarateDataFake();
+                adapterSample2.addMoreDataAndSkeletonFinish(dataObjects);
             }
         }, 5000);
     }

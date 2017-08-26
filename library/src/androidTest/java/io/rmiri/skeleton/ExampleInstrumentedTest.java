@@ -1,4 +1,4 @@
-package miri.io.placeholder;
+package miri.io.skeleton;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,5 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("miri.io.miri.placeholder.test", appContext.getPackageName());
     }
 }

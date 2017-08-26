@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="Placeholder">
+    <declare-styleable name="Skeleton">
 
         <!--=====================================================================================-->
-        <!--PlaceholderGroup Attributes-->
+        <!--SkeletonGroup Attributes-->
 
         <attr name="PH_autoStartAnimation" format="boolean" />
-        <attr name="PH_isShowPlaceHolder" format="boolean" />
+        <attr name="PH_isShowSkeleton" format="boolean" />
         <attr name="PH_isHoldTouchEventsFromChildren" format="boolean" />
 
         <!--color-->
@@ -37,7 +37,7 @@
 
         <!--=====================================================================================-->
         <!--=====================================================================================-->
-        <!--PlaceholderView Attributes-->
+        <!--SkeletonView Attributes-->
 
         <!--cornerRadius-->
         <attr name="PH_cornerRadius" format="dimension" />

@@ -1,4 +1,4 @@
-package io.rmiri.placeholder.utils;
+package io.rmiri.skeleton.utils;
 
 import android.content.Context;
 import android.util.TypedValue;

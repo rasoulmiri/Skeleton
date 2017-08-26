@@ -1,8 +1,8 @@
-package io.rmiri.placeholder.utils;
+package io.rmiri.skeleton.utils;
 
 import android.util.Log;
 
-import io.rmiri.placeholder.BuildConfig;
+import io.rmiri.skeleton.BuildConfig;
 
 /**
  * Created by Rasoul Miri on 8/24/17.
@@ -10,7 +10,7 @@ import io.rmiri.placeholder.BuildConfig;
 
 public class CLog {
 
-    private static String Tag = "PlaceHolder";
+    private static String Tag = "Skeleton";
 
     public static void i(String message) {
         if (BuildConfig.DEBUG) {
