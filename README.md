@@ -1,11 +1,11 @@
-# Placeholder Android
-Simple yet powerful placeholder animation for all view in andoird 
+# Skeleton Android
+Simple yet powerful skeleton animation for all view in android 
 <br/><br/>
-![alt tag](https://github.com/rasoulmiri/Placeholder/blob/master/demoFile/1.gif)
+![alt tag](https://github.com/rasoulmiri/Skeleton/blob/master/demoFile/1.gif)
 <br/><br/>
-See [demo project](https://github.com/rasoulmiri/Placeholder/tree/master/sample)
+See [demo project](https://github.com/rasoulmiri/Skeleton/tree/master/sample)
 <br/>
-See [demo APK](https://github.com/rasoulmiri/Placeholder/blob/master/demoFile/sample.apk)
+See [demo APK](https://github.com/rasoulmiri/Skeleton/blob/master/demoFile/sample.apk)
 <br/>
 
 ## Usage:
@@ -23,35 +23,35 @@ Add JitPack repository in your root build.gradle at the end of repositories.
 Add dependency in your app level build.gradle.
 
     dependencies {
-	        compile 'com.github.rasoulmiri:Placeholder:v1.0.1'
+	        compile 'com.github.rasoulmiri:Skeleton:v1.0.1'
 	}
 
 #### Step 2:
 add name space on top layout
 ```xml
-xmlns:Placeholder="http://schemas.android.com/apk/res-auto" 
+xmlns:Skeleton="http://schemas.android.com/apk/res-auto" 
 ```
 #### Step 3:
-use PlaceholderGroup and PlaceholderView in layout 
+use SkeletonGroup and SkeletonView in layout 
 ```xml
-<io.rmiri.placeholder.PlaceholderGroup
+<io.rmiri.skeleton.SkeletonGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-         <io.rmiri.placeholder.PlaceholderView ...>
+         <io.rmiri.skeleton.SkeletonView ...>
             <View ... />
-        </io.rmiri.placeholder.PlaceholderView>
+        </io.rmiri.skeleton.SkeletonView>
 
-        <io.rmiri.placeholder.PlaceholderView ...>
+        <io.rmiri.skeleton.SkeletonView ...>
             <View ... />
-        </io.rmiri.placeholder.PlaceholderView>
+        </io.rmiri.skeleton.SkeletonView>
 
-</io.rmiri.placeholder.PlaceholderGroup>
+</io.rmiri.skeleton.SkeletonGroup>
 ```
 Example:
 ```xml
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:Placeholder="http://schemas.android.com/apk/res-auto"
+    xmlns:Skeleton="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -61,30 +61,30 @@ Example:
     app:cardUseCompatPadding="true"
     app:contentPadding="0dp">
 
-    <io.rmiri.placeholder.PlaceholderGroup
-        android:id="@+id/placeHolderGroup"
+    <io.rmiri.skeleton.SkeletonGroup
+        android:id="@+id/skeletonGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        Placeholder:PH_BackgroundViewsColor="#EEEEEE"
-        Placeholder:PH_animationAutoStart="true"
-        Placeholder:PH_animationDirection="LTR"
-        Placeholder:PH_animationDuration="1000"
-        Placeholder:PH_animationFinishType="gradient"
-        Placeholder:PH_animationNormalType="gradient"
-        Placeholder:PH_backgroundMainColor="@android:color/transparent"
-        Placeholder:PH_highLightColor="#DEDEDE">
+        Skeleton:SK_BackgroundViewsColor="#EEEEEE"
+        Skeleton:SK_animationAutoStart="true"
+        Skeleton:SK_animationDirection="LTR"
+        Skeleton:SK_animationDuration="1000"
+        Skeleton:SK_animationFinishType="gradient"
+        Skeleton:SK_animationNormalType="gradient"
+        Skeleton:SK_backgroundMainColor="@android:color/transparent"
+        Skeleton:SK_highLightColor="#DEDEDE">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <io.rmiri.placeholder.PlaceholderView
-                android:id="@+id/placeHolderViewPhoto"
+            <io.rmiri.skeleton.SkeletonView
+                android:id="@+id/skeletonViewPhoto"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                Placeholder:PH_cornerRadius="0dp"
-                Placeholder:PH_padding="0dp"
-                Placeholder:PH_shapeType="rect">
+                Skeleton:SK_cornerRadius="0dp"
+                Skeleton:SK_padding="0dp"
+                Skeleton:SK_shapeType="rect">
 
                 <android.support.v7.widget.AppCompatImageView
                     android:layout_width="match_parent"
@@ -92,15 +92,15 @@ Example:
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/photoTest" />
 
-            </io.rmiri.placeholder.PlaceholderView>
+            </io.rmiri.skeleton.SkeletonView>
 
-            <io.rmiri.placeholder.PlaceholderView
+            <io.rmiri.skeleton.SkeletonView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/placeHolderViewPhoto"
-                Placeholder:PH_cornerRadius="10dp"
-                Placeholder:PH_padding="5dp"
-                Placeholder:PH_shapeType="rect">
+                android:layout_below="@+id/skeletonViewPhoto"
+                Skeleton:SK_cornerRadius="10dp"
+                Skeleton:SK_padding="5dp"
+                Skeleton:SK_shapeType="rect">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -108,9 +108,9 @@ Example:
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     android:text="Title" />
-            </io.rmiri.placeholder.PlaceholderView>
+            </io.rmiri.skeleton.SkeletonView>
         </RelativeLayout>
-    </io.rmiri.placeholder.PlaceholderGroup>
+    </io.rmiri.skeleton.SkeletonGroup>
 </android.support.v7.widget.CardView>
 ```
 #### Final step
@@ -120,45 +120,45 @@ Nothing really! Just build your app, watch the magic happen ;) .
 
 # Configure XML
 
-### PlaceholderGroup
- * **PH_animationAutoStart:** true or false | defult value true
- * **PH_animationDuration:** time animation | default 1000 millisecond
- * **PH_animationDirection:** RTL,LTR,BTT,TTB | default value is LTR
- * **PH_animationNormalType:** none,alpha,gradient | default value is gradient
- * **PH_animationFinishType:** none,alpha,gradient | default value is gradient
- * **PH_backgroundMainColor:** background total PlaceholderGroup 
- * **PH_BackgroundViewsColor:** background PlaceholderViews in this PlaceholderGroup
- * **PH_highLightColor:** highLight color animation
+### SkeletonGroup
+ * **SK_animationAutoStart:** true or false | defult value true
+ * **SK_animationDuration:** time animation | default 1000 millisecond
+ * **SK_animationDirection:** RTL,LTR,BTT,TTB | default value is LTR
+ * **SK_animationNormalType:** none,alpha,gradient | default value is gradient
+ * **SK_animationFinishType:** none,alpha,gradient | default value is gradient
+ * **SK_backgroundMainColor:** background total SkeletonGroup 
+ * **SK_BackgroundViewsColor:** background SkeletonViews in this SkeletonGroup
+ * **SK_highLightColor:** highLight color animation
 
 
-### PlaceholderView
- * **PH_shapeType:** rect, oval,text | defult value rect
- * **PH_cornerRadius:** just use for shape type rect | defult value 0dp
- * **PH_cornerRadiusTopLeft**
- * **PH_cornerRadiusTopRight**
- * **PH_cornerRadiusBottomLeft**
- * **PH_cornerRadiusBottomLRight**
- * **PH_padding:** padding view if PH_shapeType equals rect | default value is 0dp
- * **PH_paddingTop**
- * **PH_paddingRight**
- * **PH_paddingLeft**
- * **PH_paddingBottom**
- * **PH_textLineNumber:** just use for shape type text  | default value is 3
- * **PH_textLineLastWidth:** full, threeQuarters, half, quarter | default value is threeQuarters
- * **PH_textLineHeight:** hieght of line | defualt value is 24dp
- * **PH_textLineSpaceVertical:** space vertical between lines | default value is threeQuarters 4dp
+### SkeletonView
+ * **SK_shapeType:** rect, oval,text | defult value rect
+ * **SK_cornerRadius:** just use for shape type rect | defult value 0dp
+ * **SK_cornerRadiusTopLeft**
+ * **SK_cornerRadiusTopRight**
+ * **SK_cornerRadiusBottomLeft**
+ * **SK_cornerRadiusBottomLRight**
+ * **SK_padding:** padding view if SK_shapeType equals rect | default value is 0dp
+ * **SK_paddingTop**
+ * **SK_paddingRight**
+ * **SK_paddingLeft**
+ * **SK_paddingBottom**
+ * **SK_textLineNumber:** just use for shape type text  | default value is 3
+ * **SK_textLineLastWidth:** full, threeQuarters, half, quarter | default value is threeQuarters
+ * **SK_textLineHeight:** hieght of line | defualt value is 24dp
+ * **SK_textLineSpaceVertical:** space vertical between lines | default value is threeQuarters 4dp
  
  # Configure Java
  
  ```java
- placeHolderGroup.setAutoPlay(true);
- placeHolderGroup.setShowPlaceHolder(true);
- placeHolderGroup.startAnimation();
- placeHolderGroup.finishAnimation();
+ skeletonGroup.setAutoPlay(true);
+ skeletonGroup.setShowSkeleton(true);
+ skeletonGroup.startAnimation();
+ skeletonGroup.finishAnimation();
 ```
 
 ```java
- placeholderGroup.setPlaceholderListener(new PlaceholderGroup.PlaceholderListener() {
+ skeletonGroup.setSkeletonListener(new SkeletonGroup.SkeletonListener() {
       @Override
       public void onStartAnimation() {
 	...
@@ -172,7 +172,7 @@ Nothing really! Just build your app, watch the magic happen ;) .
 ```
 
 
-for use in RecyclerView and Adapter See sample 1 activity in [this project](https://github.com/rasoulmiri/Placeholder/tree/master/sample)
+for use in RecyclerView and Adapter See sample 1 activity in [this project](https://github.com/rasoulmiri/Skeleton/tree/master/sample)
 <br/>
 
 ## Contributing
