@@ -1,6 +1,7 @@
 # Skeleton Android
 Simple yet powerful skeleton animation for all view in android 
 <br/>
+[![](https://jitpack.io/v/rasoulmiri/skeleton.svg)](https://jitpack.io/#rasoulmiri/skeleton)
 Minimum API 17
 <br/><br/>
 ![alt tag](https://github.com/rasoulmiri/Skeleton/blob/master/demoFile/1.gif)
