@@ -11,7 +11,7 @@ import io.rmiri.skeleton.sample.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    AppCompatButton sample1Btn, sample2Btn, sample3Btn, sample4Btn, sample5Btn;
+    AppCompatButton sample1Btn, sample2Btn, sample3Btn, sample4Btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

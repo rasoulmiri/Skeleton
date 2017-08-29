@@ -117,6 +117,12 @@ public class SkeletonMaster extends RelativeLayout {
     }
 
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        return skeletonAttribute.isHoldTouchEventsFromChildren();
+    }
+
+
     public ArrayList<View> getAllChildren(View v) {
 
         CLog.i("SkeletonMaster getAllChildren " + position);
