@@ -88,7 +88,6 @@
                     android:id="@+id/titlePHG"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
                     Skeleton:SK_cornerRadius="10dp">
 
                     <TextView

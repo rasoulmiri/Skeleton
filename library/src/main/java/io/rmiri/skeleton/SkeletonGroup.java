@@ -526,6 +526,8 @@ public class SkeletonGroup extends SkeletonMaster {
         isLastLoopAnimation = false;
         isCanDrawFinishState = false;
 
+        skeletonAttribute.setHoldTouchEventsFromChildren(false);
+
         //remove animation listener
         valueAnimator.removeAllListeners();
         valueAnimator.end();

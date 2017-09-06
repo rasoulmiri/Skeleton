@@ -102,7 +102,7 @@ public class SkeletonMaster extends RelativeLayout {
         }
 
         //set Clickable true for detect onInterceptTouchEvent 
-        setClickable(true);
+//        setClickable(true);
 
 
     }
@@ -112,15 +112,15 @@ public class SkeletonMaster extends RelativeLayout {
     public boolean onInterceptTouchEvent(MotionEvent motionEvent) {
         /* cancel clickable from children layout
            isHoldTouchEventsFromChildren default is true, after finish animation is change to false */
-        CLog.i("SkeletonMaster onInterceptTouchEvent  " + position);
+//        CLog.i("SkeletonMaster onInterceptTouchEvent     " + getTag() + "     " + position);
         return skeletonAttribute.isHoldTouchEventsFromChildren() || super.onInterceptTouchEvent(motionEvent);
     }
-
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        return skeletonAttribute.isHoldTouchEventsFromChildren();
-    }
+//
+//
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent event) {
+//        return skeletonAttribute.isHoldTouchEventsFromChildren();
+//    }
 
 
     public ArrayList<View> getAllChildren(View v) {
@@ -178,4 +178,6 @@ public class SkeletonMaster extends RelativeLayout {
     public void setPosition(int position) {
         this.position = position;
     }
+
+
 }
