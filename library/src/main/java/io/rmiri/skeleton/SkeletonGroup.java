@@ -94,7 +94,7 @@ public class SkeletonGroup extends SkeletonMaster {
         super.onLayout(changed, l, t, r, b);
 
         CLog.i("SkeletonGroup onLayout " + position);
-        //add all children extend from SkeletonGradient
+        //add all children extend from SkeletonView
         if (skeletonAttributesChildren == null && skeletonAttribute.isShowSkeleton()) {
             CLog.i("SkeletonGroup onLayout and skeletonAttributesChildren == null ... " + position);
             skeletonAttributesChildren = new ArrayList<>();
@@ -427,8 +427,9 @@ public class SkeletonGroup extends SkeletonMaster {
         if (skeletonAttributesChildren != null && skeletonAttributesChildren.size() > 0) {
             isCanDraw = true;
             isAnimationPlay = true;
+            setHoldTouchEventsFromChildren(true); // enable Hold touchEvents from this and children
         } else {
-            // skeletonGroup no child extend from skeletonGradient
+            // skeletonGroup no child extend from skeletonView
             return;
         }
 
@@ -526,7 +527,6 @@ public class SkeletonGroup extends SkeletonMaster {
         isLastLoopAnimation = false;
         isCanDrawFinishState = false;
 
-        skeletonAttribute.setHoldTouchEventsFromChildren(false);
 
         //remove animation listener
         valueAnimator.removeAllListeners();
@@ -536,11 +536,6 @@ public class SkeletonGroup extends SkeletonMaster {
 
         // disable Hold touchEvents from this and children
         setHoldTouchEventsFromChildren(false);
-        for (View child : getAllChildren(getChildAt(0))) {
-            if (child != null && child instanceof SkeletonView) {
-                ((SkeletonView) child).setHoldTouchEventsFromChildren(false);
-            }
-        }
 
         //fire finish state for listener
         if (skeletonListener != null)

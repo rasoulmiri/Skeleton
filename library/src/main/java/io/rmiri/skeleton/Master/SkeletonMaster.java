@@ -66,7 +66,7 @@ public class SkeletonMaster extends RelativeLayout {
 
             skeletonAttribute.setShowSkeleton(typedArray.getBoolean(R.styleable.Skeleton_SK_isShowSkeleton, true));
             skeletonAttribute.setAutoStartAnimation(typedArray.getBoolean(R.styleable.Skeleton_SK_autoStartAnimation, true));
-            skeletonAttribute.setHoldTouchEventsFromChildren(typedArray.getBoolean(R.styleable.Skeleton_SK_isHoldTouchEventsFromChildren, true));
+            skeletonAttribute.setHoldTouchEventsFromChildren(typedArray.getBoolean(R.styleable.Skeleton_SK_isHoldTouchEventsFromChildren, false));
             skeletonAttribute.setColorBackgroundMain(typedArray.getColor(R.styleable.Skeleton_SK_backgroundMainColor, SkeletonAttribute.DEFAULT_COLOR_BACKGROUND_MAIN));
             skeletonAttribute.setColorHighLight(typedArray.getColor(R.styleable.Skeleton_SK_highLightColor, SkeletonAttribute.DEFAULT_COLOR_HIGHLIGHT_GRADIENT));
             skeletonAttribute.setColorBackgroundViews(typedArray.getColor(R.styleable.Skeleton_SK_BackgroundViewsColor, SkeletonAttribute.DEFAULT_COLOR_BACKGROUND_VIEWS));

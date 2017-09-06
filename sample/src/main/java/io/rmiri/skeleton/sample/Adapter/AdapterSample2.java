@@ -77,7 +77,7 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
 
         holder.cardView.setPreventCornerOverlap(false);
 
-//        holder.skeletonGroup.setPosition(position);//just for debug log
+        holder.skeletonGroup.setPosition(position);//just for debug log
 
         if (skeletonDetail.isSkeletonIsOn()) {
             //need show s for 2 cards
@@ -103,6 +103,31 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
 
         //set photo by Picasso lib
         Picasso.with(context).load(cardObj.getPhoto()).into(holder.photoACImgV);
+
+
+//        holder.addToParkingImgBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i("setOnClickListener", "addToParkingImgBtn");
+//            }
+//        });
+//        holder.compareImgBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i("setOnClickListener", "compareImgBtn");
+//            }
+//        });
+//        holder.cardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i("setOnClickListener", "cardView");
+//            }
+//        });  holder.titleTv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i("setOnClickListener", "titleTv");
+//            }
+//        });
 
     }
 
