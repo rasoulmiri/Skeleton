@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import io.rmiri.skeleton.Master.SkeletonDetail;
+import io.rmiri.skeleton.Master.SkeletonConfig;
 import io.rmiri.skeleton.SkeletonGroup;
 import io.rmiri.skeleton.sample.Data.DataObject;
 import io.rmiri.skeleton.sample.R;
@@ -26,13 +26,13 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
 
     private Context context;
     private ArrayList<DataObject> dataObjects = new ArrayList<>();
-    private SkeletonDetail skeletonDetail = new SkeletonDetail();
+    private SkeletonConfig skeletonConfig;
 
-    public AdapterSample2(Context context, ArrayList<DataObject> dataObjects, @Nullable SkeletonDetail skeletonDetail) {
+    public AdapterSample2(Context context, ArrayList<DataObject> dataObjects, @Nullable SkeletonConfig skeletonConfig) {
         this.context = context;
         this.dataObjects = dataObjects;
-        if (skeletonDetail != null) {
-            this.skeletonDetail = skeletonDetail;
+        if (skeletonConfig != null) {
+            this.skeletonConfig = skeletonConfig;
         }
     }
 
@@ -79,7 +79,7 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
 
         holder.skeletonGroup.setPosition(position);//just for debug log
 
-        if (skeletonDetail.isSkeletonIsOn()) {
+        if (skeletonConfig.isSkeletonIsOn()) {
             //need show s for 2 cards
             holder.skeletonGroup.setAutoPlay(true);
             return;
@@ -133,7 +133,7 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
 
     @Override
     public int getItemCount() {
-        if (skeletonDetail.isSkeletonIsOn()) {
+        if (skeletonConfig.isSkeletonIsOn()) {
             // show just 2 card item in recyclerView
             return 2;
         } else {
@@ -150,7 +150,7 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
         this.dataObjects.addAll(dataObjects);
 
         //set false show s
-        skeletonDetail.setSkeletonIsOn(false);
+        skeletonConfig.setSkeletonIsOn(false);
 
         //update items cardView
         notifyDataSetChanged();

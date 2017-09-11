@@ -10,7 +10,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import io.rmiri.skeleton.Master.SkeletonDetail;
+import io.rmiri.skeleton.Master.SkeletonConfig;
 import io.rmiri.skeleton.sample.Adapter.AdapterSample1;
 import io.rmiri.skeleton.sample.Data.DataObject;
 import io.rmiri.skeleton.sample.Data.GeneratesDataFake;
@@ -44,9 +44,8 @@ public class Sample1Activity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         // initial SkeletonDetail and set in adapter
-        SkeletonDetail skeletonDetail = new SkeletonDetail();
-        skeletonDetail.setSkeletonIsOn(true);
-        adapterSample1 = new AdapterSample1(getApplicationContext(), dataObjects, skeletonDetail);
+        SkeletonConfig skeletonConfig = new SkeletonConfig().build();
+        adapterSample1 = new AdapterSample1(getApplicationContext(), dataObjects, skeletonConfig);
 
         //set adapter in recyclerView
         recyclerView.setAdapter(adapterSample1);
