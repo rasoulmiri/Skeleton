@@ -17,6 +17,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.StyleRes;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -203,7 +204,7 @@ public class SkeletonGroup extends SkeletonMaster {
                         int lineNumber = skeletonAttributeChild.getTextShapeLineNumber();
                         if (lineNumber == 0) {
                             lineNumber = (int) ((skeletonAttributeChild.getY2() - skeletonAttributeChild.getY1())
-                                                                / (lineHeight + lineSpaceVertical));
+                                    / (lineHeight + lineSpaceVertical));
                         }
                         CLog.i("line number  " + lineNumber);
                         for (int j = 0; j < lineNumber; j++) {
@@ -296,7 +297,14 @@ public class SkeletonGroup extends SkeletonMaster {
                     case SkeletonAttribute.ANIMATION_TYPE_GRADIENT:
 
                         //draw background total view with alpha
-                        drawBackgroundTotal(canvas, ColorUtils.convertColorToTransparent(skeletonAttribute.getColorBackgroundMain(), 1.0f - AnimationFraction));
+                        // drawBackgroundTotal(canvas, ColorUtils.convertColorToTransparent(skeletonAttribute.getColorBackgroundMain(), 1.0f - AnimationFraction));
+
+
+                        Log.i("++++++++++++", "+++++++++++++++++++++++++++++++++++++++++)))))))))))))" + AnimationFraction + "                                " + AnimationFractionMove);
+                        if ( AnimationFractionMove == 1f || AnimationFractionMove == -1f) {
+                            drawBackgroundTotal(canvas, skeletonAttribute.getColorBackgroundMain());//draw background total
+                            canvas.drawBitmap(bitmapBackgroundElement, 0, 0, paintBackgroundViews);//draw background view
+                        }
 
                         generatePositionGradientFromDirectionAnimation();
                         paintGradient.setShader(new LinearGradient(xStartGradient, yStartGradient, xEndGradient, yEndGradient
@@ -344,7 +352,8 @@ public class SkeletonGroup extends SkeletonMaster {
 
 
             }
-
+//
+//            Log.i("++++++++++++", "+++++++++++++++++++++++++++++++++++++++++)))))))))))))Hasan");
 
         }
 
@@ -507,7 +516,12 @@ public class SkeletonGroup extends SkeletonMaster {
             public void onAnimationUpdate(ValueAnimator animation) {
                 float value = (Float) animation.getAnimatedValue();
                 AnimationFractionMove = value;
+//                if (animation.getAnimatedFraction() >= 0.0f && animation.getAnimatedFraction() <= 1.0f) {
                 AnimationFraction = animation.getAnimatedFraction();
+
+
+                Log.i("+++++++++++", isCanDrawFinishState + "" + AnimationFraction  + "     " + position);
+//                }
                 invalidate();
             }
         });
