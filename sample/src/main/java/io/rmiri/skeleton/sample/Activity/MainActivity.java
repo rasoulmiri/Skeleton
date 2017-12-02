@@ -11,7 +11,7 @@ import io.rmiri.skeleton.sample.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    AppCompatButton sample1Btn, sample2Btn, sample3Btn, sample4Btn;
+    AppCompatButton sample1Btn, sample2Btn, sample3Btn, sample4Btn, sample5Btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,15 +23,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sample2Btn = (AppCompatButton) findViewById(R.id.sample2Btn);
         sample3Btn = (AppCompatButton) findViewById(R.id.sample3Btn);
         sample4Btn = (AppCompatButton) findViewById(R.id.sample4Btn);
+        sample5Btn = (AppCompatButton) findViewById(R.id.sample5Btn);
 
         //set on click listener for buttons
         sample1Btn.setOnClickListener(this);
         sample2Btn.setOnClickListener(this);
         sample3Btn.setOnClickListener(this);
         sample4Btn.setOnClickListener(this);
+        sample5Btn.setOnClickListener(this);
 
 
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.sample4Btn:
                 startActivity(new Intent(this, Sample4Activity.class));
+                break;
+            case R.id.sample5Btn:
+                startActivity(new Intent(this, Sample5Activity.class));
                 break;
         }
     }

@@ -85,7 +85,7 @@
 
 
                 <io.rmiri.skeleton.SkeletonView
-                    android:id="@+id/titlePHG"
+                    android:id="@+id/titleSkeleton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -107,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/titlePHG"
+                    android:layout_below="@+id/titleSkeleton"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="4dp"
                     Skeleton:SK_cornerRadius="10dp">

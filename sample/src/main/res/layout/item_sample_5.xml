@@ -1,0 +1,69 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Skeleton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="-10dp"
+    android:layoutDirection="ltr"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="0dp">
+
+    <io.rmiri.skeleton.SkeletonGroup
+        android:id="@+id/skeletonGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        Skeleton:SK_animationAutoStart="true"
+        Skeleton:SK_animationDirection="LTR"
+        Skeleton:SK_animationDuration="1000"
+        Skeleton:SK_animationFinishType="gradient">
+
+        <RelativeLayout
+            android:id="@+id/headerRly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <io.rmiri.skeleton.SkeletonView
+                android:id="@+id/titleSkeleton"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/arrowACImgBtn"
+                Skeleton:SK_cornerRadius="10dp"
+                Skeleton:SK_paddingLeft="0dp">
+
+                <TextView
+                    android:id="@+id/titleTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_toStartOf="@+id/logoACImgV"
+                    android:gravity="end|center_vertical"
+                    android:lineSpacingExtra="0dp"
+                    android:maxLines="1"
+                    android:text="title"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </io.rmiri.skeleton.SkeletonView>
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/arrowACImgBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@color/transparent"
+                android:padding="8dp"
+                app:srcCompat="@drawable/ic_compare" />
+
+
+        </RelativeLayout>
+    </io.rmiri.skeleton.SkeletonGroup>
+</android.support.v7.widget.CardView>

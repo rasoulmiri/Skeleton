@@ -49,4 +49,12 @@
         android:layout_marginStart="16dp"
         android:text="Sample 4" />
 
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/sample5Btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Sample 5 (new)" />
+
 </LinearLayout>
