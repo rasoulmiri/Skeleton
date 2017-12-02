@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 
 import java.util.ArrayList;
 
@@ -43,13 +45,30 @@ public class Sample5Activity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
 
-        // initial SkeletonDetail and set in adapter
-        SkeletonConfig skeletonConfig = new SkeletonConfig().build();
-        adapterSample5 = new AdapterSample5(getApplicationContext(), dataObjects, skeletonConfig);
 
-        //set adapter in recyclerView
-        recyclerView.setAdapter(adapterSample5);
 
+         ViewTreeObserver vto = recyclerView.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                // initial SkeletonDetail and set in adapter
+                SkeletonConfig skeletonConfig = new SkeletonConfig().build();
+                skeletonConfig.setRecyclerViewHeight(2000);
+                Log.i("+++++++++++++++____++++++", "onCreateViewHolder " + skeletonConfig.getRecyclerViewHeight());
+
+
+                //set adapter in recyclerView
+                adapterSample5 = new AdapterSample5(getApplicationContext(), dataObjects, skeletonConfig);
+                recyclerView.setAdapter(adapterSample5);
+
+
+                ViewTreeObserver obs = recyclerView.getViewTreeObserver();
+                obs.removeGlobalOnLayoutListener(this);
+            }
+        });
+        
+        
 
         //after 5 second get data fake
         new Handler().postDelayed(new Runnable() {
@@ -58,7 +77,7 @@ public class Sample5Activity extends AppCompatActivity {
                 dataObjects = new GeneratesDataFake().genarateDataFake();
                 adapterSample5.addMoreDataAndSkeletonFinish(dataObjects);
             }
-        }, 5000);
+        }, 1200);
     }
 
 

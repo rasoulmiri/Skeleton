@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,8 @@ public class AdapterSample5 extends RecyclerView.Adapter<AdapterSample5.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sample_5, parent, false);
+
+
         return new ViewHolder(view);
     }
 
@@ -52,6 +55,16 @@ public class AdapterSample5 extends RecyclerView.Adapter<AdapterSample5.ViewHold
             cardView = (CardView) itemView.findViewById(R.id.cardView);
             skeletonGroup = (SkeletonGroup) itemView.findViewById(R.id.skeletonGroup);
             titleTv = (TextView) itemView.findViewById(R.id.titleTv);
+
+
+            if (skeletonConfig.getItemHeight() == 0) {
+                cardView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+                skeletonConfig.setItemHeight(cardView.getMeasuredHeight());
+//            recyclerViewHeight = mRecyclerView.getMeasuredHeight();
+
+                Log.i("+++++++++++++++____++++++", "onCreateViewHolder itemHeight333 ========> " + skeletonConfig.getItemHeight() + "    " + skeletonConfig.getRecyclerViewHeight());
+
+            }
 
         }
     }
@@ -82,11 +95,26 @@ public class AdapterSample5 extends RecyclerView.Adapter<AdapterSample5.ViewHold
 
     @Override
     public int getItemCount() {
+//        if (skeletonConfig.isSkeletonIsOn()) {
+//            // show just 2 card item in recyclerView
+//            return 2;
+//        } else {
+//            //normal show card item in recyclerView
+//            return dataObjects.size();
+//        }
+
+
+        Log.i("+++++++++++++++____++++++", "getItemCount");
         if (skeletonConfig.isSkeletonIsOn()) {
-            // show just 2 card item in recyclerView
-            return 2;
+            if (skeletonConfig.getItemHeight() == 0) {
+                Log.i("+++++++++++++++____++++++", "getItemCount" + "1");
+                return 8;
+            } else {
+                Log.i("+++++++++++++++____++++++", "getItemCount" + skeletonConfig.getRecyclerViewHeight() / skeletonConfig.getItemHeight());
+                return (int) skeletonConfig.getRecyclerViewHeight() / skeletonConfig.getItemHeight();
+            }
         } else {
-            //normal show card item in recyclerView
+            Log.i("+++++++++++++++____++++++", "getItemCount  Sizeeeeeeeee" + dataObjects.size());
             return dataObjects.size();
         }
     }
