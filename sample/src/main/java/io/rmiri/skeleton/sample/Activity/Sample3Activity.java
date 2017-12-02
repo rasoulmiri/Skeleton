@@ -29,7 +29,7 @@ public class Sample3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_sample_3);
 
 
-        //toolbar
+        // Toolbar
         ((Toolbar) findViewById(R.id.toolbar)).setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +37,7 @@ public class Sample3Activity extends AppCompatActivity {
             }
         });
 
-        //initial recyclerView
+        // Initial recyclerView
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -51,7 +51,7 @@ public class Sample3Activity extends AppCompatActivity {
         recyclerView.setAdapter(adapterSample3);
 
 
-        //after 5 second get data fake
+        // After 5 second get data fake
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -21,7 +21,7 @@ public class Sample4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sample_4);
 
-        //toolbar
+        // Toolbar
         ((Toolbar) findViewById(R.id.toolbar)).setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

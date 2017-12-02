@@ -2,119 +2,125 @@ package io.rmiri.skeleton.sample.Adapter;
 
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.rmiri.skeleton.Master.SkeletonConfig;
 import io.rmiri.skeleton.SkeletonGroup;
 import io.rmiri.skeleton.sample.Data.DataObject;
 import io.rmiri.skeleton.sample.R;
+import io.rmiri.skeleton.utils.CLog;
 
 
 public class AdapterSample5 extends RecyclerView.Adapter<AdapterSample5.ViewHolder> {
 
     private Context context;
     private ArrayList<DataObject> dataObjects = new ArrayList<>();
-    private SkeletonConfig skeletonConfig;
+    private SkeletonConfig skeletonConfig = new SkeletonConfig().build();
 
-    public AdapterSample5(Context context, ArrayList<DataObject> dataObjects, @Nullable SkeletonConfig skeletonConfig) {
+
+    public AdapterSample5(final Context context, final ArrayList<DataObject> dataObjects, final RecyclerView recyclerView, final isCanInitialSetAdapterListener isCanInitialSetAdapterListener) {
         this.context = context;
         this.dataObjects = dataObjects;
-        if (skeletonConfig != null) {
-            this.skeletonConfig = skeletonConfig;
-        }
+
+        ViewTreeObserver viewTreeObserver = recyclerView.getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                // Initial SkeletonDetail and set in adapter
+                skeletonConfig.setRecyclerViewHeight(recyclerView.getHeight());// Height recyclerView
+
+                View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.item_sample_5, null);
+                view.getRootView().measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+                skeletonConfig.setItemHeight(view.getRootView().getMeasuredHeight());// Height Item
+                skeletonConfig.setNumberItemShow(Math.round(skeletonConfig.getRecyclerViewHeight() / skeletonConfig.getItemHeight()) + 1); // Number item skeleton in adapter
+
+                CLog.i("skeletonConfig.getItemHeight == " + skeletonConfig.getItemHeight()
+                        + "   skeletonConfig.getRecyclerViewHeight  " + skeletonConfig.getRecyclerViewHeight()
+                        + "   skeletonConfig.getNumberItemShow  " + skeletonConfig.getNumberItemShow());
+
+                // Remove ViewTreeObserver
+                ViewTreeObserver obs = recyclerView.getViewTreeObserver();
+                obs.removeGlobalOnLayoutListener(this);
+                isCanInitialSetAdapterListener.isCan();
+            }
+        });
+
+
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sample_5, parent, false);
-
-
         return new ViewHolder(view);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private CardView cardView;
         private SkeletonGroup skeletonGroup;
         private TextView titleTv;
 
-
         ViewHolder(View itemView) {
             super(itemView);
-
-            cardView = (CardView) itemView.findViewById(R.id.cardView);
             skeletonGroup = (SkeletonGroup) itemView.findViewById(R.id.skeletonGroup);
             titleTv = (TextView) itemView.findViewById(R.id.titleTv);
-
-
-            if (skeletonConfig.getItemHeight() == 0) {
-                cardView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-                skeletonConfig.setItemHeight(cardView.getMeasuredHeight());
-//            recyclerViewHeight = mRecyclerView.getMeasuredHeight();
-
-                Log.i("+++++++++++++++____++++++", "onCreateViewHolder itemHeight333 ========> " + skeletonConfig.getItemHeight() + "    " + skeletonConfig.getRecyclerViewHeight());
-
-            }
-
         }
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.cardView.setPreventCornerOverlap(false);
-
-//        holder.skeletonGroup.setPosition(position);//just for debug log
+        holder.skeletonGroup.setPosition(position);//just for debug log
 
         if (skeletonConfig.isSkeletonIsOn()) {
-            //need show s for 2 cards
             holder.skeletonGroup.setAutoPlay(true);
             return;
         } else {
+            holder.skeletonGroup.setAutoPlay(true);
             holder.skeletonGroup.setShowSkeleton(false);
             holder.skeletonGroup.finishAnimation();
         }
 
-        //set data in view
+        // Set data in view
         final DataObject cardObj = dataObjects.get(position);
 
-        holder.titleTv.setText(cardObj.getTitle());
-
+        holder.titleTv.setText(position + " " + cardObj.getTitle());
 
     }
 
     @Override
+    public void onBindViewHolder(ViewHolder holder, int position, List<Object> payloads) {
+        if (payloads != null && !payloads.isEmpty()) {
+            // Just for notifyItemChanged by payload
+            holder.skeletonGroup.setShowSkeleton(false);
+            holder.skeletonGroup.finishAnimation();
+            super.onBindViewHolder(holder, position, payloads);
+        } else {
+            super.onBindViewHolder(holder, position, payloads);
+        }
+    }
+
+    @Override
     public int getItemCount() {
-//        if (skeletonConfig.isSkeletonIsOn()) {
-//            // show just 2 card item in recyclerView
-//            return 2;
-//        } else {
-//            //normal show card item in recyclerView
-//            return dataObjects.size();
-//        }
-
-
-        Log.i("+++++++++++++++____++++++", "getItemCount");
         if (skeletonConfig.isSkeletonIsOn()) {
             if (skeletonConfig.getItemHeight() == 0) {
-                Log.i("+++++++++++++++____++++++", "getItemCount" + "1");
-                return 8;
+                CLog.i("getItemCount ==> getItemHeight() is zero : " + "1");
+                return 1;
             } else {
-                Log.i("+++++++++++++++____++++++", "getItemCount" + skeletonConfig.getRecyclerViewHeight() / skeletonConfig.getItemHeight());
-                return (int) skeletonConfig.getRecyclerViewHeight() / skeletonConfig.getItemHeight();
+                CLog.i("getItemCount ==> getNumberItemShow: " + skeletonConfig.getNumberItemShow());
+                return skeletonConfig.getNumberItemShow();
             }
         } else {
-            Log.i("+++++++++++++++____++++++", "getItemCount  Sizeeeeeeeee" + dataObjects.size());
+            CLog.i("getItemCount ==> dataObjects.size(): " + dataObjects.size());
             return dataObjects.size();
         }
     }
@@ -122,16 +128,22 @@ public class AdapterSample5 extends RecyclerView.Adapter<AdapterSample5.ViewHold
 
     public void addMoreDataAndSkeletonFinish(ArrayList<DataObject> dataObjects) {
 
-        //add new data to dataObjects
+        // Add new data to dataObjects
         this.dataObjects = new ArrayList<>();
         this.dataObjects.addAll(dataObjects);
 
-        //set false show s
+        // Set false show Skeleton
         skeletonConfig.setSkeletonIsOn(false);
 
-        //update items cardView
-        notifyDataSetChanged();
+        // Update data for skeleton
+        for (int i = 0; i < skeletonConfig.getNumberItemShow(); i++) {
+            notifyItemChanged(i, 1);
+        }
+
     }
 
+    public interface isCanInitialSetAdapterListener {
+        public void isCan();
+    }
 
 }

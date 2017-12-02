@@ -14,41 +14,41 @@ public class SkeletonAttribute {
     private boolean isAutoStartAnimation = true;
     private boolean isHoldTouchEventsFromChildren = true;
 
-    private int shapeType; //shape background type
+    private int shapeType; // Shape background type
 
-    /*color*/
+    /* Color*/
     private int colorBackgroundMain;
     private int colorBackgroundViews;
     private int colorHighLight;
 
-    /*animation*/
+    /* Animation*/
     private int animationDuration;
     private int animationDirection;
     private int animationNormalType;
     private int animationFinishType;
 
 
-    /*cornerRadius*/
+    /* CornerRadius*/
     private float cornerRadius;
     private float cornerRadiusTopLeft;
     private float cornerRadiusTopRight;
     private float cornerRadiusBottomLeft;
     private float cornerRadiusBottomLRight;
 
-    /*padding*/
+    /* Padding*/
     private float padding;
     private float paddingTop;
     private float paddingRight;
     private float paddingBottom;
     private float paddingLeft;
 
-    /*special attrs shape type text*/
+    /* Special attrs shape type text*/
     private int textShapeLineNumber;
     private int textShapeLineLastWidth;
     private float textShapeLineHeight;
     private float textShapeLineSpaceVertical;
 
-    /*enum*/
+    /* Enum*/
     public static final int SHAPE_TYPE_RECT = 1;
     public static final int SHAPE_TYPE_OVAL = 2;
     public static final int SHAPE_TYPE_TEXT = 3;
@@ -68,7 +68,7 @@ public class SkeletonAttribute {
     public static final int TEXT_SHAPE_LINE_LAST_WIDTH_QUARTER = 4;
 
 
-    /*default value*/
+    /* Default value*/
     public static final int DEFAULT_COLOR_BACKGROUND_MAIN = android.R.color.transparent;
     public static final int DEFAULT_COLOR_BACKGROUND_VIEWS = Color.parseColor("#EEEEEE");
     public static final int DEFAULT_COLOR_HIGHLIGHT_GRADIENT = Color.parseColor("#DEDEDE");
@@ -91,7 +91,7 @@ public class SkeletonAttribute {
     public SkeletonAttribute() {
     }
     //==============================================================================================
-    /* getter and setter */
+    /* Getter and setter */
 
     public float getX1() {
         return X1;

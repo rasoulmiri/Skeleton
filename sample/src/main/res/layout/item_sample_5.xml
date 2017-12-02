@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         Skeleton:SK_animationAutoStart="true"
         Skeleton:SK_animationDirection="LTR"
-        Skeleton:SK_animationDuration="4000"
+        Skeleton:SK_animationDuration="1000"
         Skeleton:SK_animationFinishType="gradient">
 
         <RelativeLayout

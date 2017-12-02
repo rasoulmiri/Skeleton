@@ -7,7 +7,6 @@ import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,8 +120,6 @@ public class AdapterSample1 extends RecyclerView.Adapter<AdapterSample1.ViewHold
 
     public void addMoreDataAndSkeletonFinish(ArrayList<DataObject> dataObjects) {
 
-
-        Log.i("++++++++++++++++++++++","UPDATEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         //add new data to dataObjects
         this.dataObjects = new ArrayList<>();
         this.dataObjects.addAll(dataObjects);

@@ -58,7 +58,7 @@ public class SkeletonMaster extends RelativeLayout {
 
         CLog.i("SkeletonMaster init  " + position);
 
-        //Attribute
+        // Attribute
         skeletonAttribute = new SkeletonAttribute();
         if (attrs != null) {
 
@@ -76,21 +76,21 @@ public class SkeletonMaster extends RelativeLayout {
             skeletonAttribute.setAnimationFinishType(typedArray.getInt(R.styleable.Skeleton_SK_animationFinishType, SkeletonAttribute.DEFAULT_ANIMATION_TYPE));
             skeletonAttribute.setShapeType(typedArray.getInt(R.styleable.Skeleton_SK_shapeType, SkeletonAttribute.DEFAULT_SHAPE_TYPE));
 
-            //corner Radius
+            // Corner Radius
             skeletonAttribute.setCornerRadius(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_cornerRadius, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
             skeletonAttribute.setCornerRadiusTopLeft(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_cornerRadiusTopLeft, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
             skeletonAttribute.setCornerRadiusTopRight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_cornerRadiusTopRight, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
             skeletonAttribute.setCornerRadiusBottomLeft(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_cornerRadiusBottomLeft, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
             skeletonAttribute.setCornerRadiusBottomLRight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_cornerRadiusBottomLRight, SkeletonAttribute.DEFAULT_CORNER_RADIUS));
 
-            //padding
+            // Padding
             skeletonAttribute.setPadding(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_padding, SkeletonAttribute.DEFAULT_PADDING));
             skeletonAttribute.setPaddingTop(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_paddingTop, SkeletonAttribute.DEFAULT_PADDING));
             skeletonAttribute.setPaddingLeft(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_paddingLeft, SkeletonAttribute.DEFAULT_PADDING));
             skeletonAttribute.setPaddingBottom(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_paddingBottom, SkeletonAttribute.DEFAULT_PADDING));
             skeletonAttribute.setPaddingRight(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_paddingRight, SkeletonAttribute.DEFAULT_PADDING));
 
-            //special attrs shape type text
+            // Special attrs shape type text
             if (skeletonAttribute.getShapeType() == SkeletonAttribute.SHAPE_TYPE_TEXT) {
                 skeletonAttribute.setTextShapeLineNumber(typedArray.getInt(R.styleable.Skeleton_SK_textLineNumber, SkeletonAttribute.DEFAULT_TEXT_SHAPE_LINE));
                 skeletonAttribute.setTextShapeLineLastWidth(typedArray.getInt(R.styleable.Skeleton_SK_textLineLastWidth, SkeletonAttribute.DEFAULT_TEXT_SHAPE_LAST_LINE_WIDTH));
@@ -101,8 +101,7 @@ public class SkeletonMaster extends RelativeLayout {
             typedArray.recycle();
         }
 
-        //set Clickable true for detect onInterceptTouchEvent 
-//        setClickable(true);
+
 
 
     }
@@ -110,17 +109,10 @@ public class SkeletonMaster extends RelativeLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent motionEvent) {
-        /* cancel clickable from children layout
+        /* Cancel clickable from children layout
            isHoldTouchEventsFromChildren default is true, after finish animation is change to false */
-//        CLog.i("SkeletonMaster onInterceptTouchEvent     " + getTag() + "     " + position);
         return skeletonAttribute.isHoldTouchEventsFromChildren() || super.onInterceptTouchEvent(motionEvent);
     }
-//
-//
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent event) {
-//        return skeletonAttribute.isHoldTouchEventsFromChildren();
-//    }
 
 
     public ArrayList<View> getAllChildren(View v) {
@@ -152,7 +144,7 @@ public class SkeletonMaster extends RelativeLayout {
 
 
     //==============================================================================================
-    /* getter and setter */
+    /* Getter and setter */
 
     public SkeletonAttribute getSkeletonAttribute() {
         return skeletonAttribute;

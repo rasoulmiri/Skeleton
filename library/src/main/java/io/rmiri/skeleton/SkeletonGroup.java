@@ -34,10 +34,10 @@ import io.rmiri.skeleton.utils.ColorUtils;
 
 public class SkeletonGroup extends SkeletonMaster {
 
-    private ArrayList<SkeletonAttribute> skeletonAttributesChildren;// array for all children extend from SkeletonView
-    private SkeletonListener skeletonListener; // listener
+    private ArrayList<SkeletonAttribute> skeletonAttributesChildren;// Array for all children extend from SkeletonView
+    private SkeletonListener skeletonListener; // Listener
 
-    /* variable for draw canvas */
+    /* Variable for draw canvas */
     private Paint paintGradient;
     private Paint paintBackgroundViews;
     private Canvas canvasGradientElement;
@@ -46,16 +46,16 @@ public class SkeletonGroup extends SkeletonMaster {
     private Bitmap bitmapBackgroundElement;
     private Path path = new Path();
 
-    /* variable for gradient */
+    /* Variable for gradient */
     private int[] gradientColors; // is 3 colors
     private float xStartGradient, yStartGradient, xEndGradient, yEndGradient;
 
-    /* variable for fraction animation played */
+    /* Variable for fraction animation played */
     private ValueAnimator valueAnimator;
     private float AnimationFractionMove = 0.0f;
     private float AnimationFraction = 0.0f;
 
-    /* variable for checking */
+    /* Variable for checking */
     private boolean isCanDraw = false;
     private boolean isCanDrawFinishState = false;
     private boolean isAnimationPlay = false;
@@ -84,7 +84,7 @@ public class SkeletonGroup extends SkeletonMaster {
     public void init(Context context, @Nullable AttributeSet attrs) {
         super.init(context, attrs);
 
-        //generate color 010 (color one transparent = 0.0 | color two transparent = 1.0 | color three transparent =01.0 )
+        // Generate color 010 (color one transparent = 0.0 | color two transparent = 1.0 | color three transparent =01.0 )
         gradientColors = ColorUtils.generateColorTransparent010(skeletonAttribute.getColorHighLight(), skeletonAttribute.getColorBackgroundViews());
 
     }
@@ -95,7 +95,7 @@ public class SkeletonGroup extends SkeletonMaster {
         super.onLayout(changed, l, t, r, b);
 
         CLog.i("SkeletonGroup onLayout " + position);
-        //add all children extend from SkeletonView
+        // Add all children extend from SkeletonView
         if (skeletonAttributesChildren == null && skeletonAttribute.isShowSkeleton()) {
             CLog.i("SkeletonGroup onLayout and skeletonAttributesChildren == null ... " + position);
             skeletonAttributesChildren = new ArrayList<>();
@@ -104,13 +104,13 @@ public class SkeletonGroup extends SkeletonMaster {
 
                     SkeletonAttribute skeletonAttributeChild = ((SkeletonView) child).getSkeletonAttribute();
 
-                    //set point X1,Y1,X2,Y2
+                    // Set point X1,Y1,X2,Y2
                     float X1 = child.getLeft();
                     float Y1 = child.getTop();
                     float X2 = 0.0f;
                     float Y2 = 0.0f;
 
-                    //calculator X1,X2 to left and top SkeletonGroup view
+                    // Calculator X1,X2 to left and top SkeletonGroup view
                     View parent = (View) child.getParent();
                     while (parent != null && !(parent instanceof SkeletonGroup)) {
                         X1 += parent.getLeft();
@@ -118,7 +118,7 @@ public class SkeletonGroup extends SkeletonMaster {
                         parent = (View) parent.getParent();
                     }
 
-                    //calculator padding size
+                    // Calculator padding size
                     float pTop;
                     float pLeft;
                     float pRight;
@@ -163,8 +163,8 @@ public class SkeletonGroup extends SkeletonMaster {
 
 //            CLog.i("SkeletonGroup dispatchDraw " + position);
 
-            // just once run this code
-            // calculate bound child for draw
+            // Just once run this code
+            // Calculate bound child for draw
             if (paintGradient == null) {
 
                 //paint
@@ -191,11 +191,11 @@ public class SkeletonGroup extends SkeletonMaster {
                         float[] cornerRadius = generateCornerRadius(rectangleRect, skeletonAttributeChild);
                         path.addRoundRect(rectangleRect, cornerRadius, Path.Direction.CW);
                     } else if (skeletonAttributeChild.getShapeType() == SkeletonAttribute.SHAPE_TYPE_OVAL) {
-                        //Oval
+                        // Oval
                         RectF ovalRect = new RectF(skeletonAttributeChild.getX1(), skeletonAttributeChild.getY1(), skeletonAttributeChild.getX2(), skeletonAttributeChild.getY2());
                         path.addOval(ovalRect, Path.Direction.CW);
                     } else if (skeletonAttributeChild.getShapeType() == SkeletonAttribute.SHAPE_TYPE_TEXT) {
-                        //Text
+                        // Text
 
 
                         float lineHeight = skeletonAttributeChild.getTextShapeLineHeight();
@@ -214,31 +214,31 @@ public class SkeletonGroup extends SkeletonMaster {
                             float newX1 = skeletonAttributeChild.getX1();
                             float newX2 = skeletonAttributeChild.getX2();
 
-                            //Y1
+                            // Y1
                             if (j == 0) {
-                                //first line
+                                // First line
                                 newY1 = skeletonAttributeChild.getY1();
                             } else {
-                                //other line
+                                // Other line
                                 newY1 = skeletonAttributeChild.getY1()
                                         + (lineHeight * j) // height children previous
                                         + (lineSpaceVertical * j);// space vertical children previous
                             }
 
-                            //Y2
+                            // Y2
                             newY2 = skeletonAttributeChild.getY1()
                                     + (lineHeight * (j + 1)) // height children previous
                                     + (lineSpaceVertical * j);// space vertical children previous
 
 
-                            //X1,X2 just for last line
+                            // X1,X2 just for last line
                             if (j == lineNumber - 1) {
 
                                 float quarterWidth = (skeletonAttributeChild.getX2() - skeletonAttributeChild.getX1()) / 4;//quarter width 1 line
 
                                 switch (skeletonAttributeChild.getTextShapeLineLastWidth()) {
                                     case SkeletonAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_FULL:
-                                        //no change X1 and X2
+                                        // No change X1 and X2
                                         break;
                                     case SkeletonAttribute.TEXT_SHAPE_LINE_LAST_WIDTH_THREE_QUARTERS:
                                         if (skeletonAttribute.getAnimationDirection() == SkeletonAttribute.ANIMATION_DIRECTION_RTL) {
@@ -264,7 +264,7 @@ public class SkeletonGroup extends SkeletonMaster {
                                 }
                             }
 
-                            //draw text line
+                            // Draw text line
                             rectangleRect = new RectF(newX1, newY1, newX2, newY2);
                             float[] cornerRadius = generateCornerRadius(rectangleRect, skeletonAttributeChild);
                             path.addRoundRect(rectangleRect, cornerRadius, Path.Direction.CW);
@@ -272,7 +272,7 @@ public class SkeletonGroup extends SkeletonMaster {
                     }
 
 
-                    //draw bitmap on canvas
+                    // Draw bitmap on canvas
                     canvasBackgroundElement.drawPath(path, paintBackgroundViews);
                     canvasGradientElement.drawPath(path, paintBackgroundViews);
 
@@ -281,13 +281,13 @@ public class SkeletonGroup extends SkeletonMaster {
             }
 
 
-            //main draw
+            // Main draw
             if (isCanDrawFinishState) {
-                // finish draw
+                // Finish draw
                 switch (skeletonAttribute.getAnimationFinishType()) {
                     case SkeletonAttribute.ANIMATION_TYPE_ALPHA:
 
-                        //draw background total view with alpha
+                        // Draw background total view with alpha
                         drawBackgroundTotal(canvas, ColorUtils.convertColorToTransparent(skeletonAttribute.getColorBackgroundMain(), 1.0f - AnimationFraction));
 
                         paintBackgroundViews.setAlpha((int) (255 * (1.0f - AnimationFraction)));
@@ -296,12 +296,12 @@ public class SkeletonGroup extends SkeletonMaster {
                         break;
                     case SkeletonAttribute.ANIMATION_TYPE_GRADIENT:
 
-                        //draw background total view with alpha
+                        // Draw background total view with alpha
                         // drawBackgroundTotal(canvas, ColorUtils.convertColorToTransparent(skeletonAttribute.getColorBackgroundMain(), 1.0f - AnimationFraction));
 
 
-                        Log.i("++++++++++++", "+++++++++++++++++++++++++++++++++++++++++)))))))))))))" + AnimationFraction + "                                " + AnimationFractionMove);
-                        if ( AnimationFractionMove == 1f || AnimationFractionMove == -1f) {
+//                        Log.i("++++++++++++", "+++++++++++++++++++++++++++++++++++++++++)))))))))))))" + AnimationFraction + "                                " + AnimationFractionMove);
+                        if (AnimationFractionMove == 1f || AnimationFractionMove == -1f) {
                             drawBackgroundTotal(canvas, skeletonAttribute.getColorBackgroundMain());//draw background total
                             canvas.drawBitmap(bitmapBackgroundElement, 0, 0, paintBackgroundViews);//draw background view
                         }
@@ -317,7 +317,7 @@ public class SkeletonGroup extends SkeletonMaster {
                 }
 
             } else {
-                // normal draw
+                // Normal draw
 
                 drawBackgroundTotal(canvas, skeletonAttribute.getColorBackgroundMain());//draw background total
                 canvas.drawBitmap(bitmapBackgroundElement, 0, 0, paintBackgroundViews);//draw background view
@@ -438,11 +438,11 @@ public class SkeletonGroup extends SkeletonMaster {
             isAnimationPlay = true;
             setHoldTouchEventsFromChildren(true); // enable Hold touchEvents from this and children
         } else {
-            // skeletonGroup no child extend from skeletonView
+            // SkeletonGroup no child extend from skeletonView
             return;
         }
 
-        //checking direction animation for generate value star and end move animation fraction
+        // Checking direction animation for generate value star and end move animation fraction
         float valueAnimationMoveFractionStart = 0;
         float valueAnimationMoveFractionEnd = 0;
         switch (skeletonAttribute.getAnimationDirection()) {
@@ -503,7 +503,7 @@ public class SkeletonGroup extends SkeletonMaster {
                     } else {
                         isLastLoopAnimation = false;
                         isCanDrawFinishState = true;
-                        //change color 011 (color one transparent = 0.0 | color two transparent = 1.0 | color three transparent = 1.0 )
+                        // Change color 011 (color one transparent = 0.0 | color two transparent = 1.0 | color three transparent = 1.0 )
                         gradientColors = ColorUtils.generateColorTransparent011(skeletonAttribute.getColorHighLight(), skeletonAttribute.getColorBackgroundViews());
                     }
                 }
@@ -516,19 +516,14 @@ public class SkeletonGroup extends SkeletonMaster {
             public void onAnimationUpdate(ValueAnimator animation) {
                 float value = (Float) animation.getAnimatedValue();
                 AnimationFractionMove = value;
-//                if (animation.getAnimatedFraction() >= 0.0f && animation.getAnimatedFraction() <= 1.0f) {
                 AnimationFraction = animation.getAnimatedFraction();
-
-
-                Log.i("+++++++++++", isCanDrawFinishState + "" + AnimationFraction  + "     " + position);
-//                }
                 invalidate();
             }
         });
 
         valueAnimator.start();
 
-        //fire for listener
+        // Fire for listener
         if (skeletonListener != null)
             skeletonListener.onStartAnimation();
 
@@ -542,16 +537,18 @@ public class SkeletonGroup extends SkeletonMaster {
         isCanDrawFinishState = false;
 
 
-        //remove animation listener
-        valueAnimator.removeAllListeners();
-        valueAnimator.end();
-        valueAnimator.cancel();
+        // Remove animation listener
+        if (valueAnimator != null) {
+            valueAnimator.removeAllListeners();
+            valueAnimator.end();
+            valueAnimator.cancel();
+        }
 
 
-        // disable Hold touchEvents from this and children
+        // Disable Hold touchEvents from this and children
         setHoldTouchEventsFromChildren(false);
 
-        //fire finish state for listener
+        // Fire finish state for listener
         if (skeletonListener != null)
             skeletonListener.onFinishAnimation();
 
@@ -578,8 +575,15 @@ public class SkeletonGroup extends SkeletonMaster {
         skeletonAttribute.setShowSkeleton(isShowSkeleton);
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        finishAnimation();
+        Log.e("+++++++++" ,"onDetachedFromWindow" + position);
+    }
+
     //==============================================================================================
-    /*Listener*/
+    /* Listener */
     public interface SkeletonListener {
         void onStartAnimation();
 

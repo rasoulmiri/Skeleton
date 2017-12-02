@@ -9,13 +9,14 @@ import android.support.v7.widget.RecyclerView;
 public class SkeletonConfig {
 
     private boolean skeletonIsOn = true;
-    private int recyclerViewHeight = 0, itemHeight = 0, numberItemShow = 1;
+    private float recyclerViewHeight = 0, itemHeight = 0;
+    private int numberItemShow = 1;
     private RecyclerView recyclerView;
 
     public SkeletonConfig() {
     }
 
-    public SkeletonConfig(boolean skeletonIsOn, int recyclerViewHeight, int itemHeight, int numberItemShow, RecyclerView recyclerView) {
+    public SkeletonConfig(boolean skeletonIsOn, float recyclerViewHeight, float itemHeight, int numberItemShow, RecyclerView recyclerView) {
         this.skeletonIsOn = skeletonIsOn;
         this.recyclerViewHeight = recyclerViewHeight;
         this.itemHeight = itemHeight;
@@ -32,7 +33,7 @@ public class SkeletonConfig {
         return this;
     }
 
-    public int getRecyclerViewHeight() {
+    public float getRecyclerViewHeight() {
         return recyclerViewHeight;
     }
 
@@ -41,7 +42,7 @@ public class SkeletonConfig {
         return this;
     }
 
-    public int getItemHeight() {
+    public float getItemHeight() {
         return itemHeight;
     }
 
