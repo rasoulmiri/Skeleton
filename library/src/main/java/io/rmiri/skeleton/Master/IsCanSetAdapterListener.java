@@ -5,6 +5,6 @@ package io.rmiri.skeleton.Master;
  */
 
 
-public interface IsCanInitialSetAdapterListener {
-    public  void isCan();
+public interface IsCanSetAdapterListener {
+    public  void isCanSet();
 }

@@ -20,7 +20,7 @@ public abstract class AdapterSkeleton<T,VH extends RecyclerView.ViewHolder> exte
 
     protected Context context;
     protected List<T> items = Collections.emptyList();
-    protected IsCanInitialSetAdapterListener isCanInitialSetAdapterListener;
+    protected IsCanSetAdapterListener isCanSetAdapterListener;
     protected SkeletonConfig skeletonConfig = new SkeletonConfig();
 
 
@@ -45,7 +45,7 @@ public abstract class AdapterSkeleton<T,VH extends RecyclerView.ViewHolder> exte
                 // Remove ViewTreeObserver
                 ViewTreeObserver obs = recyclerView.getViewTreeObserver();
                 obs.removeGlobalOnLayoutListener(this);
-                isCanInitialSetAdapterListener.isCan();
+                isCanSetAdapterListener.isCanSet();
             }
         });
     }
@@ -102,12 +102,12 @@ public abstract class AdapterSkeleton<T,VH extends RecyclerView.ViewHolder> exte
         this.context = context;
     }
 
-    public IsCanInitialSetAdapterListener getIsCanInitialSetAdapterListener() {
-        return isCanInitialSetAdapterListener;
+    public IsCanSetAdapterListener getIsCanSetAdapterListener() {
+        return isCanSetAdapterListener;
     }
 
-    public void setIsCanInitialSetAdapterListener(IsCanInitialSetAdapterListener IsCanInitialSetAdapterListener) {
-        this.isCanInitialSetAdapterListener = IsCanInitialSetAdapterListener;
+    public void setIsCanSetAdapterListener(IsCanSetAdapterListener IsCanSetAdapterListener) {
+        this.isCanSetAdapterListener = IsCanSetAdapterListener;
     }
 
     public SkeletonConfig getSkeletonConfig() {

@@ -10,7 +10,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import io.rmiri.skeleton.Master.IsCanInitialSetAdapterListener;
+import io.rmiri.skeleton.Master.IsCanSetAdapterListener;
 import io.rmiri.skeleton.sample.Adapter.AdapterSample5;
 import io.rmiri.skeleton.sample.Data.DataObject;
 import io.rmiri.skeleton.sample.Data.GeneratesDataFake;
@@ -42,9 +42,9 @@ public class Sample5Activity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         // Set adapter in recyclerView
-        adapterSample5 = new AdapterSample5(getApplicationContext(), dataObjects,recyclerView, new IsCanInitialSetAdapterListener() {
+        adapterSample5 = new AdapterSample5(getApplicationContext(), dataObjects,recyclerView, new IsCanSetAdapterListener() {
             @Override
-            public void isCan() {
+            public void isCanSet() {
                 recyclerView.setAdapter(adapterSample5);
             }
         });

@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import io.rmiri.skeleton.Master.AdapterSkeleton;
-import io.rmiri.skeleton.Master.IsCanInitialSetAdapterListener;
+import io.rmiri.skeleton.Master.IsCanSetAdapterListener;
 import io.rmiri.skeleton.SkeletonGroup;
 import io.rmiri.skeleton.sample.Data.DataObject;
 import io.rmiri.skeleton.sample.R;
@@ -25,10 +25,10 @@ import io.rmiri.skeleton.sample.R;
 public class AdapterSample1 extends AdapterSkeleton<DataObject,AdapterSample1.ViewHolder> {
 
 
-    public AdapterSample1(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanInitialSetAdapterListener isCanInitialSetAdapterListener) {
+    public AdapterSample1(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanSetAdapterListener isCanSetAdapterListener) {
         this.context = context;
         this.items = items;
-        this.isCanInitialSetAdapterListener = isCanInitialSetAdapterListener;
+        this.isCanSetAdapterListener = isCanSetAdapterListener;
 
         measureHeightRecyclerViewAndItem(recyclerView, R.layout.item_sample_1);// Set height
 
