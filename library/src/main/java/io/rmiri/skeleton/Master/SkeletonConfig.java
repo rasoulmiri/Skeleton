@@ -9,9 +9,10 @@ import android.support.v7.widget.RecyclerView;
 public class SkeletonConfig {
 
     private boolean skeletonIsOn = true;
-    private float recyclerViewHeight = 0, itemHeight = 0;
-    private int numberItemShow = 1;
+    private float recyclerViewHeight, itemHeight;
+    private int numberItemShow;
     private RecyclerView recyclerView;
+
 
     public SkeletonConfig() {
     }
@@ -24,8 +25,25 @@ public class SkeletonConfig {
         this.recyclerView = recyclerView;
     }
 
+
     public boolean isSkeletonIsOn() {
         return skeletonIsOn;
+    }
+
+    public float getRecyclerViewHeight() {
+        return recyclerViewHeight;
+    }
+
+    public float getItemHeight() {
+        return itemHeight;
+    }
+
+    public int getNumberItemShow() {
+        return numberItemShow;
+    }
+
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
     }
 
     public SkeletonConfig setSkeletonIsOn(boolean skeletonIsOn) {
@@ -33,26 +51,14 @@ public class SkeletonConfig {
         return this;
     }
 
-    public float getRecyclerViewHeight() {
-        return recyclerViewHeight;
-    }
-
-    public SkeletonConfig setRecyclerViewHeight(int recyclerViewHeight) {
+    public SkeletonConfig setRecyclerViewHeight(float recyclerViewHeight) {
         this.recyclerViewHeight = recyclerViewHeight;
         return this;
     }
 
-    public float getItemHeight() {
-        return itemHeight;
-    }
-
-    public SkeletonConfig setItemHeight(int itemHeight) {
+    public SkeletonConfig setItemHeight(float itemHeight) {
         this.itemHeight = itemHeight;
         return this;
-    }
-
-    public int getNumberItemShow() {
-        return numberItemShow;
     }
 
     public SkeletonConfig setNumberItemShow(int numberItemShow) {
@@ -60,9 +66,6 @@ public class SkeletonConfig {
         return this;
     }
 
-    public RecyclerView getRecyclerView() {
-        return recyclerView;
-    }
 
     public SkeletonConfig setRecyclerView(RecyclerView recyclerView) {
         this.recyclerView = recyclerView;
@@ -72,6 +75,4 @@ public class SkeletonConfig {
     public SkeletonConfig build() {
         return new SkeletonConfig(skeletonIsOn, recyclerViewHeight, itemHeight, numberItemShow, recyclerView);
     }
-
-
 }

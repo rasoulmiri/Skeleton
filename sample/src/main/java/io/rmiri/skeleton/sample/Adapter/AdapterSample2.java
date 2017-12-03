@@ -2,7 +2,6 @@ package io.rmiri.skeleton.sample.Adapter;
 
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.CardView;
@@ -16,24 +15,23 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import io.rmiri.skeleton.Master.SkeletonConfig;
+import io.rmiri.skeleton.Master.AdapterSkeleton;
+import io.rmiri.skeleton.Master.IsCanInitialSetAdapterListener;
 import io.rmiri.skeleton.SkeletonGroup;
 import io.rmiri.skeleton.sample.Data.DataObject;
 import io.rmiri.skeleton.sample.R;
 
 
-public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHolder> {
+public class AdapterSample2 extends AdapterSkeleton<DataObject,AdapterSample2.ViewHolder> {
 
-    private Context context;
-    private ArrayList<DataObject> dataObjects = new ArrayList<>();
-    private SkeletonConfig skeletonConfig;
 
-    public AdapterSample2(Context context, ArrayList<DataObject> dataObjects, @Nullable SkeletonConfig skeletonConfig) {
+    public AdapterSample2(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanInitialSetAdapterListener IsCanInitialSetAdapterListener) {
         this.context = context;
-        this.dataObjects = dataObjects;
-        if (skeletonConfig != null) {
-            this.skeletonConfig = skeletonConfig;
-        }
+        this.items = items;
+        this.isCanInitialSetAdapterListener = IsCanInitialSetAdapterListener;
+
+        measureHeightRecyclerViewAndItem(recyclerView, R.layout.item_sample_2);// Set height
+
     }
 
 
@@ -89,7 +87,7 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
         }
 
         //set data in view
-        final DataObject cardObj = dataObjects.get(position);
+        final DataObject cardObj = items.get(position);
 
         holder.titleTv.setText(cardObj.getTitle());
         holder.descriptionTv.setText(cardObj.getDescription());
@@ -105,56 +103,8 @@ public class AdapterSample2 extends RecyclerView.Adapter<AdapterSample2.ViewHold
         Picasso.with(context).load(cardObj.getPhoto()).into(holder.photoACImgV);
 
 
-//        holder.addToParkingImgBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.i("setOnClickListener", "addToParkingImgBtn");
-//            }
-//        });
-//        holder.compareImgBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.i("setOnClickListener", "compareImgBtn");
-//            }
-//        });
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.i("setOnClickListener", "cardView");
-//            }
-//        });  holder.titleTv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.i("setOnClickListener", "titleTv");
-//            }
-//        });
-
     }
 
-    @Override
-    public int getItemCount() {
-        if (skeletonConfig.isSkeletonIsOn()) {
-            // show just 2 card item in recyclerView
-            return 2;
-        } else {
-            //normal show card item in recyclerView
-            return dataObjects.size();
-        }
-    }
-
-
-    public void addMoreDataAndSkeletonFinish(ArrayList<DataObject> dataObjects) {
-
-        //add new data to dataObjects
-        this.dataObjects = new ArrayList<>();
-        this.dataObjects.addAll(dataObjects);
-
-        //set false show s
-        skeletonConfig.setSkeletonIsOn(false);
-
-        //update items cardView
-        notifyDataSetChanged();
-    }
 
 
 }

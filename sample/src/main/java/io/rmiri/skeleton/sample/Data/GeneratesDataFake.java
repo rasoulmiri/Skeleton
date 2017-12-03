@@ -108,8 +108,8 @@ public class GeneratesDataFake {
         }
     };
 
-    public ArrayList<DataObject> genarateDataFake() {
-        for (int i = 0; i < 15; i++) {
+    public ArrayList<DataObject> generateDataFake() {
+        for (int i = 0; i < 12; i++) {
             DataObject dataObject = new DataObject();
             dataObject.setId(i);
             dataObject.setTitle(titles.get(i));

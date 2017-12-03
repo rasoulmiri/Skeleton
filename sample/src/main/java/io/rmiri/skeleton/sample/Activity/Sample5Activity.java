@@ -10,6 +10,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+import io.rmiri.skeleton.Master.IsCanInitialSetAdapterListener;
 import io.rmiri.skeleton.sample.Adapter.AdapterSample5;
 import io.rmiri.skeleton.sample.Data.DataObject;
 import io.rmiri.skeleton.sample.Data.GeneratesDataFake;
@@ -40,9 +41,8 @@ public class Sample5Activity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-
         // Set adapter in recyclerView
-        adapterSample5 = new AdapterSample5(getApplicationContext(), dataObjects,recyclerView, new AdapterSample5.isCanInitialSetAdapterListener() {
+        adapterSample5 = new AdapterSample5(getApplicationContext(), dataObjects,recyclerView, new IsCanInitialSetAdapterListener() {
             @Override
             public void isCan() {
                 recyclerView.setAdapter(adapterSample5);
@@ -53,10 +53,10 @@ public class Sample5Activity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                dataObjects = new GeneratesDataFake().genarateDataFake();
+                dataObjects = new GeneratesDataFake().generateDataFake();
                 adapterSample5.addMoreDataAndSkeletonFinish(dataObjects);
             }
-        }, 5000); // After 5 second get data fake
+        }, 1000); // After 5 second get data fake
 
     }
 

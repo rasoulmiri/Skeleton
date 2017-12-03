@@ -6,57 +6,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import io.rmiri.skeleton.Master.SkeletonConfig;
+import io.rmiri.skeleton.Master.AdapterSkeleton;
+import io.rmiri.skeleton.Master.IsCanInitialSetAdapterListener;
 import io.rmiri.skeleton.SkeletonGroup;
 import io.rmiri.skeleton.sample.Data.DataObject;
 import io.rmiri.skeleton.sample.R;
-import io.rmiri.skeleton.utils.CLog;
 
 
-public class AdapterSample5 extends RecyclerView.Adapter<AdapterSample5.ViewHolder> {
-
-    private Context context;
-    private ArrayList<DataObject> dataObjects = new ArrayList<>();
-    private SkeletonConfig skeletonConfig = new SkeletonConfig().build();
+public class AdapterSample5 extends AdapterSkeleton<DataObject,AdapterSample5.ViewHolder> {
 
 
-    public AdapterSample5(final Context context, final ArrayList<DataObject> dataObjects, final RecyclerView recyclerView, final isCanInitialSetAdapterListener isCanInitialSetAdapterListener) {
+
+    public AdapterSample5(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanInitialSetAdapterListener IsCanInitialSetAdapterListener) {
         this.context = context;
-        this.dataObjects = dataObjects;
+        this.items = items;
+        this.isCanInitialSetAdapterListener = IsCanInitialSetAdapterListener;
 
-        ViewTreeObserver viewTreeObserver = recyclerView.getViewTreeObserver();
-        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-
-                // Initial SkeletonDetail and set in adapter
-                skeletonConfig.setRecyclerViewHeight(recyclerView.getHeight());// Height recyclerView
-
-                View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.item_sample_5, null);
-                view.getRootView().measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-                skeletonConfig.setItemHeight(view.getRootView().getMeasuredHeight());// Height Item
-                skeletonConfig.setNumberItemShow(Math.round(skeletonConfig.getRecyclerViewHeight() / skeletonConfig.getItemHeight()) + 1); // Number item skeleton in adapter
-
-                CLog.i("skeletonConfig.getItemHeight == " + skeletonConfig.getItemHeight()
-                        + "   skeletonConfig.getRecyclerViewHeight  " + skeletonConfig.getRecyclerViewHeight()
-                        + "   skeletonConfig.getNumberItemShow  " + skeletonConfig.getNumberItemShow());
-
-                // Remove ViewTreeObserver
-                ViewTreeObserver obs = recyclerView.getViewTreeObserver();
-                obs.removeGlobalOnLayoutListener(this);
-                isCanInitialSetAdapterListener.isCan();
-            }
-        });
-
+        measureHeightRecyclerViewAndItem(recyclerView, R.layout.item_sample_5);// Set height
 
     }
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -82,68 +54,18 @@ public class AdapterSample5 extends RecyclerView.Adapter<AdapterSample5.ViewHold
         holder.skeletonGroup.setPosition(position);//just for debug log
 
         if (skeletonConfig.isSkeletonIsOn()) {
-            holder.skeletonGroup.setAutoPlay(true);
             return;
         } else {
-            holder.skeletonGroup.setAutoPlay(true);
             holder.skeletonGroup.setShowSkeleton(false);
             holder.skeletonGroup.finishAnimation();
         }
 
         // Set data in view
-        final DataObject cardObj = dataObjects.get(position);
+        final DataObject cardObj = items.get(position);
 
         holder.titleTv.setText(position + " " + cardObj.getTitle());
 
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position, List<Object> payloads) {
-        if (payloads != null && !payloads.isEmpty()) {
-            // Just for notifyItemChanged by payload
-            holder.skeletonGroup.setShowSkeleton(false);
-            holder.skeletonGroup.finishAnimation();
-            super.onBindViewHolder(holder, position, payloads);
-        } else {
-            super.onBindViewHolder(holder, position, payloads);
-        }
-    }
-
-    @Override
-    public int getItemCount() {
-        if (skeletonConfig.isSkeletonIsOn()) {
-            if (skeletonConfig.getItemHeight() == 0) {
-                CLog.i("getItemCount ==> getItemHeight() is zero : " + "1");
-                return 1;
-            } else {
-                CLog.i("getItemCount ==> getNumberItemShow: " + skeletonConfig.getNumberItemShow());
-                return skeletonConfig.getNumberItemShow();
-            }
-        } else {
-            CLog.i("getItemCount ==> dataObjects.size(): " + dataObjects.size());
-            return dataObjects.size();
-        }
-    }
-
-
-    public void addMoreDataAndSkeletonFinish(ArrayList<DataObject> dataObjects) {
-
-        // Add new data to dataObjects
-        this.dataObjects = new ArrayList<>();
-        this.dataObjects.addAll(dataObjects);
-
-        // Set false show Skeleton
-        skeletonConfig.setSkeletonIsOn(false);
-
-        // Update data for skeleton
-        for (int i = 0; i < skeletonConfig.getNumberItemShow(); i++) {
-            notifyItemChanged(i, 1);
-        }
-
-    }
-
-    public interface isCanInitialSetAdapterListener {
-        public void isCan();
-    }
 
 }

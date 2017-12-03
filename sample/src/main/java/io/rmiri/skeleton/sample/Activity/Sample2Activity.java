@@ -10,7 +10,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import io.rmiri.skeleton.Master.SkeletonConfig;
+import io.rmiri.skeleton.Master.IsCanInitialSetAdapterListener;
 import io.rmiri.skeleton.sample.Adapter.AdapterSample2;
 import io.rmiri.skeleton.sample.Data.DataObject;
 import io.rmiri.skeleton.sample.Data.GeneratesDataFake;
@@ -43,19 +43,20 @@ public class Sample2Activity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
 
-        // initial SkeletonDetail and set in adapter
-        SkeletonConfig skeletonConfig = new SkeletonConfig().build();
-        adapterSample2 = new AdapterSample2(getApplicationContext(), dataObjects, skeletonConfig);
-
-        //set adapter in recyclerView
-        recyclerView.setAdapter(adapterSample2);
+        // Set adapter in recyclerView
+        adapterSample2 = new AdapterSample2(getApplicationContext(), dataObjects,recyclerView, new IsCanInitialSetAdapterListener() {
+            @Override
+            public void isCan() {
+                recyclerView.setAdapter(adapterSample2);
+            }
+        });
 
 
         // After 5 second get data fake
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                dataObjects = new GeneratesDataFake().genarateDataFake();
+                dataObjects = new GeneratesDataFake().generateDataFake();
                 adapterSample2.addMoreDataAndSkeletonFinish(dataObjects);
             }
         }, 5000);
