@@ -43,8 +43,7 @@ public abstract class AdapterSkeleton<T,VH extends RecyclerView.ViewHolder> exte
                         + "   skeletonConfig.getNumberItemShow  " + skeletonConfig.getNumberItemShow());
 
                 // Remove ViewTreeObserver
-                ViewTreeObserver obs = recyclerView.getViewTreeObserver();
-                obs.removeGlobalOnLayoutListener(this);
+                recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 isCanSetAdapterListener.isCanSet();
             }
         });
