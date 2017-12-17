@@ -168,28 +168,27 @@
                     android:layout_toEndOf="@+id/addToParkingImgBtn"
                     Skeleton:SK_cornerRadius="100dp">
 
-                    <TextView
-                        android:id="@+id/priceUnitTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:text="$"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="20sp" />
-
 
                     <TextView
                         android:id="@+id/priceTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:layout_toStartOf="@+id/priceUnitTv"
                         android:gravity="end|center_vertical"
                         android:paddingEnd="8dp"
                         android:text="000"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/priceUnitTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/priceTv"
+                        android:gravity="center"
+                        android:text=" $ "
                         android:textColor="@color/textColorPrimary"
                         android:textSize="20sp" />
 
