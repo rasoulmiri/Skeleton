@@ -99,8 +99,6 @@ public class SkeletonMaster extends RelativeLayout {
                 skeletonAttribute.setTextShapeLineSpaceVertical(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_textLineSpaceVertical, (int) ConverterUnitUtil.dpToPx(getContext(), SkeletonAttribute.DEFAULT_TEXT_SHAPE_LINE_SPACE_VERTICAL)));
             }
 
-
-            Log.i("+++++++++++++++",skeletonAttribute.toString());
             typedArray.recycle();
         }
 
