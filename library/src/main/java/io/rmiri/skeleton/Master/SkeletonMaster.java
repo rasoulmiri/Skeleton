@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.StyleRes;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,6 +99,8 @@ public class SkeletonMaster extends RelativeLayout {
                 skeletonAttribute.setTextShapeLineSpaceVertical(typedArray.getDimensionPixelSize(R.styleable.Skeleton_SK_textLineSpaceVertical, (int) ConverterUnitUtil.dpToPx(getContext(), SkeletonAttribute.DEFAULT_TEXT_SHAPE_LINE_SPACE_VERTICAL)));
             }
 
+
+            Log.i("+++++++++++++++",skeletonAttribute.toString());
             typedArray.recycle();
         }
 

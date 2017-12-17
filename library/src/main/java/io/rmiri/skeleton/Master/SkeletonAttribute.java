@@ -432,4 +432,39 @@ public class SkeletonAttribute {
     public static int getDefaultTextShapeLineSpaceVertical() {
         return DEFAULT_TEXT_SHAPE_LINE_SPACE_VERTICAL;
     }
+
+    @Override
+    public String toString() {
+        return "SkeletonAttribute{" +
+                "X1=" + X1 +
+                ", Y1=" + Y1 +
+                ", X2=" + X2 +
+                ", Y2=" + Y2 +
+                ", isShowSkeleton=" + isShowSkeleton +
+                ", isAutoStartAnimation=" + isAutoStartAnimation +
+                ", isHoldTouchEventsFromChildren=" + isHoldTouchEventsFromChildren +
+                ", shapeType=" + shapeType +
+                ", colorBackgroundMain=" + colorBackgroundMain +
+                ", colorBackgroundViews=" + colorBackgroundViews +
+                ", colorHighLight=" + colorHighLight +
+                ", animationDuration=" + animationDuration +
+                ", animationDirection=" + animationDirection +
+                ", animationNormalType=" + animationNormalType +
+                ", animationFinishType=" + animationFinishType +
+                ", cornerRadius=" + cornerRadius +
+                ", cornerRadiusTopLeft=" + cornerRadiusTopLeft +
+                ", cornerRadiusTopRight=" + cornerRadiusTopRight +
+                ", cornerRadiusBottomLeft=" + cornerRadiusBottomLeft +
+                ", cornerRadiusBottomLRight=" + cornerRadiusBottomLRight +
+                ", padding=" + padding +
+                ", paddingTop=" + paddingTop +
+                ", paddingRight=" + paddingRight +
+                ", paddingBottom=" + paddingBottom +
+                ", paddingLeft=" + paddingLeft +
+                ", textShapeLineNumber=" + textShapeLineNumber +
+                ", textShapeLineLastWidth=" + textShapeLineLastWidth +
+                ", textShapeLineHeight=" + textShapeLineHeight +
+                ", textShapeLineSpaceVertical=" + textShapeLineSpaceVertical +
+                '}';
+    }
 }
