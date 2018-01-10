@@ -27,7 +27,7 @@ Add JitPack repository in your root build.gradle at the end of repositories.
 Add dependency in your app level build.gradle.
 
     dependencies {
-	      compile 'com.github.rasoulmiri:Skeleton:v1.0.7'
+	      compile 'com.github.rasoulmiri:Skeleton:v1.0.9'
 	}
 
 #### Step 2:
