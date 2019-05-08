@@ -18,9 +18,7 @@ import io.rmiri.skeleton.sample.R;
 
 
 public class AdapterSample5 extends AdapterSkeleton<DataObject,AdapterSample5.ViewHolder> {
-
-
-
+    
     public AdapterSample5(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanSetAdapterListener IsCanSetAdapterListener) {
         this.context = context;
         this.items = items;
