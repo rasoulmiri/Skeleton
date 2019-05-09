@@ -1,6 +1,6 @@
 package io.rmiri.skeleton.master;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Rasoul Miri on 8/22/17.
