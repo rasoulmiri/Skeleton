@@ -1,25 +1,26 @@
-package io.rmiri.skeleton.sample.adapter.xml;
+package io.rmiri.skeleton.sample.activity.xml.autoItemsCountXml;
 
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
+import io.rmiri.skeleton.SkeletonViewGroup;
 import io.rmiri.skeleton.master.AdapterSkeleton;
 import io.rmiri.skeleton.master.IsCanSetAdapterListener;
-import io.rmiri.skeleton.SkeletonViewGroup;
-import io.rmiri.skeleton.sample.data.DataObject;
 import io.rmiri.skeleton.sample.R;
+import io.rmiri.skeleton.sample.data.DataObject;
 
 
-public class AdapterAutoItemsCountXml extends AdapterSkeleton<DataObject, AdapterAutoItemsCountXml.ViewHolder> {
+public class AutoItemsCountXmlAdapter extends AdapterSkeleton<DataObject, AutoItemsCountXmlAdapter.ViewHolder> {
 
-    public AdapterAutoItemsCountXml(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanSetAdapterListener IsCanSetAdapterListener) {
+    public AutoItemsCountXmlAdapter(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanSetAdapterListener IsCanSetAdapterListener) {
         this.context = context;
         this.items = items;
         this.isCanSetAdapterListener = IsCanSetAdapterListener;

@@ -1,15 +1,16 @@
-package io.rmiri.skeleton.sample.adapter.java;
+package io.rmiri.skeleton.sample.activity.java.gradientJava;
 
 
 import android.content.Context;
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -28,9 +29,9 @@ import static io.rmiri.skeleton.master.SkeletonModel.SHAPE_TYPE_OVAL;
 import static io.rmiri.skeleton.master.SkeletonModel.SHAPE_TYPE_RECT;
 
 
-public class AdapterGradientJava extends AdapterSkeleton<DataObject, AdapterGradientJava.ViewHolder> {
+public class GradientJavaAdapter extends AdapterSkeleton<DataObject, GradientJavaAdapter.ViewHolder> {
 
-    public AdapterGradientJava(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanSetAdapterListener isCanSetAdapterListener) {
+    public GradientJavaAdapter(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanSetAdapterListener isCanSetAdapterListener) {
         this.context = context;
         this.items = items;
         this.isCanSetAdapterListener = isCanSetAdapterListener;

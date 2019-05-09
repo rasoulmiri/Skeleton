@@ -18,13 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.xml.GradientXmlActivity"/>
-        <activity android:name=".activity.xml.Fade1XmlActivity"/>
-        <activity android:name=".activity.xml.FadeXml2Activity"/>
-        <activity android:name=".activity.xml.ShapeXmlActivity"/>
-        <activity android:name=".activity.xml.AutoItemsCountXmlActivity"/>
-        <activity android:name=".activity.java.GradientJavaActivity"/>
-        <activity android:name=".activity.java.AddViewsByJavaActivity"/>
+        <activity android:name=".activity.xml.gradientXml.GradientXmlActivity"/>
+        <activity android:name=".activity.xml.fade1Xml.Fade1XmlActivity"/>
+        <activity android:name=".activity.xml.fade2Xml.FadeXml2Activity"/>
+        <activity android:name=".activity.xml.shapeXml.ShapeXmlActivity"/>
+        <activity android:name=".activity.xml.autoItemsCountXml.AutoItemsCountXmlActivity"/>
+        <activity android:name=".activity.java.gradientJava.GradientJavaActivity"/>
+        <activity android:name=".activity.java.addViewsByJava.AddViewsByJavaActivity"/>
     </application>
 
 </manifest>

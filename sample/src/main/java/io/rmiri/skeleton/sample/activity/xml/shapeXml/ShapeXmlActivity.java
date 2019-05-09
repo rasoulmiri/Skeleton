@@ -1,11 +1,12 @@
-package io.rmiri.skeleton.sample.activity.xml;
+package io.rmiri.skeleton.sample.activity.xml.shapeXml;
 
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import io.rmiri.skeleton.SkeletonViewGroup;
 import io.rmiri.skeleton.sample.R;

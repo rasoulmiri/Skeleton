@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import io.rmiri.skeleton.sample.R;
-import io.rmiri.skeleton.sample.activity.java.AddViewsByJavaActivity;
-import io.rmiri.skeleton.sample.activity.java.GradientJavaActivity;
-import io.rmiri.skeleton.sample.activity.xml.AutoItemsCountXmlActivity;
-import io.rmiri.skeleton.sample.activity.xml.Fade1XmlActivity;
-import io.rmiri.skeleton.sample.activity.xml.FadeXml2Activity;
-import io.rmiri.skeleton.sample.activity.xml.GradientXmlActivity;
-import io.rmiri.skeleton.sample.activity.xml.ShapeXmlActivity;
+import io.rmiri.skeleton.sample.activity.java.addViewsByJava.AddViewsByJavaActivity;
+import io.rmiri.skeleton.sample.activity.java.gradientJava.GradientJavaActivity;
+import io.rmiri.skeleton.sample.activity.xml.autoItemsCountXml.AutoItemsCountXmlActivity;
+import io.rmiri.skeleton.sample.activity.xml.fade1Xml.Fade1XmlActivity;
+import io.rmiri.skeleton.sample.activity.xml.fade2Xml.FadeXml2Activity;
+import io.rmiri.skeleton.sample.activity.xml.gradientXml.GradientXmlActivity;
+import io.rmiri.skeleton.sample.activity.xml.shapeXml.ShapeXmlActivity;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

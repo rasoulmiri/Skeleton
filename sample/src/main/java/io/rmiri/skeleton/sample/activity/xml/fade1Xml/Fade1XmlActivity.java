@@ -1,32 +1,32 @@
-package io.rmiri.skeleton.sample.activity.xml;
+package io.rmiri.skeleton.sample.activity.xml.fade1Xml;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-import android.view.View;
 
 import java.util.ArrayList;
 
 import io.rmiri.skeleton.master.IsCanSetAdapterListener;
-import io.rmiri.skeleton.sample.adapter.xml.AdapterGradientXml;
+import io.rmiri.skeleton.sample.R;
 import io.rmiri.skeleton.sample.data.DataObject;
 import io.rmiri.skeleton.sample.data.GeneratesDataFake;
-import io.rmiri.skeleton.sample.R;
 
 
-public class GradientXmlActivity extends AppCompatActivity {
+public class Fade1XmlActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private AdapterGradientXml adapterGradientXml;
+    private FadeXml1Adapter fadeXml1Adapter;
     private ArrayList<DataObject> dataObjects = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gradient_xml);
+        setContentView(R.layout.activity_fade_1_xml);
 
 
         // Toolbar
@@ -44,10 +44,10 @@ public class GradientXmlActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         // Set adapter in recyclerView
-        adapterGradientXml = new AdapterGradientXml(getApplicationContext(), dataObjects,recyclerView, new IsCanSetAdapterListener() {
+        fadeXml1Adapter = new FadeXml1Adapter(getApplicationContext(), dataObjects,recyclerView, new IsCanSetAdapterListener() {
             @Override
             public void isCanSet() {
-                recyclerView.setAdapter(adapterGradientXml);
+                recyclerView.setAdapter(fadeXml1Adapter);
             }
         });
 
@@ -57,7 +57,7 @@ public class GradientXmlActivity extends AppCompatActivity {
             @Override
             public void run() {
                 dataObjects = new GeneratesDataFake().generateDataFake();
-                adapterGradientXml.addMoreDataAndSkeletonFinish(dataObjects);
+                fadeXml1Adapter.addMoreDataAndSkeletonFinish(dataObjects);
             }
         }, 5000);
     }

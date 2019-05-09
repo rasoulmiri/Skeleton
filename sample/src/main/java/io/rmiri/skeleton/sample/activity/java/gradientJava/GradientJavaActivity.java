@@ -1,32 +1,32 @@
-package io.rmiri.skeleton.sample.activity.xml;
+package io.rmiri.skeleton.sample.activity.java.gradientJava;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-import android.view.View;
 
 import java.util.ArrayList;
 
 import io.rmiri.skeleton.master.IsCanSetAdapterListener;
-import io.rmiri.skeleton.sample.adapter.xml.AdapterAutoItemsCountXml;
+import io.rmiri.skeleton.sample.R;
 import io.rmiri.skeleton.sample.data.DataObject;
 import io.rmiri.skeleton.sample.data.GeneratesDataFake;
-import io.rmiri.skeleton.sample.R;
 
 
-public class AutoItemsCountXmlActivity extends AppCompatActivity {
+public class GradientJavaActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private AdapterAutoItemsCountXml adapterAutoItemsCountXml;
+    private GradientJavaAdapter gradientJavaAdapter;
     private ArrayList<DataObject> dataObjects = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_auto_items_count_xml);
+        setContentView(R.layout.activity_gradient_java);
 
         // Toolbar
         ((Toolbar) findViewById(R.id.toolbar)).setNavigationOnClickListener(new View.OnClickListener() {
@@ -40,24 +40,25 @@ public class AutoItemsCountXmlActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setHasFixedSize(true);
 
         // Set adapter in recyclerView
-        adapterAutoItemsCountXml = new AdapterAutoItemsCountXml(getApplicationContext(), dataObjects,recyclerView, new IsCanSetAdapterListener() {
+        gradientJavaAdapter = new GradientJavaAdapter(getApplicationContext(), dataObjects, recyclerView, new IsCanSetAdapterListener() {
             @Override
             public void isCanSet() {
-                recyclerView.setAdapter(adapterAutoItemsCountXml);
+                recyclerView.setAdapter(gradientJavaAdapter);
             }
         });
+
 
         // After 5 second get data fake
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 dataObjects = new GeneratesDataFake().generateDataFake();
-                adapterAutoItemsCountXml.addMoreDataAndSkeletonFinish(dataObjects);
+                gradientJavaAdapter.addMoreDataAndSkeletonFinish(dataObjects);
             }
-        }, 1000); // After 5 second get data fake
-
+        }, 5000);
     }
 
 

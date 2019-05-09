@@ -1,15 +1,16 @@
-package io.rmiri.skeleton.sample.adapter.xml;
+package io.rmiri.skeleton.sample.activity.xml.gradientXml;
 
 
 import android.content.Context;
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -22,22 +23,22 @@ import io.rmiri.skeleton.sample.R;
 import io.rmiri.skeleton.sample.data.DataObject;
 
 
-public class AdapterFadeXml1 extends AdapterSkeleton<DataObject, AdapterFadeXml1.ViewHolder> {
+public class GradientXmlAdapter extends AdapterSkeleton<DataObject, GradientXmlAdapter.ViewHolder> {
 
 
-    public AdapterFadeXml1(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanSetAdapterListener IsCanSetAdapterListener) {
+    public GradientXmlAdapter(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanSetAdapterListener isCanSetAdapterListener) {
         this.context = context;
         this.items = items;
-        this.isCanSetAdapterListener = IsCanSetAdapterListener;
+        this.isCanSetAdapterListener = isCanSetAdapterListener;
 
-        measureHeightRecyclerViewAndItem(recyclerView, R.layout.item_fade_xml_1);// Set height
+        measureHeightRecyclerViewAndItem(recyclerView, R.layout.item_gradient_xml);// Set height
 
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fade_xml_1, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_gradient_xml, parent, false);
         return new ViewHolder(view);
     }
 
@@ -75,11 +76,9 @@ public class AdapterFadeXml1 extends AdapterSkeleton<DataObject, AdapterFadeXml1
 
         holder.cardView.setPreventCornerOverlap(false);
 
-        holder.skeletonViewGroup.setPosition(position);//just for debug log
+//        holder.skeletonGroup.setPosition(position);//just for debug log
 
         if (skeletonConfig.isSkeletonIsOn()) {
-            // Need show skeletonGroup for 2 cards
-            holder.skeletonViewGroup.setAutoPlay(true);
             return;
         } else {
             holder.skeletonViewGroup.setShowSkeleton(false);
@@ -102,8 +101,8 @@ public class AdapterFadeXml1 extends AdapterSkeleton<DataObject, AdapterFadeXml1
         // Set photo by Picasso lib
         Picasso.with(context).load(cardObj.getPhoto()).into(holder.photoACImgV);
 
-
     }
+
 
 
 }

@@ -1,10 +1,11 @@
 package io.rmiri.skeleton.master;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +23,6 @@ public abstract class AdapterSkeleton<T,VH extends RecyclerView.ViewHolder> exte
     protected List<T> items = Collections.emptyList();
     protected IsCanSetAdapterListener isCanSetAdapterListener;
     protected SkeletonConfig skeletonConfig = new SkeletonConfig();
-
 
     protected void measureHeightRecyclerViewAndItem(final RecyclerView recyclerView, final int idLayout) {
         ViewTreeObserver viewTreeObserver = recyclerView.getViewTreeObserver();

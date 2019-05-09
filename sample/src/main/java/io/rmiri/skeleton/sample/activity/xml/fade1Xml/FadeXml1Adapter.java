@@ -1,44 +1,44 @@
-package io.rmiri.skeleton.sample.adapter.xml;
+package io.rmiri.skeleton.sample.activity.xml.fade1Xml;
 
 
 import android.content.Context;
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import io.rmiri.skeleton.SkeletonViewGroup;
 import io.rmiri.skeleton.master.AdapterSkeleton;
 import io.rmiri.skeleton.master.IsCanSetAdapterListener;
-import io.rmiri.skeleton.SkeletonViewGroup;
-import io.rmiri.skeleton.sample.data.DataObject;
 import io.rmiri.skeleton.sample.R;
+import io.rmiri.skeleton.sample.data.DataObject;
 
 
-public class AdapterFadeXml2 extends AdapterSkeleton<DataObject, AdapterFadeXml2.ViewHolder> {
+public class FadeXml1Adapter extends AdapterSkeleton<DataObject, FadeXml1Adapter.ViewHolder> {
 
 
-
-    public AdapterFadeXml2(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanSetAdapterListener IsCanSetAdapterListener) {
+    public FadeXml1Adapter(final Context context, final ArrayList<DataObject> items, final RecyclerView recyclerView, final IsCanSetAdapterListener IsCanSetAdapterListener) {
         this.context = context;
         this.items = items;
         this.isCanSetAdapterListener = IsCanSetAdapterListener;
 
-        measureHeightRecyclerViewAndItem(recyclerView, R.layout.item_fade_xml_2);// Set height
+        measureHeightRecyclerViewAndItem(recyclerView, R.layout.item_fade_xml_1);// Set height
 
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fade_xml_2, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fade_xml_1, parent, false);
         return new ViewHolder(view);
     }
 
@@ -76,10 +76,10 @@ public class AdapterFadeXml2 extends AdapterSkeleton<DataObject, AdapterFadeXml2
 
         holder.cardView.setPreventCornerOverlap(false);
 
-//        holder.skeletonGroup.setPosition(position);//just for debug log
+        holder.skeletonViewGroup.setPosition(position);//just for debug log
 
         if (skeletonConfig.isSkeletonIsOn()) {
-            //need show s for 2 cards
+            // Need show skeletonGroup for 2 cards
             holder.skeletonViewGroup.setAutoPlay(true);
             return;
         } else {
@@ -103,9 +103,8 @@ public class AdapterFadeXml2 extends AdapterSkeleton<DataObject, AdapterFadeXml2
         // Set photo by Picasso lib
         Picasso.with(context).load(cardObj.getPhoto()).into(holder.photoACImgV);
 
+
     }
-
-
 
 
 }
