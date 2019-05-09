@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Skeleton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+        app:title="Skeleton"
+        app:titleTextColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Different types of shapes"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <io.rmiri.skeleton.SkeletonViewGroup
+        android:id="@+id/skeletonGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        Skeleton:SK_BackgroundViewsColor="#EEEEEE"
+        Skeleton:SK_animationAutoStart="true"
+        Skeleton:SK_animationDirection="LTR"
+        Skeleton:SK_animationDuration="1000"
+        Skeleton:SK_animationFinishType="none"
+        Skeleton:SK_animationNormalType="alpha"
+        Skeleton:SK_backgroundMainColor="@android:color/transparent"
+        Skeleton:SK_highLightColor="#DEDEDE">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--Rect-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="top|start"
+                    android:text="Rect" />
+
+                <io.rmiri.skeleton.SkeletonView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    Skeleton:SK_shapeType="rect">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="start|center_vertical"
+                        android:text="Title"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="20sp" />
+                </io.rmiri.skeleton.SkeletonView>
+            </LinearLayout>
+            <!--Oval-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="top|start"
+                    android:text="Oval" />
+
+                <io.rmiri.skeleton.SkeletonView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    Skeleton:SK_shapeType="oval">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:padding="8dp"
+                        app:srcCompat="@drawable/ic_compare" />
+                </io.rmiri.skeleton.SkeletonView>
+            </LinearLayout>
+            <!--Text-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="top|start"
+                    android:text="Text" />
+
+                <io.rmiri.skeleton.SkeletonView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    Skeleton:SK_shapeType="text"
+                    Skeleton:SK_textLineHeight="16dp"
+                    Skeleton:SK_textLineLastWidth="threeQuarters"
+                    Skeleton:SK_textLineNumber="5"
+                    Skeleton:SK_textLineSpaceVertical="4dp">
+
+                    <TextView
+                        android:id="@+id/textTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="start|center_vertical"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="14sp" />
+                </io.rmiri.skeleton.SkeletonView>
+            </LinearLayout>
+        </LinearLayout>
+    </io.rmiri.skeleton.SkeletonViewGroup>
+</LinearLayout>

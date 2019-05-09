@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+        app:title="Skeleton"
+        app:titleTextColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:text="Different types of add view to skeleton"
+        android:textSize="16sp" />
+    <!--Simple-->
+    <RelativeLayout
+        android:id="@+id/mainLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="top|start"
+            android:text="Simple" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_toRightOf="@+id/tv1"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_compare" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_toRightOf="@+id/btn1"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_compare" />
+    </RelativeLayout>
+    <!--Start and End View-->
+    <RelativeLayout
+        android:id="@+id/mainLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="top|start"
+            android:text="Start and End View" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_toRightOf="@+id/tv2"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_compare" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_toRightOf="@+id/btn3"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_compare" />
+    </RelativeLayout>
+    <!--Custom width and height-->
+    <RelativeLayout
+        android:id="@+id/mainLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="top|start"
+            android:text="Custom width and height" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_toRightOf="@+id/tv3"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_compare" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_toRightOf="@+id/btn5"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_compare" />
+    </RelativeLayout>
+    <!--MatchParent-->
+    <RelativeLayout
+        android:id="@+id/mainLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv4"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="top|start"
+            android:text="Match View" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_toRightOf="@+id/tv4"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_compare" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_toRightOf="@+id/btn7"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_compare" />
+    </RelativeLayout>
+</LinearLayout>

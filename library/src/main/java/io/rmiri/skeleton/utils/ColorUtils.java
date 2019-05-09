@@ -18,7 +18,6 @@ public class ColorUtils {
         return new int[]{colorOutTransparent, colorInner, colorOut};
     }
 
-
     public static int convertColorToTransparent(int color, float ratio) {
         int newColor ;
         int alpha = Math.round(Color.alpha(color) * ratio);

@@ -9,7 +9,7 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.StyleRes;
 import android.util.AttributeSet;
 
-import io.rmiri.skeleton.Master.SkeletonMaster;
+import io.rmiri.skeleton.master.SkeletonMaster;
 
 
 /**

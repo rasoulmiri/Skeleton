@@ -125,7 +125,7 @@ Nothing really! Just build your app, watch the magic happen ;) .
 # Configure XML
 
 ### SkeletonGroup
- * **SK_animationAutoStart:** true or false | defult value true
+ * **SK_animationAutoStart:** true or false | default value true
  * **SK_animationDuration:** time animation | default 1000 millisecond
  * **SK_animationDirection:** RTL,LTR,BTT,TTB | default value is LTR
  * **SK_animationNormalType:** none,alpha,gradient | default value is gradient
@@ -149,7 +149,7 @@ Nothing really! Just build your app, watch the magic happen ;) .
  * **SK_paddingBottom**
  * **SK_textLineNumber:** just use for shape type text  | default value is 3
  * **SK_textLineLastWidth:** full, threeQuarters, half, quarter | default value is threeQuarters
- * **SK_textLineHeight:** hieght of line | defualt value is 24dp
+ * **SK_textLineHeight:** height of line | default value is 24dp
  * **SK_textLineSpaceVertical:** space vertical between lines | default value is threeQuarters 4dp
  
  # Configure Java

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -13,48 +12,63 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:title="Skeleton Sample"
+        app:title="Skeleton"
         app:titleTextColor="@android:color/white" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/sample1Btn"
+        android:id="@+id/sampleGradientXmlBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Sample 1" />
+        android:layout_marginEnd="16dp"
+        android:text="Sample Gradient (XML)" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/sample2Btn"
+        android:id="@+id/sampleFadeXml1Btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="Sample 2" />
+        android:layout_marginEnd="16dp"
+        android:text="Sample Fade 1 (XML)" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/sample3Btn"
+        android:id="@+id/sampleFadeXml2Btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="Sample 3" />
+        android:layout_marginEnd="16dp"
+        android:text="Sample Fade 2 (XML)" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/sample4Btn"
+        android:id="@+id/sampleShapeXmlBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="Sample 4" />
+        android:layout_marginEnd="16dp"
+        android:text="Sample Shape (XML)" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/sample5Btn"
+        android:id="@+id/sampleAutoItemsCountXmlBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="Sample 5 (new)" />
+        android:layout_marginEnd="16dp"
+        android:text="Sample Auto Items Count(XML)(new)" />
 
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/sampleGradientJavaBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Sample Gradient (JAVA) (new)" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/sampleAddViewsByJavaBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Sample Add View (JAVA) (new)" />
 </LinearLayout>
