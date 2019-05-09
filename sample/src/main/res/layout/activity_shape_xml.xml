@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     Skeleton:SK_shapeType="oval">
 
-                    <androidx.appcompat.widget.AppCompatImageButton
+                    <android.support.v7.widget.AppCompatImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
