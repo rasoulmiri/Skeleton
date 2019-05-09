@@ -13,16 +13,23 @@ public class SkeletonConfig {
     private float recyclerViewHeight, itemHeight;
     private int numberItemShow;
     private RecyclerView recyclerView;
+    private int layoutSkeleton;
+    private int measureItem;
+
+    public static final int SKELETON_MESARE_ITEM_MANUAL = 0;
+    public static final int SKELETON_MESARE_ITEM_AUTOMATIC = 1;
 
     public SkeletonConfig() {
     }
 
-    public SkeletonConfig(boolean skeletonIsOn, float recyclerViewHeight, float itemHeight, int numberItemShow, RecyclerView recyclerView) {
+    public SkeletonConfig(boolean skeletonIsOn, float recyclerViewHeight, float itemHeight, int numberItemShow, RecyclerView recyclerView, int layoutSkeleton, int measureItem) {
         this.skeletonIsOn = skeletonIsOn;
         this.recyclerViewHeight = recyclerViewHeight;
         this.itemHeight = itemHeight;
         this.numberItemShow = numberItemShow;
         this.recyclerView = recyclerView;
+        this.layoutSkeleton = layoutSkeleton;
+        this.measureItem = measureItem;
     }
 
     public boolean isSkeletonIsOn() {
@@ -43,6 +50,14 @@ public class SkeletonConfig {
 
     public RecyclerView getRecyclerView() {
         return recyclerView;
+    }
+
+    public int getLayoutSkeleton() {
+        return layoutSkeleton;
+    }
+
+    public int getMeasureItem() {
+        return measureItem;
     }
 
     public SkeletonConfig setSkeletonIsOn(boolean skeletonIsOn) {
@@ -70,7 +85,17 @@ public class SkeletonConfig {
         return this;
     }
 
+    public SkeletonConfig setLayoutSkeleton(int layoutSkeleton) {
+        this.layoutSkeleton = layoutSkeleton;
+        return this;
+    }
+
+    public SkeletonConfig setMeasureItem(int measureItem) {
+        this.measureItem = measureItem;
+        return this;
+    }
+
     public SkeletonConfig build() {
-        return new SkeletonConfig(skeletonIsOn, recyclerViewHeight, itemHeight, numberItemShow, recyclerView);
+        return new SkeletonConfig(skeletonIsOn, recyclerViewHeight, itemHeight, numberItemShow, recyclerView, layoutSkeleton, measureItem);
     }
 }
