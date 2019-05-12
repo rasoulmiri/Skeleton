@@ -12,8 +12,7 @@ See [demo project](https://github.com/rasoulmiri/Skeleton/tree/master/sample)
 See [demo APK](https://github.com/rasoulmiri/Skeleton/blob/master/demoFile/sample.apk)
 <br/>
 
-## Usage XML:
-#### Step 1:
+## Setup :
 
 Add JitPack repository in your root build.gradle at the end of repositories.
 
@@ -30,12 +29,17 @@ Add dependency in your app level build.gradle.
 	      compile 'com.github.rasoulmiri:Skeleton:v1.1.4'
 	}
 
-#### Step 2:
+
+
+
+## Usage XML:
+
+#### Step 1:
 add name space on top layout
 ```xml
 xmlns:Skeleton="http://schemas.android.com/apk/res-auto" 
 ```
-#### Step 3:
+#### Step 2:
 use SkeletonGroup and SkeletonView in layout 
 ```xml
 <io.rmiri.skeleton.SkeletonGroup
