@@ -12,7 +12,7 @@ See [demo project](https://github.com/rasoulmiri/Skeleton/tree/master/sample)
 See [demo APK](https://github.com/rasoulmiri/Skeleton/blob/master/demoFile/sample.apk)
 <br/>
 
-## Usage:
+## Usage XML:
 #### Step 1:
 
 Add JitPack repository in your root build.gradle at the end of repositories.
@@ -27,7 +27,7 @@ Add JitPack repository in your root build.gradle at the end of repositories.
 Add dependency in your app level build.gradle.
 
     dependencies {
-	      compile 'com.github.rasoulmiri:Skeleton:v1.0.9'
+	      compile 'com.github.rasoulmiri:Skeleton:v1.1.4'
 	}
 
 #### Step 2:
@@ -152,17 +152,145 @@ Nothing really! Just build your app, watch the magic happen ;) .
  * **SK_textLineHeight:** height of line | default value is 24dp
  * **SK_textLineSpaceVertical:** space vertical between lines | default value is threeQuarters 4dp
  
- # Configure Java
  
+ ## Usage Java:
+ 
+ #### Step 1:
+ Create SkeletonViewGroup
  ```java
- skeletonGroup.setAutoPlay(true);
- skeletonGroup.setShowSkeleton(true);
- skeletonGroup.startAnimation();
- skeletonGroup.finishAnimation();
+ SkeletonViewGroup skeletonViewGroup = new SkeletonViewGroup(context);
+ ```
+ 
+ #### Step 2:
+ Create ArrayList<SkeletonModel> for keep views config
+ ```java
+ ArrayList<SkeletonModel> skeletonModels = new ArrayList<>();
+ ```
+	
+ #### Step 3:
+ Add views to skeletonModels
+ You should add views to skeleton models by 3 ways.
+
+Way 1: Defined by 1 view
+- setChildView(view)
+```java
+skeletonModels.add(new SkeletonModelBuilder()
+              .setChildView(view1)
+              .build())
+```
+		    
+Way 2: Defined by 1 view and custom width and height
+- setChildView(view)
+- setCustomWidth(float)
+- setCustomHeigh(float)
+```java
+skeletonModels.add(new SkeletonModelBuilder()
+              .setChildView(view1)
+              .setCustomWidth(ConverterUnitUtil.dpToPx(getApplicationContext(), 140f))
+              .setCustomHeight(ConverterUnitUtil.dpToPx(getApplicationContext(), 50f))
+              .build());
+```
+
+Way 3: Defined by 1 view and fill parent
+- setChildView(view)
+- setIsMatchViewBoolean(boolean)
+```java
+skeletonModels.add(new SkeletonModelBuilder()
+              .setChildView(view1)
+              .setIsMatchViewBoolean(true)
+              .build());
+```
+
+Way 4: Defined by 2 views (draw from left-top startView to right-bottom endView)
+- setStartView(view) 
+- setEndView(view)
+```java
+skeletonModels.add(new SkeletonModelBuilder()
+              .setStartView(view1)
+              .setEndView(view2)
+              .build());
+```
+
+ #### Step 4:
+ Add models to skeletonViewGroup
+```java
+skeletonViewGroup.setSkeletonModels(skeletonModels);
+```
+
+ #### Step 5:
+  Add SkeletonViewGroup to layout
+```java
+ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+           ViewGroup.LayoutParams.MATCH_PARENT,
+           ViewGroup.LayoutParams.MATCH_PARENT);
+mainLayoutExample.addView(skeletonViewGroup, layoutParams);
+```
+  
+ #### Final step
+ Nothing really! Just build your app, watch the magic happen ;) .
+ 
+ Example:
+ 
+```java
+SkeletonViewGroup skeletonViewGroup = new SkeletonViewGroup(getApplicationContext());
+ArrayList<SkeletonModel> skeletonModels = new ArrayList<>();
+
+// Add view 
+skeletonModels.add(new SkeletonModelBuilder()
+        .setChildView(btn1)
+        .setIsMatchViewBoolean(true) //MatchView
+        .build());
+
+skeletonModels.add(new SkeletonModelBuilder()
+        .setStartView(btn2) // AddView start
+        .setEndView(btn3)// AddView end
+        .build());
+		
+skeletonModels.add(new SkeletonModelBuilder()
+        .setChildView(btn4)// AddView
+        .setCustomWidth(ConverterUnitUtil.dpToPx(getApplicationContext(), 140f)) // CustomWidth
+        .setCustomHeight(ConverterUnitUtil.dpToPx(getApplicationContext(), 50f)) // CustomHeight
+        .build());
+
+skeletonViewGroup.setSkeletonModels(skeletonModels);
+
+// Add SkeletonViewGroup
+ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(
+         ViewGroup.LayoutParams.MATCH_PARENT,
+         ViewGroup.LayoutParams.MATCH_PARENT)
+mainLayout.addView(skeletonViewGroup, layout);
+   
+```
+ 
+## SkeletonModelBuilder 
+```java
+new SkeletonModelBuilder()
+      .setChildView(view)
+      .setCustomHeight(float)
+      .setCustomHeight(float)
+      .setStartView(view)
+      .setEndView(view)
+      .setIsMatchViewBoolean(boolean)
+
+      .setShapeType(SkeletonModel.SHAPE_TYPE_RECT) -> SHAPE_TYPE_RECT, SHAPE_TYPE_OVAL, SHAPE_TYPE_TEXT
+
+      .setPadding(float)
+      .setPaddingTop(float)
+      .setPaddingBottom(float)
+      .setPaddingLeft(float)
+      .setPaddingRight(float)
+
+      .setCornerRadius(int)
+      .setCornerRadiusTopRight(int)
+      .setCornerRadiusTopLeft(int)
+      .setCornerRadiusBottomLRight(int)
+      .setCornerRadiusBottomLeft(int)
+      
+      .build();
 ```
 
 ```java
- skeletonGroup.setSkeletonListener(new SkeletonGroup.SkeletonListener() {
+skeletonGroup.setSkeletonListener(new SkeletonGroup.SkeletonListener() {
       @Override
       public void onStartAnimation() {
 	...
@@ -172,7 +300,7 @@ Nothing really! Just build your app, watch the magic happen ;) .
       public void onFinishAnimation() {
 	...
       }
- });
+});
 ```
 
 
