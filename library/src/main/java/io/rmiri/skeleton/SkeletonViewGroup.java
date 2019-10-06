@@ -660,6 +660,7 @@ public class SkeletonViewGroup extends SkeletonMaster {
 
     private void setupFinishingAnimation() {
 
+        isAnimationPlay = false;
         isCanDraw = false;
         isLastLoopAnimation = false;
         isCanDrawFinishState = false;
